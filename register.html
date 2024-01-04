@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <link rel="stylesheet" href="./styles/register.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"
+    />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      type="text/css"
+    />
+
+    <title></title>
+  </head>
+  <body>
+    <div class="form-container">
+        <form id="mainForm">
+            <div class="container">
+                <h1>Register</h1>
+                <p>Fill in this form</p>
+                <hr>
+
+                <div class="input-wrapper">
+                    <label for="email">
+                        <i class="fa-solid fa-envelope"></i>
+                        <b>Email</b>
+                    </label>
+                    
+                    <input type="text" placeholder="Enter email" name="email" class="entry" id="email" required>
+        
+                    <label>
+                        <i class="fa-solid fa-lock"></i>
+                        <b>Password</b>
+                    </label>
+                    <input type="password" placeholder="Password" name="psw" class="entry" id="psw" required>
+                    
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        <b>First name</b>
+                    </label>
+                    <input type="text" placeholder="First name" name="psw" class="entry" id="fnameInp" required>
+        
+                    <label>
+                        <i class="fa-solid fa-user"></i>
+                        <b>Last name</b>
+                    </label>
+                    <input type="text" placeholder="Last name" name="psw" class="entry" id="lnameInp" required>
+                </div>
+    
+                <hr>
+                <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
+    
+                <button type="button" id="submitData" name="submitData" class="registerbtn" onclick="">Register</button>
+    
+            </div>
+    
+            <div class="container signin">
+                <p>Already have an account? <a href="login.html">Sign in</a></p>
+            </div>
+        </form>
+    
+        <div class="img-wrapper">
+            <img src="home-img.png" alt="img">
+            <div class="text-wrapper">
+                <h1 id="welcome-msg">Welcome!</h1>
+                <h2 id="introduction-msg">Please enter your information to continue</h2>
+            </div>
+    
+        </div>
+
+    </div>
+
+    <!-- <script>
+        const btn = document.getElementById('registerbtn');
+        registerbtn.addEventListener('click', function handleClick(event){
+            event.preventDefault();
+
+            
+        })
+    </script> -->
+ 
+    <script type="module">
+        // Import the functions you need from the SDKs you need
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+        import { 
+            getAuth, 
+            createUserWithEmailAndPassword, 
+            signInWithEmailAndPassword, 
+            signOut 
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+        // TODO: Add SDKs for Firebase products that you want to use
+        // https://firebase.google.com/docs/web/setup#available-libraries
+      
+        // Your web app's Firebase configuration
+        // const firebaseConfig = {
+        //   apiKey: "AIzaSyCPDfce163NPRLHuyDBHXt8k7_o2eEJ-PI",
+        //   authDomain: "authentication-88ac8.firebaseapp.com",
+        //   projectId: "authentication-88ac8",
+        //   storageBucket: "authentication-88ac8.appspot.com",
+        //   messagingSenderId: "624921183417",
+        //   appId: "1:624921183417:web:9950324fe2c6e9193e0768"
+        // };
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
+            authDomain: "sigma-50b08.firebaseapp.com",
+            databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
+            projectId: "sigma-50b08",
+            storageBucket: "sigma-50b08.appspot.com",
+            messagingSenderId: "881262508411",
+            appId: "1:881262508411:web:573e358cf20526dcfc25de"
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth();
+        const database = getDatabase(app);
+
+        submitData.addEventListener('click',(e)=>{
+
+            var email = document.getElementById('email').value;
+            var password = document.getElementById('psw').value;
+            var FnameInp = document.getElementById('fnameInp').value;
+            var LnameInp = document.getElementById('lnameInp').value;
+
+            createUserWithEmailAndPassword(auth, email, password)
+                .then((userCredential) => {
+                    console.log(userCredential);
+                    // Signed up 
+                    const user = userCredential.user;
+                    // ... user.uid
+                    set(ref(database, 'users/' + user.uid), {
+                        email: email,
+                        password: password,
+                        firstname: FnameInp,
+                        lastname: LnameInp
+                    })
+                    .then(() => {
+                        // Data saved successfully!
+                        alert('user created successfully');
+                    })
+                    .catch((error) => {
+                        // The write failed...
+                        alert(error);
+                    });
+                })
+                .catch((error) => {
+                    alert(error.message);
+                    console.log(error.code);
+                    console.log(error.message);
+                    // const errorCode = error.code;
+                    // const errorMessage = error.message;
+                    // // ..
+                    // alert(errorMessage);
+                });
+            
+            const firstNameInput = document.getElementById('fnameInp');
+            const lastNameInput = document.getElementById('lnameInp');
+            const emailInput = document.getElementById('email');
+            const passwordInput = document.getElementById('psw');
+
+            firstNameInput.value = '';
+            lastNameInput.value = '';
+            emailInput.value = '';
+            passwordInput.value = '';
+            // signInWithEmailAndPassword(auth, email, password)
+            //     .then((userCredential) => {
+            //         // Signed in 
+            //         const user = userCredential.user;
+            //         // ...
+
+            //         var lgDate = new Date();
+
+            //         update(ref(database, 'users/' + user.uid), {
+            //             last_login: lgDate
+            //         })
+            //         .then(() => {
+            //             // Data saved successfully!
+            //             alert('user logged in successfully');
+            //         })
+            //         .catch((error) => {
+            //             // The write failed...
+            //             alert(error);
+            //         });
+            //     })
+            //     .catch((error) => {
+            //         const errorCode = error.code;
+            //         const errorMessage = error.message;
+            //         alert(errorMessage);
+            //     });
+
+            // signOut(auth).then(() => {
+            //     //sign-out successful
+            // }).catch((error) => {
+            //     //an error happened
+            // });
+
+        });
+    </script>
+  </body>
+</html>
+
+
+

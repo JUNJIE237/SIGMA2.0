@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Auction Page</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"/>
+  <link rel="stylesheet" href="./styles/auction-page.css"/>
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" type="text/css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <nav class="sidebar close">
+    <header>
+      <a href="home.html">
+      <div class="image-text">
+        <span class="image">
+          <i class="fa-solid fa-house"></i>
+        </span>
+
+        <div class="text header-text">
+          <span class="project-title">SIGMA</span>
+        </div>
+      </div>
+    </a>
+      <i class="fa-solid fa-arrow-left-long"></i>
+    </header>
+
+    <div class="menu">
+      <div class="selection">
+        <ul class="selection-links">
+          <li class="link">
+            <a href="buy.html">
+              <i class="fa-solid fa-house"></i>
+              <span class="text"> Sell </span>
+            </a>
+          </li>
+          <li class="link">
+            <a href="business-idea.html">
+              <i class="fa-solid fa-house"></i>
+              <span class="text"> Buy </span>
+            </a>
+          </li>
+          <li class="link">
+            <a href="merge.html">
+              <i class="fa-solid fa-house"></i>
+              <span class="text"> Merge </span>
+            </a>
+          </li>
+          <li class="link">
+            <a href="CDN/conference.html">
+              <i class="fa-solid fa-house"></i>
+              <span class="text"> Conference </span>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <section class="home">
+    <div class="home-wrapper">
+      <div class="home-title">
+        <span class="image">
+          <i class="fa-solid fa-house"></i>
+        </span>
+  
+        <div class="text">
+          Auction
+        </div>
+      </div>
+
+      <div class="product-name">
+        <div class="name">
+          Product Name
+        </div>
+      </div>
+
+      <div class="home-wrapper-mid">
+        <div class="enter-bid">
+
+          <div class="bid-img"><img src="dallebing.png" alt="img"></div>
+
+          <div class="bid-container">
+            <form action="" class="form" id="bidForm">
+              <!-- <div class="alert">Bid is placed successfully!</div> -->
+              <div class="input-group">
+                <input type="text" class="input" id="user">
+                <label class="placeholder">Username</label>
+              </div>
+              
+              <div class="input-group">
+                <input type="text" class="input" id="bid">
+                <label class="placeholder">Bid</label>
+              </div>
+
+              
+
+              <button type="submit" class="place-bid" onclick="save()">Place bid</button>
+            </form>
+            
+            
+          </div>
+        </div>
+        <div class="highest-bid">
+          <div class="product-info">
+            <h1>Product Information</h1>
+            <h2 class="product-desc">This is a paragraph of product description.</h2>
+          </div>
+          <div class="highest-bid-price">
+            <div class="price-container">
+              <i class="fa-solid fa-circle-exclamation"></i>
+              <h2 id="highest-bid">Highest bid</h2>
+              <h3>$1000</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- <section>
+        <div class="swiper mySwiper carousel">
+          <div class="swiper-wrapper content">
+            <div class="swiper-slide card">
+              <div class="card-content">
+                <div class="image">
+                  <img src="dallebing.png" alt="">
+                </div>
+                <div class="product-desc">
+                  <div class="product-name">Product 1</div>
+                  <div class="time-uploaded">1 hour ago</div>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide card">
+              <div class="card-content">
+                <div class="image">
+                  <img src="dallebing.png" alt="">
+                </div>
+                <div class="product-desc">
+                  <div class="product-name">Product 1</div>
+                  <div class="time-uploaded">1 hour ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-scrollbar"></div>
+        <div class="swiper-pagination"></div>
+      </section> -->
+
+      
+      <div class="outer-wrapper">
+        <div class="wrapper">
+          <i id="left" class="fa-solid fa-arrow-left"></i>
+          
+          <ul class="carousel">
+            <li class="card">
+              <div class="img"><img src="dallebing.png" alt="img" draggable="false"></div>
+              <h2>Product 1</h2>
+              <span>2 hours ago</span>
+            </li>
+            <li class="card">
+              <div class="img"><img src="dallebing.png" alt="img" draggable="false"></div>
+              <h2>Product 1</h2>
+              <span>2 hours ago</span>
+            </li>
+            <li class="card">
+              <div class="img"><img src="dallebing.png" alt="img" draggable="false"></div>
+              <h2>Product 1</h2>
+              <span>2 hours ago</span>
+            </li>
+            <li class="card">
+              <div class="img"><img src="dallebing.png" alt="img" draggable="false"></div>
+              <h2>Product 1</h2>
+              <span>2 hours ago</span>
+            </li>
+            <li class="card">
+              <div class="img"><img src="dallebing.png" alt="img" draggable="false"></div>
+              <h2>Product 1</h2>
+              <span>2 hours ago</span>
+            </li>
+            <li class="card">
+              <div class="img"><img src="dallebing.png" alt="img" draggable="false"></div>
+              <h2>Product 1</h2>
+              <span>2 hours ago</span>
+            </li>
+          </ul>
+          
+          <i id="right" class="fa-solid fa-arrow-right"></i>
+        </div>
+      </div>
+      
+    </div>
+    
+    <div class="home-side-info">
+      <div class="activities-wrapper">
+        <div class="top-bidders">
+          <h1 class="bidders-tag"> Top Bidders </h1>
+          
+          <ul class="bidders-list">
+            <li class="bidder">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>New bid appeared</h2>
+                <span>Brendan Chao has placed the highest bid on this post</span>
+              </div>
+            </li>
+            <li class="bidder">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>New bid appeared</h2>
+                <span>Brendan Chao has placed the highest bid on this post</span>
+              </div>
+            </li>
+            <li class="bidder">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>New bid appeared</h2>
+                <span>Brendan Chao has placed the highest bid on this post</span>
+              </div>
+            </li>
+            <li class="bidder">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>New bid appeared</h2>
+                <span>Brendan Chao has placed the highest bid on this post</span>
+              </div>
+            </li>
+          </ul>
+          
+        </div>
+       
+        <div class="activities">
+          <h1 class="activities-tag"> Activities </h1>
+          <ul class="activities-container">
+  
+            <li class="activities-info">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>New bid appeared</h2>
+                <span>Brendan Chao has placed the highest bid on this post</span>
+              </div>
+            </li>
+
+            <li class="activities-info">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>You won Product 1</h2>
+                <span>You won Product 1 at $200</span>
+              </div>
+            </li>
+
+            <li class="activities-info">
+              <div class="activities-img"><img src="dallebing.png" alt="img"></div>
+              <div class="activities-detailed-info">
+                <h2>You won Product 3</h2>
+                <span>You won Product 3 at $1000</span>
+              </div>
+            </li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script> -->
+  
+  <script src="auction.js"></script>
+</body>

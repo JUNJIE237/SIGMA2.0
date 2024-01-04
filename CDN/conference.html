@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+
+<head>
+    <title>Zoom WebSDK CDN</title>
+    <meta charset="utf-8" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/3.0.0/css/bootstrap.css" />
+    <link type="text/css" rel="stylesheet" href="https://source.zoom.us/3.0.0/css/react-select.css" />
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="./styles/zoom.css" />
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      type="text/css"
+    />
+
+</head>
+
+<body>
+    <div class="return-button">
+        <button class="return" onclick="history.back()">
+            <i class="fa-solid fa-backward"></i>
+        </button>
+    </div>
+    <div class="container">
+        <div class="main-container">
+            <div class="sub-container">
+                <div class="navbar-header">
+                    <h1 class="navbar-title" href="#">Zoom WebSDK CDN</h1>
+                </div>
+                <div id="navbar" class="websdktest">
+                    <form class="navbar-form navbar-right" id="meeting_form">
+                        <div class="slot-wrapper">
+                            <div class="slot-subwrapper">
+                                <h2 class="personal-info"> Enter your information </h2>
+                                <div class="slot">
+                                    <div class="form-group">
+                                        <input type="text" name="display_name" id="display_name" value="3.0.0#CDN" maxLength="100"
+                                            placeholder="Name" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="meeting_email" id="meeting_email" value="" style="width:150px"
+                                            maxLength="32" placeholder="Email option" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+    
+                            <div class="slot-subwrapper">
+                                <h2 class="personal-info"> Enter meeting room information </h2>
+                                <div class="slot">
+                                    <div class="form-group">
+                                        <input type="text" name="meeting_number" id="meeting_number" value="" maxLength="200"
+                                            style="width:150px" placeholder="Meeting Number" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" name="meeting_pwd" id="meeting_pwd" value="" style="width:150px"
+                                            maxLength="32" placeholder="Meeting Password" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            
+        
+                            
+        
+                            <div class="slot" id="slot-3">
+                                <div class="form-group" id="form-group-selection">
+                                    <select id="meeting_role" class="sdk-select">
+                                        <option value=0>Attendee</option>
+                                        <option value=1>Host</option>
+                                    </select>
+                                </div>
+                                <div class="form-group" id="form-group-selection">
+                                    <select id="meeting_china" class="sdk-select">
+                                        <option value=0>Global</option>
+                                        <option value=1>China</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+    
+                        <div class="form-group">
+                            <select id="meeting_lang" class="sdk-select">
+                                <option value="en-US">English</option>
+                                <option value="de-DE">German Deutsch</option>
+                                <option value="es-ES">Spanish Español</option>
+                                <option value="fr-FR">French Français</option>
+                                <option value="jp-JP">Japanese 日本語</option>
+                                <option value="pt-PT">Portuguese Portuguese</option>
+                                <option value="ru-RU">Russian Русский</option>
+                                <option value="zh-CN">Chinese 简体中文</option>
+                                <option value="zh-TW">Chinese 繁体中文</option>
+                                <option value="ko-KO">Korean 한국어</option>
+                                <option value="vi-VN">Vietnamese Tiếng Việt</option>
+                                <option value="it-IT">Italian italiano</option>
+                                <option value="tr-TR">Turkey-Türkçe</option>
+                                <option value="pl-PL">Poland-Polski</option>
+                                <option value="id-ID">Indonesian Bahasa Indonesia</option>
+                                <option value="nl-NL">Dutch Nederlands</option>
+                            </select>
+                        </div>
+        
+                        <input type="hidden" value="" id="copy_link_value" />
+                        <button type="submit" class="btn btn-primary" id="join_meeting">Join</button>
+                        <button type="submit" class="btn btn-primary" id="clear_all">Clear</button>
+                        <button type="button" link="" onclick="window.copyJoinLink('#copy_join_link')"
+                            class="btn btn-primary" id="copy_join_link">Copy Direct join link</button>
+        
+        
+                    </form>
+                </div>
+            </div>
+            <div class="image-wrapper">
+                <img src="Meeting.png" alt="">
+            </div> 
+        </div>
+        
+
+       
+               
+        <!-- <div id="show-test-tool">
+            <button type="submit" class="btn btn-primary" id="show-test-tool-btn"
+                title="show or hide top test tool">Show</button>
+        </div> -->
+        <!--/.navbar-collapse -->
+    </div>
+
+    
+
+
+    
+    <script>
+        document.getElementById('show-test-tool-btn').addEventListener("click", function (e) {
+            var textContent = e.target.textContent;
+            if (textContent === 'Show') {
+                document.getElementById('nav-tool').style.display = 'block';
+                document.getElementById('show-test-tool-btn').textContent = 'Hide';
+            } else {
+                document.getElementById('nav-tool').style.display = 'none';
+                document.getElementById('show-test-tool-btn').textContent = 'Show';
+            }
+        })
+    </script>
+
+    <script src="https://source.zoom.us/3.0.0/lib/vendor/react.min.js"></script>
+    <script src="https://source.zoom.us/3.0.0/lib/vendor/react-dom.min.js"></script>
+    <script src="https://source.zoom.us/3.0.0/lib/vendor/redux.min.js"></script>
+    <script src="https://source.zoom.us/3.0.0/lib/vendor/redux-thunk.min.js"></script>
+    <script src="https://source.zoom.us/3.0.0/lib/vendor/lodash.min.js"></script>
+    <script src="https://source.zoom.us/zoom-meeting-3.0.0.min.js"></script>
+    <script src="js/tool.js"></script>
+    <script src="js/vconsole.min.js"></script>
+    <script src="js/index.js"></script>
+</body>
+
+</html>

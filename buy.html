@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Buying Page</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"
+    />
+    <link rel="stylesheet" href="./styles/buy.css" />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      type="text/css"
+    />
+    <script src="buy.js" defer></script>
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <a href="home.html">
+          <div class="image-text">
+            <span class="image">
+              <i class="fa-solid fa-house"></i>
+            </span>
+
+            <div class="text header-text">
+              <span class="project-title">SIGMA</span>
+            </div>
+          </div>
+        </a>
+        <i class="fa-solid fa-arrow-left-long"></i>
+      </header>
+
+      <div class="menu">
+        <div class="selection">
+          <ul class="selection-links">
+            <li class="link">
+              <a href="busidea.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Sell </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="buy.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Buy </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="merge.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Merge </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="CDN/conference.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Conference </span>
+              </a>
+            </li>
+
+            <li class="link" id='signoutbutton'>
+              <a href="">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="text"> Sign Out </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <section class="home">
+      <section class="title_bar">
+        <div id="title">
+          <h1 id="title_caption">Find Your Business Idea</h1>
+        </div>
+        <div id="dropdown_bar">
+          <div id="business_type">
+            <h2 id="business_type_title">Business type</h2>
+            <select name="business type" id="business_type_selection">
+              <option value="" disabled selected>
+                Please select an option
+              </option>
+              <option value="logistic">logistic</option>
+              <option value="bakery">bakery</option>
+              <option value="medical">medical</option>
+              <option value="fashion">fashion</option>
+            </select>
+          </div>
+          <div id="expected_expenses">
+            <p id="expected_expenses_title">Expected expenses</p>
+            <select name="expected expenses" id="expected_expenses_selection">
+              <option value="" disabled selected>
+                Please select an option
+              </option>
+              <option value="high">high</option>
+              <option value="medium">medium</option>
+              <option value="low">low</option>
+            </select>
+          </div>
+          <div id="project_duration">
+            <h2 id="project_duration_title">Project Duration</h2>
+            <select name="project duration" id="project_duration_selection">
+              <option value="" disabled selected>
+                Please select an option
+              </option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+          <div id="search_button">
+            <a href="" onclick="" class="search-button">Search</a>
+          </div>
+        </div>
+      </section>
+      <section class="content">
+        <div class="çontent-header">
+          <h1 class="content-header-1">Discover Our Featured Business Idea</h1>
+          <h2>Innovative Idea That Inspire You on Generating Revenue</h2>
+        </div>
+        <div class="item-list">
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <script src="buy.js"></script>
+
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import { 
+          getAuth, 
+          onAuthStateChanged,
+          createUserWithEmailAndPassword, 
+          signInWithEmailAndPassword, 
+          signOut 
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+      import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      const firebaseConfig = {
+          apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
+          authDomain: "sigma-50b08.firebaseapp.com",
+          databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
+          projectId: "sigma-50b08",
+          storageBucket: "sigma-50b08.appspot.com",
+          messagingSenderId: "881262508411",
+          appId: "1:881262508411:web:573e358cf20526dcfc25de"
+      };
+
+      let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+      let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+      let SignoutBtn = document.getElementById('signoutbutton');
+
+      let Signout = ()=>{
+          sessionStorage.removeItem("user-creds");
+          sessionStorage.removeItem("user-info");
+          signOut(auth);
+          window.location.href = 'login.html';
+      }
+
+      let CheckCred = ()=>{
+          if(!sessionStorage.getItem("user-creds"))
+              window.location.href = 'login.html'
+      }
+
+      // const auth = getAuth();
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+      const database = getDatabase(app);
+      const dbref = ref(database);
+
+      auth.onAuthStateChanged((user) => {
+          if (user) {
+          // User is signed in
+          const uid = user.uid;
+          console.log("User is signed in:", uid);
+          // Update UI or perform actions for signed-in user
+          } else {
+          // User is signed out
+          console.log("User is signed out");
+          // Update UI or perform actions for signed-out user
+          }
+      });
+
+      window.addEventListener('load', CheckCred);
+      SignoutBtn.addEventListener('click', Signout);
+    </script>
+  </body>
+</html>

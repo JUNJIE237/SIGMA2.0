@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comfortaa', Courier, monospace;
+  }
+  
+body {
+    background-color: rgb(24, 43, 60);
+    width: 100%;
+    height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.form-container {
+    /* background-color: blue; */
+    height: 900px;
+    width: 1500px;
+    display: flex;
+    justify-content:center;
+    align-items: center;
+    /* flex-direction: column; */
+    border-radius: 20px;
+    position: relative;
+}
+
+.input-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    /* background-color: green; */
+    height: 350px;
+}
+
+.container {
+    /* background-color: red; */
+    height: 600px;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    flex-direction: column;
+    border-radius: 20px;
+    /* background-color: red; */
+}
+
+.registerbtn {
+    width: 150px;
+    height: 40px;
+    border-radius: 20px;
+    background-color: rgb(46, 172, 104);
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.25s;
+}
+
+.registerbtn:hover {
+    background-color: rgb(48, 84, 116);
+    color: white;
+}
+
+.input-wrapper i {
+    padding-right: 10px;
+}
+
+.entry {
+    width: 350px;
+    height: 30px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+}
+
+.signin {
+    height: 30px;
+}
+
+.img-wrapper {
+    height: 100%;
+    /* background-color: yellow; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0 20px 20px 0;
+    /* right: 0;
+    position: absolute; */
+    width: 750px;
+    background-color: rgb(48, 84, 116);
+}
+
+.text-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    /* background-color: green; */
+    height: 100px;
+    padding-top: 20px;
+    color: white;
+}
+
+#mainForm {
+    background-color: white;
+    height: 100%;
+    width: 750px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 20px 0 0 20px;
+}
+
+.img-wrapper img {
+    width: 400px;
+    border-radius: 20px;
+}
+

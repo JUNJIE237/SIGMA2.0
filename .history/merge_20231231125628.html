@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#000000" />
+    <title>Merge Page</title>
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C600%2C700"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Inter%3A400%2C600"
+    />
+    <link rel="stylesheet" href="./styles/merge.css" />
+    <!-- Link Swiper's CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      type="text/css"
+    />
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/jquery/latest/jquery.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+
+
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <nav class="sidebar close">
+      <header>
+        <a href="home.html">
+        <div class="image-text">
+          <span class="image">
+            <i class="fa-solid fa-house"></i>
+          </span>
+
+          <div class="text header-text">
+            <span class="project-title">SIGMA</span>
+          </div>
+        </div>
+      </a>
+        <i class="fa-solid fa-arrow-left-long"></i>
+      </header>
+
+      <div class="menu">
+        <div class="selection">
+          <ul class="selection-links">
+            <li class="link">
+              <a href="busidea.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Sell </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="buy.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Buy </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="merge.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Merge </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="CDN/conference.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Conference </span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <section class="home">
+    <section >
+      <div class="filter">
+<div class="tag-search">
+  <h1>Tags Input</h1>
+  <div class="tag-area">
+      <label for="tag-input" class="label">Add Languages</label>
+      <ul>
+          <input type="text" class="tag-input" id="tag-input" />
+      </ul>
+  </div>
+</div>
+<div class="calendar-search">
+  <h1>Date Search</h1>
+  <div class="calendar-area">
+    <span class="select_wrap">
+      <select class="calendar">
+        <option value="">--Select Options--</option>
+        <option value="technology">Technology</option>
+        <option value="healthcare">Healthcare</option>
+        <option value="education">Education</option>
+        <option value="finance">Finance</option>
+        <option value="food">Food & Beverage</option>
+        <option value="fashion">Fashion & Apparel</option>
+        <option value="travel">Travel & Tourism</option>
+        <option value="entertainment">Entertainment</option>
+        <option value="environment">Environment & Sustainability</option>
+        <option value="socialimpact">Social Impact</option>
+        <option value="innovation">Innovation & Startups</option>
+        <option value="marketing">Marketing & Advertising</option>
+        <option value="sports">Sports & Recreation</option>
+      </select>
+    </span>
+</div>
+</div>
+<div class="category-search">
+  <h1>Search Categories</h1>
+<div class="custom-dropdown">
+  <span class="select_wrap">
+    <select id="dropdownInput">
+      <option value="">--Select Options--</option>
+      <option value="technology">Technology</option>
+      <option value="healthcare">Healthcare</option>
+      <option value="education">Education</option>
+      <option value="finance">Finance</option>
+      <option value="food">Food & Beverage</option>
+      <option value="fashion">Fashion & Apparel</option>
+      <option value="travel">Travel & Tourism</option>
+      <option value="entertainment">Entertainment</option>
+      <option value="environment">Environment & Sustainability</option>
+      <option value="socialimpact">Social Impact</option>
+      <option value="innovation">Innovation & Startups</option>
+      <option value="marketing">Marketing & Advertising</option>
+      <option value="sports">Sports & Recreation</option>
+    </select>
+  </span>
+</div>
+</div>
+<div class="file-upload">
+  <h1>File Upload</h1>
+  <div class="upload-box">
+  <label for="custom-file-upload" class="filupp">
+    <span class="filupp-file-name js-value">Browse Files</span>
+    <input type="file" name="attachment-file" value="1" id="custom-file-upload"/>
+  </label>
+</div>
+</div>
+</div>
+    </section>
+    <section class="main-table">
+      <table>
+        <thead>
+          <tr>
+            <th>No.</th>
+            <th>Title</th>
+            <th>Keywords</th>
+            <th>Category</th>
+            <th>Date Created</th>
+            <th>Date Modified</th>
+            <th>Author</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td><a href="#">Sample Title 1</a></td>
+            <td>Keyword1, Keyword2</td>
+            <td>Technology</td>
+            <td>2023-01-01</td>
+            <td>2023-01-05</td>
+            <td>John Doe</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          <td>2</td>
+            <td><a href="#">Sample Title 2</a></td>
+            <td>Keyword3, Keyword4</td>
+            <td>Healthcare</td>
+            <td>2023-02-10</td>
+            <td>2023-02-15</td>
+            <td>Jane Smith</td>
+          </tr>
+          
+          <!-- Add more rows with data as needed -->
+        </tbody>
+      </table>
+    </section>
+    </section>
+
+    <script src="merge.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+  </body>
+</html>
