@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Business Idea</title>
 <body>
-  <link rel="stylesheet" href="styles/busidea.css">
+  <link rel="stylesheet" href="busidea.css">
   <link
   rel="stylesheet"
   href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"
@@ -32,10 +32,13 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
+
+
 <body>
-  <nav class="sidebar close">
-    <header>
-      <a href="home.html">
+  
+    <nav class="sidebar close">
+      <header>
+        <a href="home.html">
         <div class="image-text">
           <span class="image">
             <i class="fa-solid fa-house"></i>
@@ -46,56 +49,47 @@
           </div>
         </div>
       </a>
-      <i class="fa-solid fa-arrow-left-long"></i>
-    </header>
+        <i class="fa-solid fa-arrow-left-long"></i>
+      </header>
 
-    <div class="menu">
-      <div class="selection">
-        <ul class="selection-links">
-          <li class="link">
-            <a href="busidea.html">
-              <i class="fa-solid fa-house"></i>
-              <span class="text"> Sell </span>
-            </a>
-          </li>
-          <li class="link">
-            <a href="buy.html">
-              <i class="fa-solid fa-house"></i>
-              <span class="text"> Buy </span>
-            </a>
-          </li>
-          <li class="link">
-            <a href="merge.html">
-              <i class="fa-solid fa-house"></i>
-              <span class="text"> Merge </span>
-            </a>
-          </li>
-          <li class="link">
-            <a href="CDN/conference.html">
-              <i class="fa-solid fa-house"></i>
-              <span class="text"> Conference </span>
-            </a>
-          </li>
-
-          <li class="link" id='signoutbutton'>
-            <a href="">
-              <i class="fa-solid fa-right-from-bracket"></i>
-              <span class="text"> Sign Out </span>
-            </a>
-          </li>
-        </ul>
+      <div class="menu">
+        <div class="selection">
+          <ul class="selection-links">
+            <li class="link">
+              <a href="busidea.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Sell </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="buy.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Buy </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="merge.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Merge </span>
+              </a>
+            </li>
+            <li class="link">
+              <a href="CDN/conference.html">
+                <i class="fa-solid fa-house"></i>
+                <span class="text"> Conference </span>
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-    </div>
-  </nav>
-
-  
-  
+    </nav>
 
   <div class="title-container">
     <h1>Business Idea</h1>
-
   </div>
   
+  <div class="center-container">
+
   <div class="progressbar-container">
     <div class="tab complete active" data-number="1">Your Profile</div>
     <div class="tab" data-number="2">Idea Information</div>
@@ -128,7 +122,7 @@
         </div>
         <label for="email">
             <span>Email</span>
-            <input id="email" name="email" required>
+            <input id="email" name="email" required autocomplete="email">
             <span class="error-message" style="display:none;color:red;">Email is required.</span>
         </label>
         <label for="pass">
@@ -138,9 +132,11 @@
         </label>
 
         <div class="section-inputs">
-          <label>Phone Number</label>
         <div class="phone-input-container">
-          <select id="phone" name="phone" class="country-code-dropdown" >
+          <label for="phone">
+            <span>Phone Number</span>
+            <div class="phone-number-group">
+          <select id="phone" name="phone" class="country-code-dropdown" autocomplete="phone" >
             <option value="1" class="ca">CA +1</option>
             <option value="1" class="us">US +1</option>
             <option value="7" class="ru">RU +7</option>
@@ -376,9 +372,10 @@
             <option value="1876" class="jm">JM +1876</option>
             
           </select>
-          <input type="text" id="phone-number" name="phone-number" class="phone-number-input"  >
-          
-      </div>
+          <input type="text" id="phone-number" name="phone-number" class="phone-number-input" placeholder="Numbers">
+        </div>
+      </label>
+    </div>
             
           
           
@@ -640,7 +637,7 @@
       </div>
 
       <div class="btn-container">
-      <button class="next-btn" onclick="move('next')">Next</button>
+        <button class="next-btn">Next</button>
       </div>
             
         </form>
@@ -692,20 +689,29 @@
     </div>
 
 
-        <label for="idea-title">
+        <label for="ideatitle">
             <span>Idea Title</span>
-            <input id="idea-title" name="idea-title" required>
+            <input id="ideatitle" name="ideatitle" required>
             <span class="error-message" style="display:none;color:red;">Idea title is required.</span>
         </label>
 
-<label for="price-range">
-  <span>Price Range</span>
-  <div class="input-group">
-    <input type="text" id="price-min" name="price-min" placeholder="RM Min" class="input-style">
-    <span class="input-group-addon">—</span>
-    <input type="text" id="price-max" name="price-max" placeholder="RM Max" class="input-style">
-  </div>
-</label>
+
+        <div class="input-group">
+          <label for="price-min" class="price-label">
+            <span>Minimum Price</span>
+            <input type="text" id="price-min" name="price-min" placeholder="RM Min" class="input-style">
+          </label>
+          
+          <span class="input-group-addon">—</span>
+          
+          <label for="price-max" class="price-label">
+            <span>Maximum Price</span>
+            <input type="text" id="price-max" name="price-max" placeholder="RM Max" class="input-style">
+          </label>
+        </div>
+
+
+
         <div class="upload-container">
           <div id="dropZone" class="drop-zone">
             <p id="dropZoneText">Drag and drop or click to submit business idea proposal</p>
@@ -717,7 +723,7 @@
       
         
       <div class="btn-container">
-        <button class="prev-btn" onclick="move('prev')">Previous</button>
+        <button class="prev-btn">Previous</button>
         <button class="submit-btn">Submit</button>
       </div>
 
@@ -753,11 +759,16 @@
 
 
   </div>
-</form>
 
+</form>
 </div>
 
-  <script src="busidea.js"></script>
+
+
+
+</div>
+<script src="busidea.js" defer></script>
+
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
     import { 
