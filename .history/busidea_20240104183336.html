@@ -32,6 +32,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
+
+
 <body>
   <nav class="sidebar close">
     <header>
@@ -778,42 +780,11 @@
         messagingSenderId: "881262508411",
         appId: "1:881262508411:web:573e358cf20526dcfc25de"
     };
-
-    var firstName=""
-    var lastName = "";
-    var email = "";
-    var myKadPassport = "";
-    var phoneNumber = "";
-    var nationality = "";
-  
-    var ideaTitle = "";
-    var ideaCat = "";
-    var targetUser = "";
-    var priceMin = "";
-    var priceMax = "";
-var ideaDesc=""
-
-    //submit idea button
-        document.querySelector('.submit-btn').addEventListener('click', (e) => {
-          const formStep1 = document.getElementById('form-step-1');
-const formStep2 = document.getElementById('form-step-2');
-          firstName = formStep1.querySelector('#fname').value;
-    lastName = formStep1.querySelector('#lastname').value;
-     email = formStep1.querySelector('#email').value;
-     myKadPassport = formStep1.querySelector('#pass').value;
-     phoneNumber = formStep1.querySelector('#phone-number').value;
-     nationality = formStep1.querySelector('#nationality').value;
-  
-     ideaTitle = formStep2.querySelector('#idea-title').value;
-     ideaCat = formStep2.getElementById('#ideacat').value;
-     targetUser = formStep2.getElementById('#targetuser').value;
-     priceMin = formStep2.querySelector('#price-min').value;
-     priceMax = formStep2.querySelector('#price-max').value;
-      });
-
-
-
-
+//submit idea button
+    document.querySelector('.submit-btn').addEventListener('click', (e) => {
+    grabFormData(); 
+    populateStep3(); 
+  });
 
     let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
     let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
@@ -853,52 +824,6 @@ const formStep2 = document.getElementById('form-step-2');
 
     window.addEventListener('load', CheckCred);
     SignoutBtn.addEventListener('click', Signout);
-
-
-
-
-    createUserWithEmailAndPassword(auth,email,myKadPassport, firstName,
-                lastName,
-                 phoneNumber,
-                 nationality,
-                 ideaTitle,
-                 ideaCat,
-                 targetUser,
-                 priceMin,
-                 priceMax)
-        .then((userCredential) => {
-            console.log(userCredential);
-            // Signed up 
-            const user = userCredential.user;
-
-            // Save user details to the database
-            set(ref(database, 'ideas/' + user.uid), {
-                email: email,
-                myKadPassport: myKadPassport,
-                firstname: firstName,
-                lastname: lastName,
-                phoneNumber: phoneNumber,
-                nationality: nationality,
-                ideaTitle: ideaTitle,
-                ideaCategory: ideaCat,
-                targetUser: targetUser,
-                priceMin: priceMin,
-                priceMax: priceMax
-            })
-                .then(() => {
-                    // Data saved successfully!
-                    alert('User created successfully');
-                })
-                .catch((error) => {
-                    // The write failed...
-                    alert(error);
-                });
-        })
-        .catch((error) => {
-            alert(error.message);
-            console.log(error.code);
-            console.log(error.message);
-        });
   </script>
 </body>
 

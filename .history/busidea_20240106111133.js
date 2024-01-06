@@ -155,14 +155,9 @@ document.addEventListener("DOMContentLoaded", function() {
       alert('Unsupported file type. Allowed types are PDF.');
       return;
     }
-    var PdfReader = require("pdfreader").PdfReader;
-    new PdfReader().parseFileItems(file, function(err, item){
-      if (item && item.text)
-        console.log(item.text);
-    });
+
     document.getElementById('dropZoneText').textContent = 'File selected: ' + file.name;
   }
-
 
 
   window.triggerFileInput = function() {

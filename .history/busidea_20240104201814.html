@@ -32,6 +32,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
+
+
 <body>
   <nav class="sidebar close">
     <header>
@@ -779,24 +781,21 @@
         appId: "1:881262508411:web:573e358cf20526dcfc25de"
     };
 
-    var firstName=""
-    var lastName = "";
-    var email = "";
-    var myKadPassport = "";
-    var phoneNumber = "";
-    var nationality = "";
+    var lastName = "formStep1.querySelector('#lastname').value;"
+    var email = formStep1.querySelector('#email').value;
+    var myKadPassport = formStep1.querySelector('#pass').value;
+    var phoneNumber = formStep1.querySelector('#phone-number').value;
+    var nationality = formStep1.querySelector('#nationality').value;
   
-    var ideaTitle = "";
-    var ideaCat = "";
-    var targetUser = "";
-    var priceMin = "";
-    var priceMax = "";
-var ideaDesc=""
+    var ideaTitle = formStep2.querySelector('#idea-title').value;
+    var ideaCat = formStep2.getElementById('#ideacat').value;
+    var targetUser = formStep2.getElementById('#targetuser').value;
+    var priceMin = formStep2.querySelector('#price-min').value;
+    var priceMax = formStep2.querySelector('#price-max').value;
+
 
     //submit idea button
         document.querySelector('.submit-btn').addEventListener('click', (e) => {
-          const formStep1 = document.getElementById('form-step-1');
-const formStep2 = document.getElementById('form-step-2');
           firstName = formStep1.querySelector('#fname').value;
     lastName = formStep1.querySelector('#lastname').value;
      email = formStep1.querySelector('#email').value;

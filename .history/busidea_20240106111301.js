@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", function() {
       return;
     }
     var PdfReader = require("pdfreader").PdfReader;
-    new PdfReader().parseFileItems(file, function(err, item){
+    new PdfReader().parseFileItems("sample.pdf", function(err, item){
       if (item && item.text)
         console.log(item.text);
     });

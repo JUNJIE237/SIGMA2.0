@@ -155,20 +155,35 @@ document.addEventListener("DOMContentLoaded", function() {
       alert('Unsupported file type. Allowed types are PDF.');
       return;
     }
-    var PdfReader = require("pdfreader").PdfReader;
-    new PdfReader().parseFileItems(file, function(err, item){
-      if (item && item.text)
-        console.log(item.text);
-    });
+
     document.getElementById('dropZoneText').textContent = 'File selected: ' + file.name;
   }
-
 
 
   window.triggerFileInput = function() {
     document.getElementById('fileInput').click();
   };
+  var reader = new FileReader();
 
+  reader.onload = function () {
+    var typedarray = new Uint8Array(this.result);
+
+    pdfjsLib.getDocument(typedarray).promise.then(function (pdf) {
+      // Iterate through each page of the PDF
+      for (var pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
+        pdf.getPage(pageNum).then(function (page) {
+          // Extract text content from the page
+          page.getTextContent().then(function (textContent) {
+            // Log the extracted text content to the console
+            console.log('Page ' + pageNum + ' Text Content:', textContent.items.map(item => item.str).join(' '));
+          });
+        });
+      }
+    });
+  };
+
+  reader.readAsArrayBuffer(file);
+}
 
 
   function grabFormData() {
