@@ -84,18 +84,12 @@ header .fa-house, .text {
   box-sizing: border-box;
 }
 
-.sidebar li .fa-house,
-.sidebar li .fa-right-from-bracket {
+.sidebar li .fa-house {
   font-size: 25px;
   min-width: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-nav .fa-right-from-bracket {
-  color: white;
-  cursor: pointer;
 }
 
 .sidebar li .text {
@@ -125,9 +119,7 @@ nav .fa-right-from-bracket {
 }
 
 .sidebar li a:hover .fa-house,
-.sidebar li a:hover .text,
-.sidebar li a:hover .fa-right-from-bracket
-{
+.sidebar li a:hover .text {
   color: rgb(37, 64, 88);
 }
 
@@ -289,44 +281,58 @@ html, body {
   position: relative;
 }
 
+
 body {
   height: 100%;
+  max-height: 1000px;
   background-color: rgb(18, 35, 51);
   padding: 0;
-  margin: 0;
-  font-family: 'Comfortaa', Courier, monospace;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
   overflow-x: hidden; 
   overflow-y: auto;
 }
 
 .container {
   max-width: 1000px; 
-  width: 70%; 
+  width: 100%; 
   margin: 0 auto; 
   background-color: #2b445a;
   padding: 10px;
   border-radius: 5px;
   display: flex;
-  justify-content: space-between;
-  flex-direction: column;
+  justify-content: center;
+  flex-direction: center;
   align-items: center;
   gap: 40px;
   position: relative;
+  margin-bottom: 30px;
 }
 
 .section-inputs {
   display: flex;
-  gap: 40px;
+  gap: 70px;
   width: 100%;
   margin-top: 30px;
+  justify-content: center;
+  align-items: center;
+  max-width: 750px;
+  margin-left: auto;
+  margin-right: auto;
 
 }
 
 
 form {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 750px;
+  width: 100%;
   gap: 30px;
   margin-top: 60px;
   
@@ -346,11 +352,9 @@ label {
 
 label span {
   font-weight: 200;
-  margin-left: 0px;
 }
 
 .section-inputs label input {
-  width: calc(100% - 24px); 
   background-color: #2b445a;
   border: 1px solid rgb(243, 243, 244, 0.5);
   padding: 5px 12px;
@@ -358,8 +362,9 @@ label span {
   outline:#d1e0ec;
   font-size: 12px;
   color:#f3f3f4;
-  margin-left: 0px;
 }
+
+
 
 label input {
   background-color: #2b445a;
@@ -529,12 +534,30 @@ button {
 }
 
 .phone-input-container {
+    gap: 1px;
     display: flex;
-    gap: 5px;
-    align-items: center;
-    width: 130%; /* Adjust as necessary */
-    margin-left: -245px;
+    margin-left: auto;
+    margin-right: auto;    
+    width: 100%; /* Adjust as necessary */
 }
+
+.phone-input-container label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.phone-number-group {
+  display: flex;
+  gap: 2px; /* Space between select and input */
+}
+
+.phone-input-container label span {
+  font-weight: 200;
+  color: #b8b8be; /* Or whatever your color scheme is */
+  font-size: 11px;
+}
+
 
 .country-code-dropdown {
     flex-grow: 1;
@@ -547,6 +570,8 @@ button {
     -moz-appearance: none; 
     -webkit-appearance: none; 
     appearance: none;
+    width: 70px;
+    font-size: 12px;
 }
 
 .phone-number-input {
@@ -589,18 +614,19 @@ button {
   background-color: #2b445a;
   border: 1px solid rgb(243, 243, 244, 0.5);
   padding: 5px 12px;
-  margin: 0 5px;
   width: 100%; /* Adjust the width as necessary */
   box-sizing: border-box;
   color: #f3f3f4;
-  font-size: 16px; /* Or the font size of your other inputs */
+  font-size: 13px; /* Or the font size of your other inputs */
   border-radius: 4px;
 }
 
 
 .input-group-addon {
   color: #AAA; /* Or the color of your other labels */
-  padding: 0 15px;
+  padding: 0 20px;
+  margin-top:-10px;
+  margin-right: 5px;
 }
 
 .sr-only {
@@ -613,6 +639,19 @@ button {
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
+
+.price-label {
+  display: flex;
+  flex-direction: column;
+  margin-right: 10px; /* Adjust as necessary */
+}
+
+.price-label span {
+  display: block;
+  margin-bottom: 4px; /* Adjust this value as needed to create more or less space */
+}
+
+/* Keep the rest of your styles for .price-label and .input-style unchanged */
 
 /* You may need to add :focus or other pseudo-class styles to match your existing inputs */
 .input-style:focus {
@@ -677,6 +716,24 @@ button {
 .home-btn:hover {
   background-color: #3b9a9c;
 }
+
+
+.center-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  max-width: 900px; /* Adjust to suit your design */
+  margin: 0 auto;
+  width: 100%;
+}
+
+.progressbar-container, .form-content {
+  width: 100%; /* This will make them take up the full width of .center-container */
+}
+
+
+
 
 
 
