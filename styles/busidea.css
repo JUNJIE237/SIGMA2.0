@@ -538,7 +538,7 @@ button {
     display: flex;
     margin-left: auto;
     margin-right: auto;    
-    width: 100%; /* Adjust as necessary */
+    width: 100%; 
 }
 
 .phone-input-container label {
@@ -549,12 +549,12 @@ button {
 
 .phone-number-group {
   display: flex;
-  gap: 2px; /* Space between select and input */
+  gap: 2px;
 }
 
 .phone-input-container label span {
   font-weight: 200;
-  color: #b8b8be; /* Or whatever your color scheme is */
+  color: #b8b8be; 
   font-size: 11px;
 }
 
@@ -575,7 +575,7 @@ button {
 }
 
 .phone-number-input {
-    flex-grow: 5; /* Adjust the flex-grow to control the relative sizes */
+    flex-grow: 5; 
     background-color: #2b445a;
     border: 1px solid rgb(243, 243, 244, 0.5);
     padding: 5px 12px;
@@ -604,7 +604,7 @@ button {
 
 .input-group label {
   margin-right: 10px;
-  color: #AAA; /* Or the color of your other labels */
+  color: #AAA; 
   display: block;
 }
 
@@ -614,16 +614,16 @@ button {
   background-color: #2b445a;
   border: 1px solid rgb(243, 243, 244, 0.5);
   padding: 5px 12px;
-  width: 100%; /* Adjust the width as necessary */
+  width: 100%; 
   box-sizing: border-box;
   color: #f3f3f4;
-  font-size: 13px; /* Or the font size of your other inputs */
+  font-size: 13px; 
   border-radius: 4px;
 }
 
 
 .input-group-addon {
-  color: #AAA; /* Or the color of your other labels */
+  color: #AAA; 
   padding: 0 20px;
   margin-top:-10px;
   margin-right: 5px;
@@ -643,17 +643,15 @@ button {
 .price-label {
   display: flex;
   flex-direction: column;
-  margin-right: 10px; /* Adjust as necessary */
+  margin-right: 10px; 
 }
 
 .price-label span {
   display: block;
-  margin-bottom: 4px; /* Adjust this value as needed to create more or less space */
+  margin-bottom: 4px; 
 }
 
-/* Keep the rest of your styles for .price-label and .input-style unchanged */
 
-/* You may need to add :focus or other pseudo-class styles to match your existing inputs */
 .input-style:focus {
   outline: none;
   border-color: #80bdff;
@@ -723,13 +721,13 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  max-width: 900px; /* Adjust to suit your design */
+  max-width: 900px;
   margin: 0 auto;
   width: 100%;
 }
 
 .progressbar-container, .form-content {
-  width: 100%; /* This will make them take up the full width of .center-container */
+  width: 100%; 
 }
 
 
