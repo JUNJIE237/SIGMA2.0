@@ -774,7 +774,9 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, set, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
+import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import { get,update, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
 const firebaseConfig = {
    apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
@@ -788,6 +790,8 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+export const auth = getAuth(app);
+
 
 function handleFormSubmission() {
         const formData = {
@@ -807,23 +811,39 @@ function handleFormSubmission() {
    const ideasRef = ref(database, 'ideas');
     const newIdeaRef = push(ideasRef);
 
-    // Now set the data at this new reference
     set(newIdeaRef, formData)
     .then(() => {
         console.log('Idea submitted successfully');
-        // Handle successful submission
     })
     .catch((error) => {
         console.error('Error writing data to Firebase', error);
-        // Handle errors
     });
 }
 
-    // Event listener for form submission
     document.querySelector('.submit-btn').addEventListener('click', function(event) {
         event.preventDefault();
         handleFormSubmission();
     });
+
+    onAuthStateChanged(auth, (user) => {
+  if (user) {
+    const userRef = ref(database, 'users/' + user.uid);
+    get(userRef).then((snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val();
+        document.getElementById('fname').value = data.firstname || '';
+        document.getElementById('lastname').value = data.lastname || '';
+        document.getElementById('email').value = data.email || '';
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  } else {
+    console.log("User is signed out");
+  }
+});
 </script>
 </body>
 
