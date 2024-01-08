@@ -316,13 +316,13 @@ body {
   height: 100%;
   max-height: 1000px;
   background-color: rgb(18, 35, 51);
-  padding: 0;
   margin-top: auto;
   margin-bottom: auto;
   margin-left: auto;
   margin-right: auto;
   overflow-x: hidden; 
   overflow-y: auto;
+  padding-bottom: 70px; 
 }
 
 .container {
@@ -423,6 +423,8 @@ label input:focus {
 
 .form-content {
   display: none;
+  padding-bottom: 20px; /* Adjust the value to increase or decrease the space */
+
 }
 .form-content.active {
   display: block;
@@ -483,7 +485,7 @@ select:focus {
   right: 0;
   justify-content: space-between;
   padding: 0 10%;
-  
+
 }
 
 .prev-btn, .next-btn{
