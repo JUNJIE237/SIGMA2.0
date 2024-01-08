@@ -703,6 +703,12 @@
             <span class="error-message" style="display:none;color:red;">Idea title is required.</span>
         </label>
 
+        <label for="ideadescription">
+          <span>Idea Description</span>
+          <textarea id="ideadescription" name="ideadescription" rows="4" required></textarea>
+          <span class="error-message" style="display:none;color:red;">Idea description is required.</span>
+        </label>        
+
 
         <div class="input-group">
           <label for="price-min" class="price-label">
@@ -755,6 +761,7 @@
 <div class="report-section">
   <h2>Idea Information</h2>
   <p><strong>Idea Title:</strong> <span id="idea-title-summary">[Idea Title]</span></p>
+  <p><strong>Idea Description:</strong> <span id="idea-description-summary">[Idea Description]</span></p>
   <p><strong>Category:</strong> <span id="idea-category-summary">[Category]</span></p>
   <p><strong>Target User:</strong> <span id="target-user-summary">[Target User]</span></p>
   <p><strong>Price Range:</strong> <span id="price-range-summary">[Price Range]</span></p>
@@ -810,6 +817,7 @@ function handleFormSubmission() {
     phoneNumber: document.getElementById('phone-number').value,
     nationality: document.getElementById('nationality').value,
     ideaTitle: document.getElementById('ideatitle').value,
+    ideaDescription: document.getElementById('ideadescription').value,
     ideaCat: document.getElementById('ideacat').value,
     targetUser: document.getElementById('targetuser').value,
     priceMin: document.getElementById('price-min').value,

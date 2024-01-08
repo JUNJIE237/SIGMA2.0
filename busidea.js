@@ -172,6 +172,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const nationality = formStep1.querySelector('#nationality').value;
   
     const ideaTitle = formStep2.querySelector('#ideatitle').value;
+    const ideaDescription= formStep2.querySelector('#ideadescription').value;
     const ideaCat = formStep2.querySelector('#ideacat').value;
     const targetUser = formStep2.querySelector('#targetuser').value;
     const priceMin = formStep2.querySelector('#price-min').value;
@@ -185,6 +186,7 @@ document.addEventListener("DOMContentLoaded", function() {
       phoneNumber,
       nationality,
       ideaTitle,
+      ideaDescription,
       ideaCat,
       targetUser,
       priceMin,
@@ -201,6 +203,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('profile-pass').textContent = formData.pass;
       document.getElementById('profile-phone-number').textContent = formData.phone;
       document.getElementById('idea-title-summary').textContent = formData.ideatitle;
+      document.getElementById('idea-description-summary').textContent = formData.ideadescription;
       document.getElementById('idea-category-summary').textContent = formData.ideacat;
       document.getElementById('target-user-summary').textContent = formData.targetuser;
 
@@ -234,6 +237,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const nationality = document.getElementById('nationality').value;
     
     const ideaTitle = document.getElementById('ideatitle').value;
+    const ideaDescription =document.getElementById ('ideadescription').value;
     const ideaCat = document.getElementById('ideacat').value;
     const targetUser = document.getElementById('targetuser').value;
     const priceMin = document.getElementById('price-min').value;
@@ -249,6 +253,7 @@ document.addEventListener("DOMContentLoaded", function() {
       fullPhoneNumber,
       nationality,
       ideaTitle,
+      ideaDescription,
       ideaCat,
       targetUser,
       priceMin,
@@ -270,6 +275,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('profile-phone-number').textContent = formData.fullPhoneNumber;
       document.getElementById('profile-nationality').textContent = formData.nationality;
       document.getElementById('idea-title-summary').textContent = formData.ideaTitle;
+      document.getElementById('idea-description-summary').textContent = formData.ideaDescription;
       document.getElementById('idea-category-summary').textContent = formData.ideaCat;
       document.getElementById('target-user-summary').textContent = formData.targetUser;
       document.getElementById('price-range-summary').textContent = `${formData.priceMin} - ${formData.priceMax}`;
@@ -347,6 +353,7 @@ function downloadReport() {
     doc.setFontSize(12);
     doc.setFont("helvetica", "normal");
     addKeyValue('Idea Title', formData.ideaTitle);
+    addKeyValue('Idea Description', formData.ideaDescription);
     addKeyValue('Category', formData.ideaCat);
     addKeyValue('Target User', formData.targetUser);
     addKeyValue('Price Range', `${formData.priceMin} - ${formData.priceMax}`);
