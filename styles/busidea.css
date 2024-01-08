@@ -25,6 +25,36 @@ header .fa-house, .text {
   z-index: 2;
 }
 
+input[type="text"], textarea {
+  background-color: #2b445a;
+  border: 1px solid rgb(243, 243, 244, 0.5);
+  padding: 10px; 
+  border-radius: 4px; 
+  font-family: 'Comfortaa', Courier, monospace; 
+  font-size: 12px; 
+  color: #f3f3f4; 
+  outline: none;
+}
+
+
+textarea {
+  height: 40px; 
+  resize: none; 
+}
+
+input[type="text"]:hover, textarea:hover {
+  background-color: #122333;
+  border: solid 1px #f3f3f4;
+  box-shadow: 0 0 4px #eb50ff4f;
+}
+
+input[type="text"]:focus, textarea:focus {
+  background-color: #182B3C;
+  border: solid 1px #f3f3f4;
+  box-shadow: 0 0 4px #eb50ff4f;
+}
+
+
 .sidebar .image-text i {
   font-size: 40px;
   border-radius: 6px;
