@@ -139,7 +139,7 @@
           <h1 class="content-header-1">Discover Our Featured Business Idea</h1>
           <h2>Innovative Idea That Inspire You on Generating Revenue</h2>
         </div>
-        <div id="item-list">
+        <div class="item-list">
 
         </div>
       </section>
@@ -200,18 +200,18 @@
                     // Create an HTML element for each idea
                     const ideaElement = document.createElement('div');
                     ideaElement.classList.add('card'); // Add styling to the card
+console.log(idea.ideaTitle)
                     // Set inner HTML content
                     ideaElement.innerHTML = `
-                      <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
+                        <img src="data:image/png;base64,"${idea.image}" alt="${idea.ideaTitle}" />
                         <div class="card-content">
                             <h3>${idea.ideaTitle}</h3>
-                            <p>${idea.ideaContent.substr(0, 100)}</p>
+                            <p>${idea.ideaContent}</p>
                             <a href="#" class="read-more">Read More</a>
                         </div>
-
                     `;
 
-                    ideasContainer.appendChild(ideaElement);
+                    $('.item-list').appendChild(ideaElement);
                 }
             }
         }

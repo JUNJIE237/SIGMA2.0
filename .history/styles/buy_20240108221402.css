@@ -389,7 +389,7 @@ nav .fa-right-from-bracket {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-left: 5% ;
-
+  justify-content: space-evenly;
 }
 
 .item img{
@@ -449,5 +449,4 @@ max-width: 100%;
   flex-direction:row;
   align-items: center;
   background-color: #415262;
-  justify-content: space-evenly;
 }

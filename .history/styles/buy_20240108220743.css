@@ -389,7 +389,7 @@ nav .fa-right-from-bracket {
   overflow: hidden;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   padding-left: 5% ;
-
+  
 }
 
 .item img{
@@ -401,12 +401,7 @@ nav .fa-right-from-bracket {
 }
 .card{
 padding: 10px;
-  max-width: 30%;
- 
-}
-.card-image{
-
-max-width: 100%;
+  max-width: 25%;
 }
 .card-content {
   padding: 5%;
@@ -414,8 +409,6 @@ max-width: 100%;
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   margin-bottom: 100px;
-  max-height: 160px;
-  min-height: 160px;
 }
 
 .card-content h3 {
@@ -449,5 +442,4 @@ max-width: 100%;
   flex-direction:row;
   align-items: center;
   background-color: #415262;
-  justify-content: space-evenly;
 }

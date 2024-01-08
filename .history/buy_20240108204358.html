@@ -139,8 +139,49 @@
           <h1 class="content-header-1">Discover Our Featured Business Idea</h1>
           <h2>Innovative Idea That Inspire You on Generating Revenue</h2>
         </div>
-        <div id="item-list">
-
+        <div class="item-list">
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
         </div>
       </section>
     </section>
@@ -156,7 +197,7 @@
           signInWithEmailAndPassword, 
           signOut 
       } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-      import { getDatabase, set, ref, update,onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+      import { getDatabase, set, ref, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
       const firebaseConfig = {
           apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
@@ -167,6 +208,27 @@
           messagingSenderId: "881262508411",
           appId: "1:881262508411:web:573e358cf20526dcfc25de"
       };
+
+      const dbRef = firebase.database().ref('https://sigma-50b08-default-rtdb.firebaseio.com/ideas');
+
+      dbRef.on('value', snapshot => {
+    const data = snapshot.val();
+
+    for (const key in data) {
+      if (data.hasOwnProperty("ideaTitle")) {
+        const item = data["ideaTitle"];
+        console
+        // Step 4: Use the created objects to update the HTML content
+        const element = document.createElement('div');
+        element.innerHTML = `<strong>${item.name}</strong>: ${item.value}`;
+        document.getElementById('output').appendChild(element);
+      }
+    }
+  });
+
+
+
+
 
       let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
       let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
@@ -190,44 +252,7 @@
       const auth = getAuth();
       const database = getDatabase(app);
       const dbref = ref(database);
-      const dbref_get = ref(database, 'ideas');
-      function displayIdeas(ideas) {
-            const ideasContainer = document.getElementById('item-list');
 
-            for (const key in ideas) {
-                if (Object.hasOwnProperty.call(ideas, key)) {
-                    const idea = ideas[key];
-                    // Create an HTML element for each idea
-                    const ideaElement = document.createElement('div');
-                    ideaElement.classList.add('card'); // Add styling to the card
-                    // Set inner HTML content
-                    ideaElement.innerHTML = `
-                      <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
-                        <div class="card-content">
-                            <h3>${idea.ideaTitle}</h3>
-                            <p>${idea.ideaContent.substr(0, 100)}</p>
-                            <a href="#" class="read-more">Read More</a>
-                        </div>
-
-                    `;
-
-                    ideasContainer.appendChild(ideaElement);
-                }
-            }
-        }
-
-        onValue(dbref_get, (snapshot) => {
-            const ideasData = snapshot.val();
-            
-            // Check if there is data
-            if (ideasData) {
-                displayIdeas(ideasData);
-            } else {
-                console.log('No data available');
-            }
-        });
-
-      
       auth.onAuthStateChanged((user) => {
           if (user) {
           // User is signed in

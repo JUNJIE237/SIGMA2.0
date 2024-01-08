@@ -139,8 +139,49 @@
           <h1 class="content-header-1">Discover Our Featured Business Idea</h1>
           <h2>Innovative Idea That Inspire You on Generating Revenue</h2>
         </div>
-        <div id="item-list">
-
+        <div class="item-list">
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
+          <div class="item">
+            <img
+              src="/assets/smart-shipping-system.png"
+              alt="Placeholder Image"
+            />
+            <div class="card-content">
+              <h3>Smart Shipping container system</h3>
+              <p>
+                Imagine containers equipped with integrated sensors, AI, and
+                modular compartments
+              </p>
+              <a href="#" class="read-more">Read More</a>
+            </div>
+          </div>
         </div>
       </section>
     </section>
@@ -192,7 +233,7 @@
       const dbref = ref(database);
       const dbref_get = ref(database, 'ideas');
       function displayIdeas(ideas) {
-            const ideasContainer = document.getElementById('item-list');
+            const ideasContainer = document.getElementById('ideasContainer');
 
             for (const key in ideas) {
                 if (Object.hasOwnProperty.call(ideas, key)) {
@@ -200,15 +241,15 @@
                     // Create an HTML element for each idea
                     const ideaElement = document.createElement('div');
                     ideaElement.classList.add('card'); // Add styling to the card
+
                     // Set inner HTML content
                     ideaElement.innerHTML = `
-                      <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
+                        <img src="data:image/png;base64,"${idea.image}" alt="${idea.ideaTitle]}" />
                         <div class="card-content">
-                            <h3>${idea.ideaTitle}</h3>
-                            <p>${idea.ideaContent.substr(0, 100)}</p>
+                            <h3>${idea[ideaTitle]}</h3>
+                            <p>${idea[ideaContent]}</p>
                             <a href="#" class="read-more">Read More</a>
                         </div>
-
                     `;
 
                     ideasContainer.appendChild(ideaElement);

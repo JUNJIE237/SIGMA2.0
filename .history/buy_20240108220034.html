@@ -202,7 +202,8 @@
                     ideaElement.classList.add('card'); // Add styling to the card
                     // Set inner HTML content
                     ideaElement.innerHTML = `
-                      <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
+
+                      <img src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
                         <div class="card-content">
                             <h3>${idea.ideaTitle}</h3>
                             <p>${idea.ideaContent.substr(0, 100)}</p>
