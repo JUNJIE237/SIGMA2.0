@@ -234,7 +234,7 @@ nav .fa-right-from-bracket {
   color: aliceblue;
   font-size: 300%;
   text-align: center;
-  padding-top: 1%;
+  padding-top: 5%;
   padding-bottom: 5%;
   font-weight: bolder;
 }
@@ -254,7 +254,7 @@ nav .fa-right-from-bracket {
 
 }
 #dropdown-bar-div{
-width:80%;
+
 
 }
 #business_type{
@@ -370,22 +370,17 @@ width:80%;
 }
 
 #search_button{
-padding:20px;
-width:20%;
-display: flex;
-align-items: center;
-justify-content: center;
+  padding-left: 10%;
+  padding-top: 2.5%;
 }
 
 .search-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   text-decoration: none;
   padding: 10px 20px;
-  height: 15%;
+  height: 30%;
   margin-top: 2%;
-  width: 60%;
+  width: 150%;
   font-size: 16px;
   font-weight: bolder;
   text-align: center;
@@ -520,9 +515,7 @@ li {
 }
 
 .tag-area {
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  margin-left: 0.2rem;
+  margin: 0.2rem;
   outline: none;
   width: 100%;
   border: 2px solid #605f6f;

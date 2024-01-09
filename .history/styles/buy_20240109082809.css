@@ -234,7 +234,7 @@ nav .fa-right-from-bracket {
   color: aliceblue;
   font-size: 300%;
   text-align: center;
-  padding-top: 1%;
+  padding-top: 5%;
   padding-bottom: 5%;
   font-weight: bolder;
 }
@@ -242,24 +242,15 @@ nav .fa-right-from-bracket {
 #dropdown_bar{
   background-color: #182b3c;
   position: relative;
-  border-radius: 10px;
   display:flex;
   flex-direction: row;
+  border-radius: 10px;
   
 }
-#dropdown-div{
 
-  display:flex;
-  flex-direction: row;
-
-}
-#dropdown-bar-div{
-width:80%;
-
-}
 #business_type{
   margin: 2%;
-  width: 33%;
+  width: 20%;
   margin-right: 5%;
   
 }
@@ -274,7 +265,7 @@ width:80%;
 
 #expected_expenses{
   margin: 2%;
-  width: 33%;
+  width: 20%;
   margin-right: 5%;
   
 }
@@ -287,36 +278,9 @@ width:80%;
   font-size: 100%;
 }
 
-#time-added{
-  margin: 2%;
-  width: 33%;
-  margin-right: 5%;
-}
-
-#time-added-title
-{
-  color: aliceblue;
-  text-align: left;
-  margin-bottom: 5%;
-  font-size: 100%;
-}
-#time_added_selection{
-  width: 100%;
-  padding: 2%;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 10% solid #ccc;
-  border-radius: 5%;
-  font-size: 16px;
-  color:#ccc;
-  background-color: #182b3c;
-  margin-right: 20%;
-}
-
 #project_duration{
   margin-top: 2%;
-  width: 33%;
+  width: 20%;
 }
 
 #project_duration_title
@@ -361,31 +325,25 @@ width:80%;
   border-top: none;
   border-left: none;
   border-right: none;
-  border-bottom: 10% solid #ccc;
-  border-radius: 5%;
-  font-size: 16px;
+  border: 1% solid #ccc;
+  font-size: 80%;
   color:#ccc;
   background-color: #182b3c;
   margin-right: 20%;
 }
 
 #search_button{
-padding:20px;
-width:20%;
-display: flex;
-align-items: center;
-justify-content: center;
+  padding-left: 10%;
+  padding-top: 2.5%;
 }
 
 .search-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   text-decoration: none;
   padding: 10px 20px;
-  height: 15%;
+  height: 30%;
   margin-top: 2%;
-  width: 60%;
+  width: 150%;
   font-size: 16px;
   font-weight: bolder;
   text-align: center;
@@ -444,7 +402,7 @@ justify-content: center;
 .card{
 padding: 10px;
   max-width: 30%;
-,
+
  
 }
 .card-image{
@@ -493,129 +451,4 @@ max-width: 100%;
   align-items: center;
   background-color: #415262;
   justify-content: space-evenly;
-}
-
-
-.tag-search {
-  margin: 2%;
-  width: 20%;
-  margin-right: 5%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  color: #E6F2FC;
-  width:33%; 
-  max-width: 33%;
-  
-}
-
-ul {
-  margin-block-start: 0;
-  margin-block-end: 0;
-  padding-inline-start: 0px;
-}
-
-li {
-  list-style: none;
-}
-
-.tag-area {
-  margin-top: 0.2rem;
-  margin-bottom: 0.2rem;
-  margin-left: 0.2rem;
-  outline: none;
-  width: 100%;
-  border: 2px solid #605f6f;
-  border-radius: 5px;
-  transition: all 0.2s;
-  cursor: text;
-  display: flex;
-  align-items: center;
-  position: relative;
-}
-.tag-search-title{
-
-  color: aliceblue;
-  text-align: left;
-  margin-bottom: 1%;
-  font-size: 100%;
-
-}
-.label {
-  position: absolute;
-  background: rgb(18, 35, 51);
-  padding: 0 0.3rem;
-  color: #adadad;
-  transition: all 0.1s;
-}
-
-.label-active {
-  top: -11px;
-  color: #2EAC68;
-  font-size: 15px;
-}
-
-.tag-area ul {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-}
-
-.active {
-  border: 2px solid #2EAC68 !important;
-}
-
-.tag {
-  padding-left: 0.8rem;
-  background: #353535;
-  border-radius: 100px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin: 2px;
-  font-size: 15px;
-}
-
-.tag-input {
-  padding-top: 0.5rem;
-  padding-bottom: 0.5rem;
-  padding-left: 0.5rem;
-  outline: none;
-  border: none;
-  margin-left: 0.5rem;
-  background: transparent;
-  font-size: 15px;
-  color: #fff;
-}
-
-.cross {
-  cursor: pointer;
-  display: flex;
-  margin-left: 0.5rem;
-  justify-content: center;
-  align-items: center;
-  padding: 0.8rem;
-  transform: rotate(45deg);
-  border-radius: 50%;
-  background: #414141;
-}
-
-.cross:hover {
-  background: #818181b1;
-}
-
-.cross::before {
-  content: "";
-  width: 2px;
-  height: 16px;
-  position: absolute;
-  background: rgb(255, 255, 255);
-}
-
-.cross::after {
-  content: "";
-  height: 2px;
-  width: 16px;
-  position: absolute;
-  background: rgb(255, 255, 255);
 }

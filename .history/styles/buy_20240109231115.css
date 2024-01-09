@@ -234,7 +234,7 @@ nav .fa-right-from-bracket {
   color: aliceblue;
   font-size: 300%;
   text-align: center;
-  padding-top: 1%;
+  padding-top: 5%;
   padding-bottom: 5%;
   font-weight: bolder;
 }
@@ -254,7 +254,7 @@ nav .fa-right-from-bracket {
 
 }
 #dropdown-bar-div{
-width:80%;
+width:85%;
 
 }
 #business_type{
@@ -370,17 +370,14 @@ width:80%;
 }
 
 #search_button{
-padding:20px;
-width:20%;
+padding:10px;
+width:15%;
 display: flex;
 align-items: center;
-justify-content: center;
 }
 
 .search-button {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  display: inline-block;
   text-decoration: none;
   padding: 10px 20px;
   height: 15%;
