@@ -175,6 +175,7 @@ document.addEventListener("DOMContentLoaded", function() {
     const ideaDescription= formStep2.querySelector('#ideadescription').value;
     const ideaCat = formStep2.querySelector('#ideacat').value;
     const targetUser = formStep2.querySelector('#targetuser').value;
+    const ideaDuration = formStep2.querySelector('#ideaduration').value;
     const priceMin = formStep2.querySelector('#price-min').value;
     const priceMax = formStep2.querySelector('#price-max').value;
   
@@ -189,6 +190,7 @@ document.addEventListener("DOMContentLoaded", function() {
       ideaDescription,
       ideaCat,
       targetUser,
+      ideaDuration,
       priceMin,
       priceMax
     }));
@@ -206,6 +208,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('idea-description-summary').textContent = formData.ideadescription;
       document.getElementById('idea-category-summary').textContent = formData.ideacat;
       document.getElementById('target-user-summary').textContent = formData.targetuser;
+      document.getElementById('idea-duration-summary').textContent = formData.ideaduration;
 
     }
   }
@@ -238,6 +241,7 @@ document.addEventListener("DOMContentLoaded", function() {
     
     const ideaTitle = document.getElementById('ideatitle').value;
     const ideaDescription =document.getElementById ('ideadescription').value;
+    const ideaDuration = document.getElementById('ideaduration').value;
     const ideaCat = document.getElementById('ideacat').value;
     const targetUser = document.getElementById('targetuser').value;
     const priceMin = document.getElementById('price-min').value;
@@ -254,6 +258,7 @@ document.addEventListener("DOMContentLoaded", function() {
       nationality,
       ideaTitle,
       ideaDescription,
+      ideaDuration,
       ideaCat,
       targetUser,
       priceMin,
@@ -278,6 +283,7 @@ document.addEventListener("DOMContentLoaded", function() {
       document.getElementById('idea-description-summary').textContent = formData.ideaDescription;
       document.getElementById('idea-category-summary').textContent = formData.ideaCat;
       document.getElementById('target-user-summary').textContent = formData.targetUser;
+      document.getElementById('idea-duration-summary').textContent=formData.ideaDuration;
       document.getElementById('price-range-summary').textContent = `${formData.priceMin} - ${formData.priceMax}`;
     } else {
       console.log('No data found in localStorage.');
@@ -356,6 +362,7 @@ function downloadReport() {
     addKeyValue('Idea Description', formData.ideaDescription);
     addKeyValue('Category', formData.ideaCat);
     addKeyValue('Target User', formData.targetUser);
+    addKeyValue('Idea Duration', formData.ideaDuration);
     addKeyValue('Price Range', `${formData.priceMin} - ${formData.priceMax}`);
 
     doc.save('BusinessIdeaReport.pdf');

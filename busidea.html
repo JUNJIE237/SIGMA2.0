@@ -693,6 +693,17 @@
               </select>
           </label>
          
+          <label for="project">
+            <span>Project Duration</span>
+            <select id="ideaduration" name="ideaduration">
+            <option value="">Select project duration</option>
+            <option value="Less than 1 year"> Less than 1 year</option>
+            <option value="1-2 years">1-2 years</option>
+            <option value="3-4 years">3-4 years</option>
+            <option value="More than 4 years">More than 4 years</option>
+ 
+            </select>
+        </label>
         
     </div>
 
@@ -765,6 +776,8 @@
   <p><strong>Category:</strong> <span id="idea-category-summary">[Category]</span></p>
   <p><strong>Target User:</strong> <span id="target-user-summary">[Target User]</span></p>
   <p><strong>Price Range:</strong> <span id="price-range-summary">[Price Range]</span></p>
+  <p><strong>Project Duration:</strong> <span id="idea-duration-summary">[Project Duration]</span></p>
+
 </div>
 
 <div class="report-footer">
@@ -821,7 +834,8 @@ function handleFormSubmission() {
     ideaCat: document.getElementById('ideacat').value,
     targetUser: document.getElementById('targetuser').value,
     priceMin: document.getElementById('price-min').value,
-    priceMax: document.getElementById('price-max').value
+    priceMax: document.getElementById('price-max').value,
+    ideaDuration : document.getElementById('ideaduration').value
         };
 
    const ideasRef = ref(database, 'ideas');
