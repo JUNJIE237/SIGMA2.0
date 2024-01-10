@@ -246,7 +246,30 @@
       const database = getDatabase(app);
       const dbref = ref(database);
       const dbref_get = ref(database, 'ideas');
-      
+
+        document.getElementById('searchButton').addEventListener('click', () => {
+            const timeAddedSelection = document.getElementById('time_added_selection').value;
+            const expectedExpensesSelection = document.getElementById('expected_expenses_selection').value;
+
+            // Construct a query based on the selected options
+            let query = dbRef;
+            
+            if (timeAddedSelection) {
+                query = orderByChild(query, 'timeAdded').equalTo(timeAddedSelection);
+            }
+
+            if (expectedExpensesSelection) {
+                query = orderByChild(query, 'expectedExpenses').equalTo(expectedExpensesSelection);
+            }
+
+            // Execute the query
+            onValue(query, (snapshot) => {
+                const filteredResults = snapshot.val();
+                displayResults(filteredResults);
+            });
+        });
+
+
       function displayIdeas(ideas) {
             const ideasContainer = document.getElementById('item-list');
 

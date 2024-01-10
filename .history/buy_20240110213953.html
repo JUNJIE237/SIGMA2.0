@@ -246,11 +246,37 @@
       const database = getDatabase(app);
       const dbref = ref(database);
       const dbref_get = ref(database, 'ideas');
+
+      document.getElementById('search-button').addEventListener('click', () => {
+            const category = document.getElementById('business_type_selection').value;
+            // const expectedExpensesSelection = document.getElementById('expected_expenses_selection').value;
+
+            // Construct a query based on the selected options
+            let query = dbref_get;
+            
+            if (category) {
+                query = orderByChild(query, 'category').equalTo(category);
+            }
+
+            // if (expectedExpensesSelection) {
+            //     query = orderByChild(query, 'expectedExpenses').equalTo(expectedExpensesSelection);
+            // }
+
+            // Execute the query
+            onValue(query, (snapshot) => {
+                const filteredResults = snapshot.val();
+                displayResults(filteredResults);
+            });
+        });
+
       
       function displayIdeas(ideas) {
             const ideasContainer = document.getElementById('item-list');
-
-            for (const key in ideas) {
+            if (!results) {
+                console.log('No results found.');
+                return;
+            }
+            for (const key in results) {
                 if (Object.hasOwnProperty.call(ideas, key)) {
                     const idea = ideas[key];
                     // Create an HTML element for each idea

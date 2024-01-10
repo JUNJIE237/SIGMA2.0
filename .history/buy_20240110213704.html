@@ -246,6 +246,29 @@
       const database = getDatabase(app);
       const dbref = ref(database);
       const dbref_get = ref(database, 'ideas');
+
+      document.getElementById('search-button').addEventListener('click', () => {
+            const business = document.getElementById('business_type_selection').value;
+            // const expectedExpensesSelection = document.getElementById('expected_expenses_selection').value;
+
+            // Construct a query based on the selected options
+            let query = dbref_get;
+            
+            if (business) {
+                query = orderByChild(query, 'timeAdded').equalTo(timeAddedSelection);
+            }
+
+            if (expectedExpensesSelection) {
+                query = orderByChild(query, 'expectedExpenses').equalTo(expectedExpensesSelection);
+            }
+
+            // Execute the query
+            onValue(query, (snapshot) => {
+                const filteredResults = snapshot.val();
+                displayResults(filteredResults);
+            });
+        });
+
       
       function displayIdeas(ideas) {
             const ideasContainer = document.getElementById('item-list');
