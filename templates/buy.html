@@ -395,8 +395,120 @@
       </section>
     </section>
 
-    <script src="static/buy.js"></script>
+    <script src="buy.js"></script>
 
-    
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+      import { 
+          getAuth, 
+          onAuthStateChanged,
+          createUserWithEmailAndPassword, 
+          signInWithEmailAndPassword, 
+          signOut 
+      } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+      import { getDatabase, set, ref, update,onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+      const firebaseConfig = {
+          apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
+          authDomain: "sigma-50b08.firebaseapp.com",
+          databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
+          projectId: "sigma-50b08",
+          storageBucket: "sigma-50b08.appspot.com",
+          messagingSenderId: "881262508411",
+          appId: "1:881262508411:web:573e358cf20526dcfc25de"
+      };
+
+      let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
+      let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
+
+      let SignoutBtn = document.getElementById('signoutbutton');
+
+      let Signout = ()=>{
+          sessionStorage.removeItem("user-creds");
+          sessionStorage.removeItem("user-info");
+          signOut(auth);
+          window.location.href = 'login.html';
+      }
+
+      let CheckCred = ()=>{
+          if(!sessionStorage.getItem("user-creds"))
+              window.location.href = 'login.html'
+      }
+
+      // const auth = getAuth();
+      const app = initializeApp(firebaseConfig);
+      const auth = getAuth();
+      const database = getDatabase(app);
+      const dbref = ref(database);
+      const dbref_get = ref(database, 'ideas');
+      
+      function displayIdeas(ideas) {
+            const ideasContainer = document.getElementById('item-list');
+
+            for (const key in ideas) {
+                if (Object.hasOwnProperty.call(ideas, key)) {
+                    const idea = ideas[key];
+                    // Create an HTML element for each idea
+                    const ideaElement = document.createElement('div');
+                    ideaElement.classList.add('card'); // Add styling to the card
+                    // Set inner HTML content
+                    ideaElement.innerHTML = `
+                    <div class="type-name">
+                      <p>${idea.category}</p>
+                      </div>
+                      <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
+                        <div class="card-content">
+                            <h3>${idea.ideaTitle}</h3>
+                            <p>${idea.ideaContent.substr(0, 150)}</p>
+                            <a href="product.html" class="read-more"  data-id="${key}">Read More</a>
+                        </div>
+
+                    `;
+
+                    ideasContainer.appendChild(ideaElement);
+                }
+            }
+            const readMoreButtons = document.querySelectorAll('.read-more');
+            readMoreButtons.forEach(button => {
+                button.addEventListener('click', redirectToDetailPage);
+            });
+        }
+        function redirectToDetailPage(event) {
+            const ideaId = event.target.dataset.id;
+
+            // Construct the URL based on the ideaId
+            const detailPageUrl = `/buy/detail-page?id=${ideaId}/.html`;
+
+            // Redirect the user to the new webpage
+            window.location.href = detailPageUrl;
+        }
+        onValue(dbref_get, (snapshot) => {
+            const ideasData = snapshot.val();
+            
+            // Check if there is data
+            if (ideasData) {
+                displayIdeas(ideasData);
+            } else {
+                console.log('No data available');
+            }
+        });
+
+      
+      auth.onAuthStateChanged((user) => {
+          if (user) {
+          // User is signed in
+          const uid = user.uid;
+          console.log("User is signed in:", uid);
+          // Update UI or perform actions for signed-in user
+          } else {
+          // User is signed out
+          console.log("User is signed out");
+          // Update UI or perform actions for signed-out user
+          }
+      });
+
+      window.addEventListener('load', CheckCred);
+      SignoutBtn.addEventListener('click', Signout);
+    </script>
   </body>
 </html>
