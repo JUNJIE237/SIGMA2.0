@@ -115,8 +115,10 @@ def render_dynamic_page(page_name):
 
 @app.route('/submit_idea', methods=['POST'])
 def receive_data():
+    print("OMG!!!!")
     # Get the JSON data from the request
     ideas = request.get_json()
+    print(ideas)
 
     ideas_ref = db.reference('/ideas')
 
@@ -133,6 +135,7 @@ def receive_data():
 
         # Calculate the range width
         range_width=(range_end + range_start)/2+ (range_end - range_start)/8
+        print(range_width)
         # Categorize based on the range width
         if range_width < low_threshold:
             return "Low"
@@ -143,7 +146,7 @@ def receive_data():
 
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
-    text=ideas["ideaContent"]
+    text=
     docs = nlp(text)
     text = ' '.join(token.text for token in docs if not token.ent_type_)
     text = text.lower()
@@ -163,8 +166,8 @@ def receive_data():
 
     # Combine all n-grams into a single list
     ngrams = most_common_1grams + most_common_2grams + most_common_3grams
-    print(ngrams)
-    prompt=nlp1(ngrams[:3].append("person"), **config)
+
+    prompt=nlp1(ngrams[:3], **config)
     file_name = prompt.lower().replace(" ","-")
 
     image_raw=generate_and_save_image(prompt, file_name, save_image=False)

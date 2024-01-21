@@ -143,7 +143,7 @@ def receive_data():
 
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
-    text=ideas["ideaContent"]
+    text=ideas["priceRange"]
     docs = nlp(text)
     text = ' '.join(token.text for token in docs if not token.ent_type_)
     text = text.lower()

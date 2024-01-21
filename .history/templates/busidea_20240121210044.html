@@ -871,7 +871,8 @@ function handleFormSubmission() {
         targetUser: document.getElementById('targetuser').value,
         priceRange: document.getElementById('price-min').value +" - "+ document.getElementById('price-min').value,
         duration: document.getElementById('ideaduration').value,
-        ideaContent: document.getElementById('problemstatement').value + document.getElementById('model').value + document.getElementById('solution').value + document.getElementById('swot').value,
+        problemStatement: document.getElementById('problemstatement').value,
+        ideaContent: document.getElementById('model').value+document.getElementById('solution').value+document.getElementById('swot').value,
 
     };
     //push to db

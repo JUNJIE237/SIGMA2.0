@@ -21,8 +21,6 @@ import torch
 import ipywidgets as widgets
 import IPython.display as display
 import en_core_web_sm
-import base64
-from keytotext import pipeline
 cred = credentials.Certificate("sigma-50b08-firebase-adminsdk-xrxnc-f8669db2bd.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://sigma-50b08-default-rtdb.firebaseio.com/'
@@ -30,48 +28,6 @@ firebase_admin.initialize_app(cred, {
 import uuid
 
 nlp = spacy.load("en_core_web_sm")
-
-nlp1 = pipeline("k2t-base")
-
-config = {"do_sample": True, "num_beams": 4, "no_repeat_ngram_size": 3, "early_stopping": False, "max_new_tokens":100}
-
-API_TOKEN="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"
-API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-2"
-headers = {"Authorization": f"Bearer {API_TOKEN}"}
-
-device = "cuda" if torch.cuda.is_available() else "cpu"
-model = torch.hub.load("bryandlee/animegan2-pytorch:main", "generator", device=device).eval()
-face2paint = torch.hub.load("bryandlee/animegan2-pytorch:main", "face2paint", device=device)
-image_format = "png"
-
-def query(payload):
-    response = requests.post(API_URL, headers=headers, json=payload)
-    return response.content
-def text_to_image(prompt, image_name):
-
-    image_bytes = query({"inputs" : prompt,
-                         "options" : {"use_cache" : False,
-                                      "wait_for_model" : True}})
-    image_raw = Image.open(io.BytesIO(image_bytes)).convert("RGB")
-    image_raw.save(image_name + ".png")
-    return image_raw
-def filter_run(image, image_name):
-
-    im_in = image
-    im_out = face2paint(model, im_in, side_by_side=False)
-    im_out.save(image_name + "_filtered" + ".png")
-    return im_out
-def run_promp(prompt, image_name):
-    image_raw = text_to_image(prompt, image_name)
-    image_filter = filter_run(image_raw, image_name)
-
-    return image_raw, image_filter
-def generate_and_save_image(prompt, file_name, save_image = True):
-
-    image_raw, image_filter = run_promp(prompt, file_name)
-
-    return image_raw
-
 
 def get_hotwords(text, n=1):
     result = []
@@ -115,8 +71,10 @@ def render_dynamic_page(page_name):
 
 @app.route('/submit_idea', methods=['POST'])
 def receive_data():
+    print("OMG!!!!")
     # Get the JSON data from the request
     ideas = request.get_json()
+    print(ideas)
 
     ideas_ref = db.reference('/ideas')
 
@@ -133,6 +91,7 @@ def receive_data():
 
         # Calculate the range width
         range_width=(range_end + range_start)/2+ (range_end - range_start)/8
+        print(range_width)
         # Categorize based on the range width
         if range_width < low_threshold:
             return "Low"
@@ -143,7 +102,7 @@ def receive_data():
 
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
-    text=ideas["ideaContent"]
+
     docs = nlp(text)
     text = ' '.join(token.text for token in docs if not token.ent_type_)
     text = text.lower()
@@ -163,14 +122,12 @@ def receive_data():
 
     # Combine all n-grams into a single list
     ngrams = most_common_1grams + most_common_2grams + most_common_3grams
-    print(ngrams)
-    prompt=nlp1(ngrams[:3].append("person"), **config)
-    file_name = prompt.lower().replace(" ","-")
 
-    image_raw=generate_and_save_image(prompt, file_name, save_image=False)
+
+
     image_buffer = io.BytesIO()
-    image_raw.save(image_buffer, format='PNG')
-    image_base64 = base64.b64encode(image_buffer.getvalue()).decode('utf-8')
+image_raw.save(image_buffer, format='PNG')
+image_base64 = base64.b64encode(image_buffer.getvalue()).decode('utf-8')
     ideas_append = {
         "timeAdded":time.ctime(),
         "expenses": categorize_expenses(int(a), int(b)),

@@ -859,7 +859,8 @@ export const auth = getAuth(app);
 
 function handleFormSubmission() {
     const formData = {
-        name: document.getElementById('fname').value+document.getElementById('lastname').value,
+        firstName: document.getElementById('fname').value,
+        lastName: document.getElementById('lastname').value,
         email: document.getElementById('email').value,
         myKadPassport: document.getElementById('pass').value,
         phoneNumber: document.getElementById('phone-number').value,
@@ -867,25 +868,30 @@ function handleFormSubmission() {
         nationality: document.getElementById('nationality').value,
         ideaTitle: document.getElementById('ideatitle').value,
         ideaDescription: document.getElementById('ideadescription').value,
-        category: document.getElementById('ideacat').value,
+        ideaCat: document.getElementById('ideacat').value,
         targetUser: document.getElementById('targetuser').value,
-        priceRange: document.getElementById('price-min').value +" - "+ document.getElementById('price-min').value,
-        duration: document.getElementById('ideaduration').value,
-        ideaContent: document.getElementById('problemstatement').value + document.getElementById('model').value + document.getElementById('solution').value + document.getElementById('swot').value,
+        priceMin: document.getElementById('price-min').value,
+        priceMax: document.getElementById('price-max').value,
+        ideaDuration: document.getElementById('ideaduration').value,
+        problemStatement: document.getElementById('problemstatement').value,
+        Model: document.getElementById('model').value,
+        Solution: document.getElementById('solution').value,
+        SWOT: document.getElementById('swot').value
+
 
     };
     //push to db
    const ideasRef = ref(database, 'ideas');
 
     // const newIdeaRef = push(ideasRef);
-
+console.log(formData)
 // Use the Fetch API to send a POST request to your Flask server
-fetch('/submit_idea', {
+fetch('/your-flask-endpoint', {
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(formData)
+    body: JSON.stringify(dataToSend)
 })
 .then(response => response.json())
 .then(data => {
