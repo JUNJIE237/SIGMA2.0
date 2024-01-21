@@ -120,10 +120,6 @@
 
         var dropdown2 = document.getElementById("expected_expenses_selection");
         var selected2 = dropdown2.options[dropdown2.selectedIndex].text;
-
-        var dropdown3 = document.getElementById("project_duration_selection");
-        var selected3 = dropdown3.options[dropdown3.selectedIndex].text;
-
         // Assuming you have a reference to the parent element with class "tag-area"
         const tagArea = document.querySelector('.tag-area');
 
@@ -131,21 +127,20 @@
         const tagElements = tagArea.querySelectorAll('.tag');
 
         // Extract text content from each li element and put them into an array
-        var selected4 = Array.from(tagElements).map(tagElement => tagElement.textContent.trim());
+        var selected3 = Array.from(tagElements).map(tagElement => tagElement.textContent.trim());
 
-        var dropdown5 = document.getElementById("project_duration_selection");
-        var selected5 = dropdown5.options[dropdown5.selectedIndex].text;
 
         var dropdown6 = document.getElementById("project_duration_selection");
         var selected6 = dropdown6.options[dropdown6.selectedIndex].text;
-
+        var dropdown6 = document.getElementById("project_duration_selection");
+        var selected6 = dropdown6.options[dropdown6.selectedIndex].text;
         
             for (const key in ideas) {
                 if (Object.hasOwnProperty.call(ideas, key)) {
                     const idea = ideas[key];
-                    var resultArray = [""];
+                    const resultArray = [];
                     const splitKeywords = idea.keywords.flatMap(word => word.split(" "));
-                    selected4.forEach(text => {
+                    selected3.forEach(text => {
                         // Check if the entire text matches any keyword
                         if (splitKeywords.includes(text)) {
                             resultArray.push(text);
@@ -154,13 +149,9 @@
                             const words = text.split(' ');
                         }
                     });
-                    if ((idea.category==selected1 || selected1 === "Please select an option"|| selected1 === "All Types" ) && 
-                    (idea.expenses===selected2 || selected2 === "Please select an option" || selected2 === "All Expenses") && 
-                    (idea.duration===selected3 || selected3 === "Please select an option" || selected3 === "All Project Durations") &&
-                    // (idea.expenses===selected5 || selected5 === "Please select an option" || selected5 === "All Expenses") &&
-                    (idea.targetUser==selected6 || selected6 === "Please select an option") && 
-                    resultArray.length!=0){
-
+                    console.log(selected3);
+                    console.log(idea.expenses);
+                    if ((idea.category==selected1 || selected1 === "Please select an option" ) && (idea.expenses===selected3 || selected3 === "Please select an option")&&(idea.targetUser==selected6 || selected6 === "Please select an option") && resultArray.length!=0){
                     // Create an HTML element for each idea
                     const ideaElement = document.createElement('div');
                     ideaElement.classList.add('card'); // Add styling to the card
@@ -340,10 +331,10 @@
               <option value="" disabled selected>
                 Please select an option
               </option>
-              <option value="Please select an option" disabled selected>
+              <option value="" disabled selected>
                 Please select an option
               </option>
-                <option value="All Project Durations">Select project duration</option>
+                <option value="Select project duration">Select project duration</option>
                 <option value="Less than 1 year"> Less than 1 year</option>
               <option value="1-2 years">1-2 years</option>
               <option value="3-4 years">3-4 years</option>

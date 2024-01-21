@@ -96,7 +96,7 @@
                       <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
                         <div class="card-content">
                             <h3>${idea.ideaTitle}</h3>
-                            <p>${idea.ideaDescription.substr(0, 150)}</p>
+                            <p>${idea.ideaContent.substr(0, 150)}</p>
                             <a href="#" class="read-more"  data-id="${key}">Read More</a>
                         </div>
 
@@ -117,12 +117,8 @@
         ideasContainer.innerHTML = '';
         var dropdown1 = document.getElementById("business_type_selection");
         var selected1 = dropdown1.options[dropdown1.selectedIndex].text;
-
-        var dropdown2 = document.getElementById("expected_expenses_selection");
-        var selected2 = dropdown2.options[dropdown2.selectedIndex].text;
-
-        var dropdown3 = document.getElementById("project_duration_selection");
-        var selected3 = dropdown3.options[dropdown3.selectedIndex].text;
+        var dropdown1 = document.getElementById("business_type_selection");
+        var selected1 = dropdown1.options[dropdown1.selectedIndex].text;
 
         // Assuming you have a reference to the parent element with class "tag-area"
         const tagArea = document.querySelector('.tag-area');
@@ -131,21 +127,23 @@
         const tagElements = tagArea.querySelectorAll('.tag');
 
         // Extract text content from each li element and put them into an array
-        var selected4 = Array.from(tagElements).map(tagElement => tagElement.textContent.trim());
+        var selected3 = Array.from(tagElements).map(tagElement => tagElement.textContent.trim());
 
-        var dropdown5 = document.getElementById("project_duration_selection");
-        var selected5 = dropdown5.options[dropdown5.selectedIndex].text;
+        console.log(selected3);
+
+
 
         var dropdown6 = document.getElementById("project_duration_selection");
         var selected6 = dropdown6.options[dropdown6.selectedIndex].text;
-
+        var dropdown6 = document.getElementById("project_duration_selection");
+        var selected6 = dropdown6.options[dropdown6.selectedIndex].text;
         
             for (const key in ideas) {
                 if (Object.hasOwnProperty.call(ideas, key)) {
                     const idea = ideas[key];
-                    var resultArray = [""];
+                    const resultArray = [];
                     const splitKeywords = idea.keywords.flatMap(word => word.split(" "));
-                    selected4.forEach(text => {
+                    selected3.forEach(text => {
                         // Check if the entire text matches any keyword
                         if (splitKeywords.includes(text)) {
                             resultArray.push(text);
@@ -154,13 +152,9 @@
                             const words = text.split(' ');
                         }
                     });
-                    if ((idea.category==selected1 || selected1 === "Please select an option"|| selected1 === "All Types" ) && 
-                    (idea.expenses===selected2 || selected2 === "Please select an option" || selected2 === "All Expenses") && 
-                    (idea.duration===selected3 || selected3 === "Please select an option" || selected3 === "All Project Durations") &&
-                    // (idea.expenses===selected5 || selected5 === "Please select an option" || selected5 === "All Expenses") &&
-                    (idea.targetUser==selected6 || selected6 === "Please select an option") && 
-                    resultArray.length!=0){
-
+                    console.log(splitKeywords);
+                    console.log(resultArray);
+                    if ((idea.category==selected1 || selected1 === "Please select an option" ) && (idea.targetUser==selected6 || selected6 === "Please select an option") && resultArray.length!=0){
                     // Create an HTML element for each idea
                     const ideaElement = document.createElement('div');
                     ideaElement.classList.add('card'); // Add styling to the card
@@ -172,7 +166,7 @@
                       <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
                         <div class="card-content">
                             <h3>${idea.ideaTitle}</h3>
-                            <p>${idea.ideaDescription.substr(0, 150)}</p>
+                            <p>${idea.ideaContent.substr(0, 150)}</p>
                             <a href="#" class="read-more"  data-id="${key}">Read More</a>
                         </div>
 
@@ -330,8 +324,8 @@
               </option>
               <option value="All Expenses">All Expenses</option>
               <option value="High">High</option>
-              <option value="Medium">Medium</option>
-              <option value="Low">Low</option>
+              <option value="Medium">medium</option>
+              <option value="low">low</option>
             </select>
           </div>
           <div id="project_duration">
@@ -340,15 +334,11 @@
               <option value="" disabled selected>
                 Please select an option
               </option>
-              <option value="Please select an option" disabled selected>
-                Please select an option
-              </option>
-                <option value="All Project Durations">Select project duration</option>
-                <option value="Less than 1 year"> Less than 1 year</option>
-              <option value="1-2 years">1-2 years</option>
-              <option value="3-4 years">3-4 years</option>
-              <option value="More than 4 years">More than 4 years</option>
-     
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
             </select>
           </div>
         </div>
@@ -366,14 +356,10 @@
             <p id="time-added-title">Time Added</p>
             <select id="time_added_selection" name="time-added" >
               <option value="">Select project duration</option>
-              <option value="1 Hour Ago">1 Hour Ago</option>
-                <option value="1 Day Ago">1 Day Ago</option>
-                <option value="7 Days Ago">7 Days Ago</option>
-                <option value="2 Weeks Ago">2 Weeks Ago</option>
-                <option value="1 Month Ago">1 Month Ago</option>
-                <option value="6 Months Ago">6 Months Ago</option>
-                <option value="1 Year Ago">1 Year Ago</option>
-              
+              <option value="Less than 1 year"> Less than 1 year</option>
+              <option value="1-2 years">1-2 years</option>
+              <option value="3-4 years">3-4 years</option>
+              <option value="More than 4 years">More than 4 years</option>
    
               </select>
             
@@ -413,7 +399,7 @@
 
     <script src="buy.js"></script>
 
-    <!-- <script type="module">
+    <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { 
           getAuth, 
@@ -475,7 +461,7 @@
                       <img class=card-image src="data:image/png;base64,${idea.image}" alt="${idea.title}" />
                         <div class="card-content">
                             <h3>${idea.ideaTitle}</h3>
-                            <p>${idea.ideaDescription.substr(0, 150)}</p>
+                            <p>${idea.ideaContent.substr(0, 150)}</p>
                             <a href="product.html" class="read-more"  data-id="${key}">Read More</a>
                         </div>
 
@@ -525,6 +511,6 @@
 
       window.addEventListener('load', CheckCred);
       SignoutBtn.addEventListener('click', Signout);
-    </script> -->
+    </script>
   </body>
 </html>

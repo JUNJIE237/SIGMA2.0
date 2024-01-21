@@ -25,6 +25,36 @@ header .fa-house, .text {
   z-index: 2;
 }
 
+input[type="text"], textarea {
+  background-color: #2b445a;
+  border: 1px solid rgb(243, 243, 244, 0.5);
+  padding: 10px; 
+  border-radius: 4px; 
+  font-family: 'Comfortaa', Courier, monospace; 
+  font-size: 12px; 
+  color: #f3f3f4; 
+  outline: none;
+}
+
+
+textarea {
+  height: 40px; 
+  resize: none; 
+}
+
+input[type="text"]:hover, textarea:hover {
+  background-color: #122333;
+  border: solid 1px #f3f3f4;
+  box-shadow: 0 0 4px #eb50ff4f;
+}
+
+input[type="text"]:focus, textarea:focus {
+  background-color: #182B3C;
+  border: solid 1px #f3f3f4;
+  box-shadow: 0 0 4px #eb50ff4f;
+}
+
+
 .sidebar .image-text i {
   font-size: 40px;
   border-radius: 6px;
@@ -200,22 +230,13 @@ header .fa-house, .text {
   max-width: 1000px; 
   width: 80%; 
   margin: 0 auto; 
+  background-color: #395e7e;
   padding: 10px;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
   margin-top: 3%;
-  border-radius: 5px;
-  transition: width 0.3s ease;
-
 }
-
-.progress-bar-complete {
-  background: linear-gradient(to right, #4caf50, #8bc34a);
-  border-radius: 5px;
-  transition: width 0.3s ease;
-}
-
 .tab {
 
   flex: 1; 
@@ -237,10 +258,10 @@ header .fa-house, .text {
   position: relative;
 }
 .tab.complete {
-  background: linear-gradient(to right, #3E4E5B, #254058);
+  background: linear-gradient(to right, #122333, #254058);
 }
 .tab.active {
-  background: linear-gradient(to right, #3E4E5B, #254058);
+  background: linear-gradient(to right, #254058, #254058);
   cursor: pointer;
 }
 .tab::before {
@@ -292,33 +313,37 @@ html, body {
 
 
 body {
-  position: relative;
   height: 100%;
   max-height: 1000px;
   background-color: rgb(18, 35, 51);
-  padding: 0;
-  margin: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  margin-right: auto;
   overflow-x: hidden; 
   overflow-y: auto;
+  padding-bottom: 70px; 
 }
 
-body::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  background-image: url('business-bg.png');
-  background-size: cover;
-  opacity: 0.1; /* Adjust the opacity as needed */
-  z-index: -1;
+.container {
+  max-width: 1000px; 
+  width: 100%; 
+  margin: 0 auto; 
+  background-color: #2b445a;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  flex-direction: center;
+  align-items: center;
+  gap: 40px;
+  position: relative;
+  margin-bottom: 30px;
 }
-
 
 .section-inputs {
   display: flex;
-  gap: 70px;
+  gap: 40px;
   width: 100%;
   margin-top: 30px;
   justify-content: center;
@@ -398,6 +423,8 @@ label input:focus {
 
 .form-content {
   display: none;
+  padding-bottom: 20px; /* Adjust the value to increase or decrease the space */
+
 }
 .form-content.active {
   display: block;
@@ -453,18 +480,19 @@ select:focus {
 
 .btn-container {
   position: absolute;
+  bottom: -50px;
   left: 55%;
   right: 0;
   justify-content: space-between;
   padding: 0 10%;
-  
+
 }
 
 .prev-btn, .next-btn{
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #404ed1; /* Your primary color */
+  background-color: #2EAC68;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -472,7 +500,7 @@ select:focus {
 }
 
 .prev-btn:hover, .next-btn:hover {
-  background-color: #7880ca; /* A darker shade for hover effect */
+  background-color: #1d8a50;
 }
 
 .form-group {
@@ -494,6 +522,7 @@ select:focus {
 }
 
 .upload-container {
+  background-color: #2b445a;
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 0px rgba(204, 101, 101, 0.1);
@@ -534,20 +563,6 @@ button {
   border-radius: 5px;
   border: 1px solid rgb(243, 243, 244, 0.5);
 
-}
-
-button.next-btn {
-  background-color: #404ed1; /* Your primary color */
-  color: white;
-  border: none;
-  padding: 12px 25px;
-  border-radius: 5px;
-  font-size: 1em;
-  transition: background-color 0.3s ease;
-}
-
-button.next-btn:hover {
-  background-color: #7880ca; /* A darker shade for hover effect */
 }
 
 .phone-input-container {
@@ -605,7 +620,7 @@ button.next-btn:hover {
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
-  background-color: #7880ca; /* A darker shade for hover effect */
+  background-color: #2EAC68;
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
@@ -683,8 +698,6 @@ button.next-btn:hover {
   padding: 20px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
   margin-top: -30px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
 }
 
 .report-header h1 {
@@ -749,96 +762,7 @@ button.next-btn:hover {
   width: 100%; 
 }
 
-#ideadescription {
-  background-color: #2b445a;
-  border: 1px solid rgb(243, 243, 244, 0.5);
-  color:2b445a;
-  padding: 5px 12px;
-  border-radius: 5px;
-  outline: none;
-  font-size: 12px;
-  color: #f3f3f4;
-  resize: none; /* Prevents resizing, remove if you want it to be resizable */
-}
 
-#ideadescription:hover {
-  background-color: #122333;
-  border: solid 1px #f3f3f4;
-  box-shadow: 0 0 4px #eb50ff4f;
-}
-
-
-#problemstatement {
-  background-color: #2b445a;
-  border: 1px solid rgb(243, 243, 244, 0.5);
-  color:2b445a;
-  padding: 5px 12px;
-  border-radius: 5px;
-  outline: none;
-  font-size: 12px;
-  color: #f3f3f4;
-  resize: none; /* Prevents resizing, remove if you want it to be resizable */
-}
-
-#problemstatement:hover {
-  background-color: #122333;
-  border: solid 1px #f3f3f4;
-  box-shadow: 0 0 4px #eb50ff4f;
-}
-
-#solution {
-  background-color: #2b445a;
-  border: 1px solid rgb(243, 243, 244, 0.5);
-  color:2b445a;
-  padding: 5px 12px;
-  border-radius: 5px;
-  outline: none;
-  font-size: 12px;
-  color: #f3f3f4;
-  resize: none; /* Prevents resizing, remove if you want it to be resizable */
-}
-
-#solution:hover {
-  background-color: #122333;
-  border: solid 1px #f3f3f4;
-  box-shadow: 0 0 4px #eb50ff4f;
-}
-
-#model {
-  background-color: #2b445a;
-  border: 1px solid rgb(243, 243, 244, 0.5);
-  color:2b445a;
-  padding: 5px 12px;
-  border-radius: 5px;
-  outline: none;
-  font-size: 12px;
-  color: #f3f3f4;
-  resize: none; /* Prevents resizing, remove if you want it to be resizable */
-}
-
-#model:hover {
-  background-color: #122333;
-  border: solid 1px #f3f3f4;
-  box-shadow: 0 0 4px #eb50ff4f;
-}
-
-#swot {
-  background-color: #2b445a;
-  border: 1px solid rgb(243, 243, 244, 0.5);
-  color:2b445a;
-  padding: 5px 12px;
-  border-radius: 5px;
-  outline: none;
-  font-size: 12px;
-  color: #f3f3f4;
-  resize: none; /* Prevents resizing, remove if you want it to be resizable */
-}
-
-#swot:hover {
-  background-color: #122333;
-  border: solid 1px #f3f3f4;
-  box-shadow: 0 0 4px #eb50ff4f;
-}
 
 
 
