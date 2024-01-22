@@ -95,7 +95,8 @@
       <div class="content">
         <div class="contain-description">
           <h1 id="description">Description :</h1>
-          <h2 id="passage">dddddddddddddddddddddddddddddddddddddddddddddddddddddd</h2>
+                  <div id="ideas-container">
+</div>
           <div class="slide">
             <img src="/SIGMA2.0-master/static/assets/smart-shipping-system.png" alt="Image 1">
           </div>
@@ -125,6 +126,89 @@
       </div>
     </section>
     <script src={{ url_for('static', filename='home.js') }}></script>
+
+    <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+  
+  const firebaseConfig = {
+     apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
+     authDomain: "sigma-50b08.firebaseapp.com",
+     databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
+     projectId: "sigma-50b08",
+    storageBucket: "sigma-50b08.appspot.com",
+     messagingSenderId: "881262508411",
+    appId: "1:881262508411:web:573e358cf20526dcfc25de"
+          };
+  
+          const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  export const auth = getAuth(app);
+
+//asynchronize
+const getIdeaByUid = async (uid) => {
+
+  //ref
+  const ideaRef = ref(database, ideas/${uid});
+  try {
+
+    //fetch data
+    const snapshot = await get(ideaRef);
+
+    //wrap data
+    if (snapshot.exists()) {
+      return { [uid]: snapshot.val() }; 
+    } else {
+      console.log("No data available for this UID");
+      return null;
+    }
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const displayIdeas = (ideas) => {
+  const container = document.getElementById('ideas-container');
+  if (!container) {
+    console.error('The ideas container does not exist in the DOM');
+    return;
+  }
+
+  if (!ideas) {
+    container.innerHTML = '<p>No ideas available.</p>';
+    return;
+  }
+
+  container.innerHTML = ''; 
+
+  //return array for specific uid
+  const [uid, idea] = Object.entries(ideas)[0];
+
+  const ideaElement = document.createElement('div');
+  ideaElement.innerHTML = `
+    <div>
+      <p>Idea Category: ${idea.category || 'No Category'}</p>
+      <p>Project Duration: ${idea.duration || 'No Duration'}</p>
+      <p>Email: ${idea.email || 'No Email'}</p>
+      <p>Description: ${idea.ideaDescription || 'No Description'}</p>
+      <p>Idea Title: ${idea.ideaTitle || "No Idea Title"}</p>
+      <p>Idea Content: ${idea.ideaContent || "No Idea Content"}</p>
+
+    </div>
+  `;
+  container.appendChild(ideaElement);
+};
+
+const uid = '2f16a2d2-3466-4cb1-9286-266669519bf4'; 
+getIdeaByUid(uid).then(idea => {
+  displayIdeas(idea);
+});
+
+</script>
 
   </body>
 </html>
