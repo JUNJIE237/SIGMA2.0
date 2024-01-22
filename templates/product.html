@@ -191,13 +191,7 @@ const displayIdeas = (ideas) => {
   const ideaElement = document.createElement('div');
   ideaElement.innerHTML = `
     <div>
-      <p>Idea Category: ${idea.category || 'No Category'}</p>
-      <p>Project Duration: ${idea.duration || 'No Duration'}</p>
-      <p>Email: ${idea.email || 'No Email'}</p>
       <p>Description: ${idea.ideaDescription || 'No Description'}</p>
-      <p>Idea Title: ${idea.ideaTitle || "No Idea Title"}</p>
-      <p>Idea Content: ${idea.ideaContent || "No Idea Content"}</p>
-
     </div>
   `;
   container.appendChild(ideaElement);
