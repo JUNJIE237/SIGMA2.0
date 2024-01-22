@@ -396,3 +396,20 @@ outline: 1px solid black;
   margin-bottom:10%;
 }
 
+#ideas-container {
+  margin-bottom: 100px;
+  padding: 90px;
+  border-radius: 5px;
+  background-color: rgb(18, 35, 51);
+  margin-top: 50px !important;
+  color: white;
+}
+
+
+#ideas-container h3 {
+  margin: 0 0 10px 0;
+}
+
+#ideas-container p {
+  margin: 0;
+}
