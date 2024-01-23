@@ -93,9 +93,11 @@
           </a>
       </div>
       <div class="content">
-        <div class="contain-description">
           <h1 id="description">Description :</h1>
-          <h2 id="passage">dddddddddddddddddddddddddddddddddddddddddddddddddddddd</h2>
+          <h2 id="category">Category</h2>
+          <h2 id="target">Target User</h2>
+          <h2 id="expense">Expense</h2>
+
           <div class="slide">
             <img src="/SIGMA2.0-master/static/assets/smart-shipping-system.png" alt="Image 1">
           </div>
@@ -126,7 +128,91 @@
     </section>
     <script src={{ url_for('static', filename='home.js') }}></script>
 
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+  import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+
+  
+  const firebaseConfig = {
+     apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
+     authDomain: "sigma-50b08.firebaseapp.com",
+     databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
+     projectId: "sigma-50b08",
+    storageBucket: "sigma-50b08.appspot.com",
+     messagingSenderId: "881262508411",
+    appId: "1:881262508411:web:573e358cf20526dcfc25de"
+          };
+  
+          const app = initializeApp(firebaseConfig);
+  const database = getDatabase(app);
+  export const auth = getAuth(app);
+
+//asynchronize
+const getIdeaByUid = async (uid) => {
+
+  //ref
+  const ideaRef = ref(database, `ideas/${uid}`);
+  try {
+
+    //fetch data
+    const snapshot = await get(ideaRef);
+
+    //wrap data
+    if (snapshot.exists()) {
+      return { [uid]: snapshot.val() }; 
+    } else {
+      console.log("No data available for this UID");
+      return null;
+    }
+  } catch (error) {
+    console.error(error);
+    return null;
+  }
+};
+
+const displayIdeas = (ideas) => {
+  // Get the heading and passage elements from the DOM.
+  const headingElement = document.getElementById('heading');
+  const descriptionElement = document.getElementById('description');
+  const categoryElement= document.getElementById('category');
+  const targetElement= document.getElementById("target");
+  const expElement =document.getElementById("expense")
+
+  // Check if the elements exist in the DOM.
+  if (!headingElement || !descriptionElement || !categoryElement || !targetElement || !expElement) {
+    console.error('The heading or passage element does not exist in the DOM');
+    return;
+  }
+
+  if (!ideas) {
+    headingElement.textContent = 'No Idea Title';
+    descriptionElement.textContent = 'No Description';
+    categoryElement.textContent='No Category';
+    targetElement.textContent='No Target User';
+    expElement.textContent='No Expense';
+    return;
+  }
+
+  // Extract the first entry of the ideas object.
+  const [uid, idea] = Object.entries(ideas)[0];
+
+  // Update the heading and passage with the idea title and description.
+  headingElement.textContent = idea.ideaTitle || "No Idea Title";
+  descriptionElement.textContent = `Description: ${idea.ideaDescription || 'No Description'}`;
+  categoryElement.textContent = `Category: ${idea.category || 'No Category'}`;
+  targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
+  expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
+};
+
+
+const uid = '2f16a2d2-3466-4cb1-9286-266669519bf4'; 
+getIdeaByUid(uid).then(idea => {
+  displayIdeas(idea);
+});
+
+</script>
   </body>
 </html>
-<div class="slide">
 
