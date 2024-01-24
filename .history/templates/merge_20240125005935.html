@@ -255,85 +255,25 @@ console.log(currentDate);
     }
 
 window.filterDocs=()=>{
-
   if (SearchDiv.textContent == "Merge!") {
     let div = document.createElement('div');
-     // Assuming you have two variables formData1 and formData2
-     let variable1 = 'value1'; // Replace with your actual data
-    let variable2 = 'value2'; // Replace with your actual data
-  //   let loadingContainer = document.getElementById('loadingContainer');
-  // loadingContainer.innerHTML = '<div class="loader"></div>';
+    div.innerHTML = `
+        <div class="report-container">
+            <div class="report-section">
+                <h2>Your Profile</h2>
+                <p><strong>Name:</strong> <span id="profile-name">45765</span></p>
+                <p><strong>Email:</strong> <span id="profile-email">569790</span></p>
+                <p><strong>MyKad/Passport Number:</strong> <span id="profile-pass">57068086-</span></p>
+                <p><strong>Phone Number:</strong> <span id="profile-fphonenumber">570680-</span></p>
+                <p><strong>Nationality:</strong> <span id="profile-nationality">4768568</span></p>
+            </div>
+        </div>`;
 
-// Function to hide loading spinner
+    // Apply sticky style
+    
+    div.classList.add("merged-container");
 
-// Create a div to hold the loading spinner or content
-let divs = document.createElement('div');
-
-fetch('/merge_ideas', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: JSON.stringify({ variable1: ideas1, variable2: ideas2 })
-})
-  .then(response => response.json())
-  .then(data => {
-    // Hide loading spinner once data is loaded
-  //   let loadingContainer = document.getElementById('loadingContainer');
-  // loadingContainer.innerHTML = ''; // Remove loading spinner
-    console.log(data)
-    // Check if data is not empty
-    if (data && data.merged) {
-      // Load the content into the div
-      divs.innerHTML = `
-      <div class="report-container">
-  <div class="report-section">
-    ${(data.merged.replace(/\\n/g, '\n'))
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>').replace(/[\{\}\[\]"]|content: /g, '')}
-  </div>
-</div>
-
-
-`;
-
-      // Apply sticky style
-      divs.classList.add("merged-container");
-      var elementsToBlur = document.querySelectorAll('.home > *:not(.merged-container)');
-
-      // Apply the CSS rule to each selected element
-      elementsToBlur.forEach(function(element) {
-        element.style.filter = 'blur(5px)';
-      });
-
-      // Append the 'div' to the document body
-      document.body.appendChild(divs);
-    } else {
-      // Handle the case when data is empty or not in the expected format
-      console.error('Error: Invalid data format');
-    }
-  })
-  .catch(error => {
-    // Hide loading spinner in case of an error
-    hideLoadingSpinner();
-
-    console.error('Error:', error);
-  });
-
-      function convertToHTML(gptOutput) {
-    // Replace double line breaks with HTML line breaks
-    let formattedHTML = gptOutput.content.replace(/\n\n/g, '<br>');
-
-    // Replace bold markers with strong tags
-    formattedHTML = formattedHTML.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
-
-    // Wrap the entire content in a div
-    formattedHTML = `<div>${formattedHTML}</div>`;
-
-    return formattedHTML;
-}
-
-
+    document.body.appendChild(div);
 }
 
 else if (SearchDiv.textContent=="Search"){

@@ -809,7 +809,8 @@ height: 60px; /* Adjust the size as needed */
   justify-content: center;
   align-items: center;
   position: sticky;
-  width:50vw;
+  width:65vw;
+  height:80vh;
   align-items: center;
 }
 

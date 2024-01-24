@@ -171,14 +171,12 @@ def receive_ids():
         max_tokens=max_tokens,
         frequency_penalty=frequency_penalty
     )
-    print(response.choices[0].message.content)
-    output = {
-            'content': response.choices[0].message.content
-            
-        }   
-    output = json.dumps(output, ensure_ascii=False, indent=2)
+    print(response.choices[0].message)
+    output=
+
+
     response = {'status': 'success'}
-    return jsonify({'merged':output})
+    return jsonify({'merged':response.choices[0].message})
 
 
 @app.route('/submit_idea', methods=['POST'])

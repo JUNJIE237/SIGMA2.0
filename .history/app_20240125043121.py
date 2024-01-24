@@ -176,7 +176,7 @@ def receive_ids():
             'content': response.choices[0].message.content
             
         }   
-    output = json.dumps(output, ensure_ascii=False, indent=2)
+
     response = {'status': 'success'}
     return jsonify({'merged':output})
 

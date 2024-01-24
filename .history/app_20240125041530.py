@@ -171,12 +171,11 @@ def receive_ids():
         max_tokens=max_tokens,
         frequency_penalty=frequency_penalty
     )
-    print(response.choices[0].message.content)
     output = {
-            'content': response.choices[0].message.content
-            
+            'content': gpt_output.content,
+            # Include other attributes if needed
         }   
-    output = json.dumps(output, ensure_ascii=False, indent=2)
+
     response = {'status': 'success'}
     return jsonify({'merged':output})
 

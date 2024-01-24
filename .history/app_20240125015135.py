@@ -18,23 +18,19 @@ import io
 from PIL import Image
 from io import BytesIO
 import torch
-import os
-import wandb
-from openai import OpenAI
 import ipywidgets as widgets
 import IPython.display as display
 import en_core_web_sm
 import base64
 from keytotext import pipeline
 import json
-from dotenv import load_dotenv
 import pandas as pd
 cred = credentials.Certificate("sigma-50b08-firebase-adminsdk-xrxnc-f8669db2bd.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://sigma-50b08-default-rtdb.firebaseio.com/'
 })
 import uuid
-from dotenv import load_dotenv
+
 nlp = spacy.load("en_core_web_sm")
 
 nlp1 = pipeline("k2t-base")
@@ -145,42 +141,12 @@ def render_dynamic_page(page_name):
 @app.route('/get_similarities', methods=['POST'])
 
 @app.route('/merge_ideas', methods=['POST'])
-def receive_ids():
-    load_dotenv()
+def receive_data():
+
     ideas = request.get_json()
     print(ideas)
-    ideas_ref = db.reference('/ideas')
-    users = ideas_ref.get()
-    arr1=users[ideas["variable1"]]["keywords"]
-    arr2=users[ideas["variable2"]]["keywords"]
-    client = OpenAI()
-    gpt_assistant_prompt = "You are a creative and innovative business analyst with a knack for merging existing ideas and create new ones" 
-    gpt_user_prompt = f"Combine the two arrays of ngrams{arr1} and {arr2}, innovate a comprehensive new idea based on  the following format and bold the following. Problem Statement. Solution. Business Model. SWOT Analysis"
-    gpt_prompt = gpt_assistant_prompt, gpt_user_prompt
-    print(gpt_prompt)
-    message=[{"role": "assistant", "content": gpt_assistant_prompt}, {"role": "user", "content": gpt_user_prompt}]
-    temperature=0.2
-    max_tokens=2048
-    frequency_penalty=0.0
-
-
-    response = client.chat.completions.create(
-        model="gpt-4",
-        messages = message,
-        temperature=temperature,
-        max_tokens=max_tokens,
-        frequency_penalty=frequency_penalty
-    )
-    print(response.choices[0].message.content)
-    output = {
-            'content': response.choices[0].message.content
-            
-        }   
-    output = json.dumps(output, ensure_ascii=False, indent=2)
     response = {'status': 'success'}
-    return jsonify({'merged':output})
-
-
+    return jsonify(response)
 @app.route('/submit_idea', methods=['POST'])
 def receive_data():
     # Get the JSON data from the request

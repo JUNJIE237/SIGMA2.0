@@ -281,21 +281,16 @@ fetch('/merge_ideas', {
     // Hide loading spinner once data is loaded
   //   let loadingContainer = document.getElementById('loadingContainer');
   // loadingContainer.innerHTML = ''; // Remove loading spinner
-    console.log(data)
+    print(data)
     // Check if data is not empty
-    if (data && data.merged) {
+    if (data && data.content) {
       // Load the content into the div
       divs.innerHTML = `
-      <div class="report-container">
-  <div class="report-section">
-    ${(data.merged.replace(/\\n/g, '\n'))
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>').replace(/[\{\}\[\]"]|content: /g, '')}
-  </div>
-</div>
-
-
-`;
+        <div class="report-container">
+          <div class="report-section">
+            ${data.content}
+          </div>
+        </div>`;
 
       // Apply sticky style
       divs.classList.add("merged-container");

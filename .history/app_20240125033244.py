@@ -160,7 +160,7 @@ def receive_ids():
     print(gpt_prompt)
     message=[{"role": "assistant", "content": gpt_assistant_prompt}, {"role": "user", "content": gpt_user_prompt}]
     temperature=0.2
-    max_tokens=2048
+    max_tokens=1024
     frequency_penalty=0.0
 
 
@@ -171,14 +171,12 @@ def receive_ids():
         max_tokens=max_tokens,
         frequency_penalty=frequency_penalty
     )
-    print(response.choices[0].message.content)
-    output = {
-            'content': response.choices[0].message.content
-            
-        }   
-    output = json.dumps(output, ensure_ascii=False, indent=2)
+    print(response.choices[0].message)
+
+
+
     response = {'status': 'success'}
-    return jsonify({'merged':output})
+    return response.choices[0].message
 
 
 @app.route('/submit_idea', methods=['POST'])

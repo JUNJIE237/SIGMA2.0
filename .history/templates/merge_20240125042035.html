@@ -255,19 +255,26 @@ console.log(currentDate);
     }
 
 window.filterDocs=()=>{
+  function showLoadingSpinner() {
+  let loadingContainer = document.getElementById('loadingContainer');
+  loadingContainer.innerHTML = '<div class="loader"></div>';
+}
 
+// Function to hide loading spinner
+function hideLoadingSpinner() {
+  let loadingContainer = document.getElementById('loadingContainer');
+  loadingContainer.innerHTML = ''; // Remove loading spinner
+}
   if (SearchDiv.textContent == "Merge!") {
     let div = document.createElement('div');
      // Assuming you have two variables formData1 and formData2
      let variable1 = 'value1'; // Replace with your actual data
     let variable2 = 'value2'; // Replace with your actual data
-  //   let loadingContainer = document.getElementById('loadingContainer');
-  // loadingContainer.innerHTML = '<div class="loader"></div>';
 
-// Function to hide loading spinner
+    showLoadingSpinner();
 
 // Create a div to hold the loading spinner or content
-let divs = document.createElement('div');
+let div = document.createElement('div');
 
 fetch('/merge_ideas', {
   method: 'POST',
@@ -279,26 +286,20 @@ fetch('/merge_ideas', {
   .then(response => response.json())
   .then(data => {
     // Hide loading spinner once data is loaded
-  //   let loadingContainer = document.getElementById('loadingContainer');
-  // loadingContainer.innerHTML = ''; // Remove loading spinner
-    console.log(data)
+    hideLoadingSpinner();
+
     // Check if data is not empty
-    if (data && data.merged) {
+    if (data && data.content) {
       // Load the content into the div
-      divs.innerHTML = `
-      <div class="report-container">
-  <div class="report-section">
-    ${(data.merged.replace(/\\n/g, '\n'))
-      .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>').replace(/[\{\}\[\]"]|content: /g, '')}
-  </div>
-</div>
-
-
-`;
+      div.innerHTML = `
+        <div class="report-container">
+          <div class="report-section">
+            ${data.content}
+          </div>
+        </div>`;
 
       // Apply sticky style
-      divs.classList.add("merged-container");
+      div.classList.add("merged-container");
       var elementsToBlur = document.querySelectorAll('.home > *:not(.merged-container)');
 
       // Apply the CSS rule to each selected element
@@ -307,7 +308,7 @@ fetch('/merge_ideas', {
       });
 
       // Append the 'div' to the document body
-      document.body.appendChild(divs);
+      document.body.appendChild(div);
     } else {
       // Handle the case when data is empty or not in the expected format
       console.error('Error: Invalid data format');

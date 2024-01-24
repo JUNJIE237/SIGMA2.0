@@ -287,13 +287,13 @@ fetch('/merge_ideas', {
       // Load the content into the div
       divs.innerHTML = `
       <div class="report-container">
+        <div class="report-container">
   <div class="report-section">
-    ${(data.merged.replace(/\\n/g, '\n'))
+    ${JSON.parse(data.merged).content
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>').replace(/[\{\}\[\]"]|content: /g, '')}
+      .replace(/\\n/g, '<br>')}
   </div>
 </div>
-
 
 `;
 

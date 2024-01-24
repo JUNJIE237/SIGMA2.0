@@ -290,7 +290,7 @@ fetch('/merge_ideas', {
   <div class="report-section">
     ${(data.merged.replace(/\\n/g, '\n'))
       .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
-      .replace(/\n/g, '<br>').replace(/[\{\}\[\]"]|content: /g, '')}
+      .replace(/\n/g, '<br>').replace(/[\{\}\[\]"]|"content: /g|, '')}
   </div>
 </div>
 

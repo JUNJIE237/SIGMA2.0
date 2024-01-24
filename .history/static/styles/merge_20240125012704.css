@@ -810,6 +810,7 @@ height: 60px; /* Adjust the size as needed */
   align-items: center;
   position: sticky;
   width:50vw;
+  height:80vh;
   align-items: center;
 }
 

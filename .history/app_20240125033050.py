@@ -153,14 +153,13 @@ def receive_ids():
     users = ideas_ref.get()
     arr1=users[ideas["variable1"]]["keywords"]
     arr2=users[ideas["variable2"]]["keywords"]
-    client = OpenAI()
     gpt_assistant_prompt = "You are a creative and innovative business analyst with a knack for merging existing ideas and create new ones" 
     gpt_user_prompt = f"Combine the two arrays of ngrams{arr1} and {arr2}, innovate a comprehensive new idea based on  the following format and bold the following. Problem Statement. Solution. Business Model. SWOT Analysis"
     gpt_prompt = gpt_assistant_prompt, gpt_user_prompt
     print(gpt_prompt)
     message=[{"role": "assistant", "content": gpt_assistant_prompt}, {"role": "user", "content": gpt_user_prompt}]
     temperature=0.2
-    max_tokens=2048
+    max_tokens=512
     frequency_penalty=0.0
 
 
@@ -171,16 +170,12 @@ def receive_ids():
         max_tokens=max_tokens,
         frequency_penalty=frequency_penalty
     )
-    print(response.choices[0].message.content)
-    output = {
-            'content': response.choices[0].message.content
-            
-        }   
-    output = json.dumps(output, ensure_ascii=False, indent=2)
+    print(response.choices[0].message)
+
+
+
     response = {'status': 'success'}
-    return jsonify({'merged':output})
-
-
+    return jsonify(response)
 @app.route('/submit_idea', methods=['POST'])
 def receive_data():
     # Get the JSON data from the request

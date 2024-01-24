@@ -806,10 +806,9 @@ height: 60px; /* Adjust the size as needed */
   word-wrap: break-word;
   overflow-wrap: break-word;
   display: flex;
-  justify-content: center;
-  align-items: center;
   position: sticky;
-  width:50vw;
+  width:75vw;
+  height:90vh;
   align-items: center;
 }
 
@@ -847,10 +846,9 @@ height: 60px; /* Adjust the size as needed */
 }
 .merged-container{
 
-position: fixed !important;
-top: 50vh !important; 
-left: 50vw !important; 
-transform: translate(-50%, -50%) !important;
-z-index: 999 !important;
+position: fixed;
+top:5%;
+left: 5%;
+z-index: 999;
 
 }
