@@ -33,7 +33,7 @@
     <script src={{ url_for('static', filename='buy.js') }} defer></script>
     
   </head>
-  <body>
+ <body>
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import { 
@@ -58,19 +58,7 @@
       let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
       let UserInfo = JSON.parse(sessionStorage.getItem("user-info"));
 
-      let SignoutBtn = document.getElementById('signoutbutton');
-
-      let Signout = ()=>{
-          sessionStorage.removeItem("user-creds");
-          sessionStorage.removeItem("user-info");
-          signOut(auth);
-          window.location.href = 'login.html';
-      }
-
-      let CheckCred = ()=>{
-          if(!sessionStorage.getItem("user-creds"))
-              window.location.href = 'login.html'
-      }
+   
 
       // const auth = getAuth();
       const app = initializeApp(firebaseConfig);
@@ -79,10 +67,9 @@
       const dbref = ref(database);
       const dbref_get = ref(database, 'ideas');
       const ideasContainer = document.getElementById('item-list');
-      console.log("AAAA")
       function displayIdeas(ideas) {
             
-            console.log("AAAA")
+
             for (const key in ideas) {
                 if (Object.hasOwnProperty.call(ideas, key)) {
                     const idea = ideas[key];
@@ -134,37 +121,14 @@
         // Extract text content from each li element and put them into an array
         var selected4 = Array.from(tagElements).map(tagElement => tagElement.textContent.trim());
 
-        var dropdown5 = document.getElementById("time_added_selection");
+        var dropdown5 = document.getElementById("project_duration_selection");
         var selected5 = dropdown5.options[dropdown5.selectedIndex].text;
 
         var dropdown6 = document.getElementById("project_duration_selection");
         var selected6 = dropdown6.options[dropdown6.selectedIndex].text;
-        console.log(selected6)
-        function convertUnixTimeToDuration(unixTimestamp, time) {
-            const currentTimestamp = parseInt(Math.floor(Date.now() / 1000)); // Convert milliseconds to seconds
-            const secondsAgo = currentTimestamp - Math.floor(unixTimestamp);
 
-              if (time === '1 Hour Ago') {
-              return secondsAgo < 3600;
-            } else if (time === '1 Day Ago') {
-              return secondsAgo < 86400;
-            } else if (time === '7 Days Ago') {
-              return secondsAgo < 604800;
-            } else if (time === '2 Weeks Ago') {
-              return secondsAgo < 1209600;
-            } else if (time === '1 Month Ago') {
-              return secondsAgo < 2592000;
-            } else if (time === '6 Months Ago') {
-              return secondsAgo < 15552000;
-            } else if (time === '1 Year Ago') {
-              return secondsAgo < 31536000;
-            }
-
-            // If the specified time is not recognized, return false
-            return false;
-          }
+        
             for (const key in ideas) {
-              console.log("okbro")
                 if (Object.hasOwnProperty.call(ideas, key)) {
                     const idea = ideas[key];
                     var resultArray = [""];
@@ -178,11 +142,10 @@
                             const words = text.split(' ');
                         }
                     });
-
                     if ((idea.category==selected1 || selected1 === "Please select an option"|| selected1 === "All Types" ) && 
                     (idea.expenses===selected2 || selected2 === "Please select an option" || selected2 === "All Expenses") && 
                     (idea.duration===selected3 || selected3 === "Please select an option" || selected3 === "All Project Durations") &&
-                    (convertUnixTimeToDuration(idea.timeAdded,selected5) || selected5 === "Please select an option" || selected5 === "All Times Added") &&
+                    // (idea.expenses===selected5 || selected5 === "Please select an option" || selected5 === "All Expenses") &&
                     (idea.targetUser==selected6 || selected6 === "Please select an option") && 
                     resultArray.length!=0){
 
@@ -219,7 +182,6 @@
             
             // Check if there is data
             if (ideasData) {
-                
                 displayIdeas(ideasData);
             } else {
                 console.log('No data available');
@@ -240,10 +202,11 @@
         });
     }
     function redirectToDetailPage(event) {
-            const ideaId = event.target.dataset.id;
+    event.preventDefault(); // This prevents the default anchor action
+    const ideaId = event.target.dataset.id; // Retrieves the UID from the button's data attribute
 
-            // Construct the URL based on the ideaId
-            const detailPageUrl = `/buy/detail-page?id=${ideaId}/.html`;
+    // Construct the URL with the UID as a query parameter for the product page
+            const detailPageUrl = `product.html?uid=${ideaId}`;
 
             // Redirect the user to the new webpage
             window.location.href = detailPageUrl;
