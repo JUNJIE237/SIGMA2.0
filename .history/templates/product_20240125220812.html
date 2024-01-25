@@ -85,8 +85,8 @@
     </nav>
 
 
-    <div id="header-container"><img id="profile-bg">
-      <div ><img id="profile-picture"></div>
+    <div id="header-container">
+      <div id="profile-picture"></div>
       <h1 id="heading">Business Idea Title</h1>
           
   </div>
@@ -178,7 +178,12 @@ const displayIdeas = (ideas) => {
     durationElement.textContent='No Duration';
     return;
   }
-  
+  var idea = {
+    image: "base64_encoded_image_data_here"
+  };
+
+  // Set the src attribute of the img tag with the value from idea.image
+  document.getElementById("ideaImage").src = "data:image/png;base64," + idea.image;
   // Extract the first entry of the ideas object.
   const [uid, idea] = Object.entries(ideas)[0];
 
@@ -188,12 +193,7 @@ const displayIdeas = (ideas) => {
   categoryElement.textContent = `Category: ${idea.category || 'No Category'}`;
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
-  var ideaImg = {
-    image: idea.image
-  };
 
-  // Set the src attribute of the img tag with the value from idea.image
-  document.getElementById("profile-picture").src = "data:image/png;base64," + idea.image;
 };
 
 

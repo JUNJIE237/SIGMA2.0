@@ -85,8 +85,8 @@
     </nav>
 
 
-    <div id="header-container"><img id="profile-bg">
-      <div ><img id="profile-picture"></div>
+    <div id="header-container">
+      <div id="profile-picture"></div>
       <h1 id="heading">Business Idea Title</h1>
           
   </div>
@@ -189,11 +189,11 @@ const displayIdeas = (ideas) => {
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
   var ideaImg = {
-    image: idea.image
+    image: idea.targetUser
   };
 
   // Set the src attribute of the img tag with the value from idea.image
-  document.getElementById("profile-picture").src = "data:image/png;base64," + idea.image;
+  document.getElementById("ideaImage").src = "data:image/png;base64," + idea.image;
 };
 
 
