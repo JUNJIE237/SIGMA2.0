@@ -164,6 +164,8 @@ def receive_data():
     def categorize_expenses(range_start, range_end):
         low_threshold = 1000
         medium_threshold = 5000
+
+        # Calculate the range width
         range_width=(range_end + range_start)/2+ (range_end - range_start)/8
         if range_width < low_threshold:
             return "Low"
@@ -171,6 +173,7 @@ def receive_data():
             return "Medium"
         else:
             return "High"
+
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
     text=ideas["ideaContent"]
@@ -208,10 +211,20 @@ def receive_data():
     
     ideas_ref = db.reference('/ideas')
     users = ideas_ref.get()
+# Assuming idea_keywords_dict is already defined
     cosine_similarity_string = calculate_cosine_similarity({user_key: users[user_key]['keywords'] for user_key in users.keys()})
+
+    # Assuming db is initialized with Firebase
     ideas_ref = db.reference('/similarities')
+
+    # Convert the JSON string to a Python dictionary
     cosine_similarity_dict = json.loads(cosine_similarity_string)
+
+    # Update the Firebase database with the similarity data
     ideas_ref.child('similarity').update(cosine_similarity_dict)
+
+
+    # Return a response if necessary
     response = {'status': 'success'}
     return jsonify(response)
 

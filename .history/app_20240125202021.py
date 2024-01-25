@@ -211,7 +211,12 @@ def receive_data():
     cosine_similarity_string = calculate_cosine_similarity({user_key: users[user_key]['keywords'] for user_key in users.keys()})
     ideas_ref = db.reference('/similarities')
     cosine_similarity_dict = json.loads(cosine_similarity_string)
+
+    # Update the Firebase database with the similarity data
     ideas_ref.child('similarity').update(cosine_similarity_dict)
+
+
+    # Return a response if necessary
     response = {'status': 'success'}
     return jsonify(response)
 

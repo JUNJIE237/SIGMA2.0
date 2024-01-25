@@ -173,6 +173,7 @@ def receive_data():
             return "High"
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
+    
     text=ideas["ideaContent"]
     docs = nlp(text)
     text = ' '.join(token.text for token in docs if not token.ent_type_)
@@ -208,10 +209,20 @@ def receive_data():
     
     ideas_ref = db.reference('/ideas')
     users = ideas_ref.get()
+# Assuming idea_keywords_dict is already defined
     cosine_similarity_string = calculate_cosine_similarity({user_key: users[user_key]['keywords'] for user_key in users.keys()})
+
+    # Assuming db is initialized with Firebase
     ideas_ref = db.reference('/similarities')
+
+    # Convert the JSON string to a Python dictionary
     cosine_similarity_dict = json.loads(cosine_similarity_string)
+
+    # Update the Firebase database with the similarity data
     ideas_ref.child('similarity').update(cosine_similarity_dict)
+
+
+    # Return a response if necessary
     response = {'status': 'success'}
     return jsonify(response)
 

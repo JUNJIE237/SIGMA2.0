@@ -212,6 +212,9 @@ def receive_data():
     ideas_ref = db.reference('/similarities')
     cosine_similarity_dict = json.loads(cosine_similarity_string)
     ideas_ref.child('similarity').update(cosine_similarity_dict)
+
+
+    # Return a response if necessary
     response = {'status': 'success'}
     return jsonify(response)
 

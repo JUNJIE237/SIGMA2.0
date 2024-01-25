@@ -71,7 +71,6 @@ def run_promp(prompt, image_name):
     image_raw = text_to_image(prompt, image_name)
     image_filter = filter_run(image_raw, image_name)
     return image_raw, image_filter
-
 def generate_and_save_image(prompt, file_name, save_image = True):
     image_raw, image_filter = run_promp(prompt, file_name)
     return image_raw
@@ -93,19 +92,30 @@ def calculate_cosine_similarity(report_texts):
     vectorizer = TfidfVectorizer()
     trigram_matrix = vectorizer.fit_transform(report_texts)
     cosine_sim = cosine_similarity(trigram_matrix, trigram_matrix)
-    return cosine_sim
 
+    return cosine_sim
 def calculate_cosine_similarity(idea_keywords_dict):
+    # Extract 'keywords' from the dictionary and join them into a single string
     report_texts = [' '.join(keywords) for keywords in idea_keywords_dict.values()]
+
+    # Create a TfidfVectorizer to convert text to TF-IDF representation
     vectorizer = TfidfVectorizer()
     trigram_matrix = vectorizer.fit_transform(report_texts)
+
+    # Calculate cosine similarity
     cosine_sim = cosine_similarity(trigram_matrix, trigram_matrix)
+
+    # Create a DataFrame with idea keys as row and column labels
     cosine_sim_df = pd.DataFrame(cosine_sim, index=idea_keywords_dict.keys(), columns=idea_keywords_dict.keys())
+
+    # Convert DataFrame to JSON string
     cosine_sim_json = cosine_sim_df.to_json()
+
     return cosine_sim_json
 
 
 pdf_data = {}
+
 app = Flask(__name__, template_folder='templates', static_folder='static')
 
 @app.route('/home')
@@ -119,7 +129,10 @@ def render_cdn(page_name):
 
 @app.route('/<page_name>')
 def render_dynamic_page(page_name):
+    # Render the template dynamically based on the page name
     return render_template(f'{page_name}')
+
+@app.route('/get_similarities', methods=['POST'])
 
 @app.route('/merge_ideas', methods=['POST'])
 def receive_ids():
@@ -139,6 +152,8 @@ def receive_ids():
     temperature=0.2
     max_tokens=2048
     frequency_penalty=0.0
+
+
     response = client.chat.completions.create(
         model="gpt-4",
         messages = message,
@@ -148,7 +163,8 @@ def receive_ids():
     )
     print(response.choices[0].message.content)
     output = {
-            'content': response.choices[0].message.content  
+            'content': response.choices[0].message.content
+            
         }   
     output = json.dumps(output, ensure_ascii=False, indent=2)
     response = {'status': 'success'}
@@ -157,20 +173,32 @@ def receive_ids():
 
 @app.route('/submit_idea', methods=['POST'])
 def receive_data():
+    # Get the JSON data from the request
     ideas = request.get_json()
+
     ideas_ref = db.reference('/ideas')
+
+    # Generate a random ID
     idea_id = str(uuid.uuid4())
+
+    # Add the idea data to the database with the random ID
     ideas_ref.child(idea_id).set(ideas)
+
     def categorize_expenses(range_start, range_end):
+        # Define threshold values for Low, Medium, and High categories
         low_threshold = 1000
         medium_threshold = 5000
+
+        # Calculate the range width
         range_width=(range_end + range_start)/2+ (range_end - range_start)/8
+        # Categorize based on the range width
         if range_width < low_threshold:
             return "Low"
         elif range_width < medium_threshold:
             return "Medium"
         else:
             return "High"
+
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
     text=ideas["ideaContent"]
@@ -208,10 +236,20 @@ def receive_data():
     
     ideas_ref = db.reference('/ideas')
     users = ideas_ref.get()
+# Assuming idea_keywords_dict is already defined
     cosine_similarity_string = calculate_cosine_similarity({user_key: users[user_key]['keywords'] for user_key in users.keys()})
+
+    # Assuming db is initialized with Firebase
     ideas_ref = db.reference('/similarities')
+
+    # Convert the JSON string to a Python dictionary
     cosine_similarity_dict = json.loads(cosine_similarity_string)
+
+    # Update the Firebase database with the similarity data
     ideas_ref.child('similarity').update(cosine_similarity_dict)
+
+
+    # Return a response if necessary
     response = {'status': 'success'}
     return jsonify(response)
 

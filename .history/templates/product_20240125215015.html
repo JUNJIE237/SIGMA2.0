@@ -103,7 +103,7 @@
           
 
           <div class="slide">
-            <img id="ideaImage" alt="Image 1">
+            <img src="sdata:image/png;base64,${idea.image}"" alt="Image 1">
           </div>
         </div>
  
@@ -143,7 +143,6 @@ const getIdeaByUid = async (uid) => {
 
   //ref
   const ideaRef = ref(database, `ideas/${uid}`);
-  
   try {
 
     //fetch data
@@ -194,10 +193,7 @@ const displayIdeas = (ideas) => {
   categoryElement.textContent = `Category: ${idea.category || 'No Category'}`;
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
-  var ideaImg = {
-    image:$idea.image
-  };
-  document.getElementById("ideaImage").src = "data:image/png;base64," + ideaImg.image;
+
 };
 
 

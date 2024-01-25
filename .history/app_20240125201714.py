@@ -139,6 +139,8 @@ def receive_ids():
     temperature=0.2
     max_tokens=2048
     frequency_penalty=0.0
+
+
     response = client.chat.completions.create(
         model="gpt-4",
         messages = message,
@@ -148,7 +150,8 @@ def receive_ids():
     )
     print(response.choices[0].message.content)
     output = {
-            'content': response.choices[0].message.content  
+            'content': response.choices[0].message.content
+            
         }   
     output = json.dumps(output, ensure_ascii=False, indent=2)
     response = {'status': 'success'}
@@ -157,20 +160,32 @@ def receive_ids():
 
 @app.route('/submit_idea', methods=['POST'])
 def receive_data():
+    # Get the JSON data from the request
     ideas = request.get_json()
+
     ideas_ref = db.reference('/ideas')
+
+    # Generate a random ID
     idea_id = str(uuid.uuid4())
+
+    # Add the idea data to the database with the random ID
     ideas_ref.child(idea_id).set(ideas)
+
     def categorize_expenses(range_start, range_end):
+        # Define threshold values for Low, Medium, and High categories
         low_threshold = 1000
         medium_threshold = 5000
+
+        # Calculate the range width
         range_width=(range_end + range_start)/2+ (range_end - range_start)/8
+        # Categorize based on the range width
         if range_width < low_threshold:
             return "Low"
         elif range_width < medium_threshold:
             return "Medium"
         else:
             return "High"
+
     priceRange=ideas["priceRange"]
     a, b = priceRange.replace("'","").split("-")
     text=ideas["ideaContent"]
@@ -208,10 +223,20 @@ def receive_data():
     
     ideas_ref = db.reference('/ideas')
     users = ideas_ref.get()
+# Assuming idea_keywords_dict is already defined
     cosine_similarity_string = calculate_cosine_similarity({user_key: users[user_key]['keywords'] for user_key in users.keys()})
+
+    # Assuming db is initialized with Firebase
     ideas_ref = db.reference('/similarities')
+
+    # Convert the JSON string to a Python dictionary
     cosine_similarity_dict = json.loads(cosine_similarity_string)
+
+    # Update the Firebase database with the similarity data
     ideas_ref.child('similarity').update(cosine_similarity_dict)
+
+
+    # Return a response if necessary
     response = {'status': 'success'}
     return jsonify(response)
 

@@ -137,7 +137,12 @@
   
   const params = new URLSearchParams(window.location.search);
   const uid = params.get('uid');
+  var idea = {
+    image: "base64_encoded_image_data_here"
+  };
 
+  // Set the src attribute of the img tag with the value from idea.image
+  document.getElementById("ideaImage").src = "data:image/png;base64," + idea.image;
 //asynchronize
 const getIdeaByUid = async (uid) => {
 
@@ -194,10 +199,7 @@ const displayIdeas = (ideas) => {
   categoryElement.textContent = `Category: ${idea.category || 'No Category'}`;
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
-  var ideaImg = {
-    image:$idea.image
-  };
-  document.getElementById("ideaImage").src = "data:image/png;base64," + ideaImg.image;
+
 };
 
 
