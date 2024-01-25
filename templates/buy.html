@@ -200,16 +200,14 @@
             }
         });
     }
-    function redirectToDetailPage(event) {
-    event.preventDefault(); // This prevents the default anchor action
-    const ideaId = event.target.dataset.id; // Retrieves the UID from the button's data attribute
+  function redirectToDetailPage(event) {
+    const ideaId = event.target.dataset.id;
 
-    // Construct the URL with the UID as a query parameter for the product page
-    const detailPageUrl = `product.html?uid=${ideaId}`;
+    const detailPageUrl = `product.html?uid=${ideaId}`; 
 
-    // Redirect the user to the product page with the UID in the URL
     window.location.href = detailPageUrl;
 }
+
 
       auth.onAuthStateChanged((user) => {
           if (user) {
