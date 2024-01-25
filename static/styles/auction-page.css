@@ -12,25 +12,25 @@ body {
   font-family: 'Comfortaa', Courier, monospace;
 }
 
-header .fa-house,  .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
+header .fa-house, .text {
   color: white;
   cursor: pointer;
 }
 
-
 .product-name .name {
   font-size: 35px;
   font-weight: 700;
-  color: grey;
+  color: rgb(46, 172, 104);
   padding-left: 80px;
   cursor: default;
   z-index: 1;
-  background-color: red;
+  /* background-color: red; */
 }
 
 #greet {
-  background-color: green;
+  /* background-color: green; */
   padding-left: 80px;
+  color: white;
 }
 
 .menu {
@@ -111,14 +111,7 @@ header .fa-house,  .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracke
   box-sizing: border-box;
 }
 
-.sidebar li .fa-house, .sidebar li .fa-cart-shopping,.sidebar li  .fa-handshake, .sidebar li .fa-clone, .sidebar li .fa-briefcase 
-{
-  font-size: 25px;
-  min-width: 60px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
+.sidebar li .fa-house,
 .sidebar li .fa-right-from-bracket {
   font-size: 25px;
   min-width: 60px;
@@ -138,7 +131,7 @@ nav .fa-right-from-bracket {
   opacity: 1;
 }
 
-.sidebar li .fa-house, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
+.sidebar li .fa-house, .text {
   color: white;
 }
 
@@ -166,7 +159,7 @@ nav .fa-right-from-bracket {
 }
 
 
-.sidebar li .fa-house, .fa-money-bill, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket,
+.sidebar li .fa-house,
 .sidebar li .text {
   transition-duration: 0.3s;
 }
@@ -221,7 +214,7 @@ nav .fa-right-from-bracket {
 .home .text {
   font-size: 40px;
   font-weight: 700;
-  color: grey;
+  color: rgb(46, 172, 104);
   padding: 50px 10px 40px 10px;
   cursor: default;
   z-index: 1;
@@ -270,7 +263,7 @@ nav .fa-right-from-bracket {
 .home .enter-bid {
   height: 400px;
   width: 300px;
-  background-color: green;
+  /* background-color: green; */
   border-radius: 15px;
   display: flex;
   justify-content: flex-end;
@@ -329,11 +322,13 @@ nav .fa-right-from-bracket {
 
 .home .form {
   width: 230px;
-  height: 140px;
+  height: 100px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   flex-direction: column;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 
 .home .input-group {
@@ -342,7 +337,7 @@ nav .fa-right-from-bracket {
 }
 
 .home .input {
-  padding: 10px;
+  padding: 20px;
   width: 100%;
   max-width: 300px;
   box-sizing: border-box;
@@ -371,11 +366,26 @@ nav .fa-right-from-bracket {
   border-radius: 5px;
 }
 
+input::placeholder {
+  font-size: 16px; 
+}
+
+h4 {
+  display: inline-block;
+  color: yellowgreen;
+}
+
+
+
 .carousel :where(.card, .img) {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+}
+
+.carousel .card {
+  cursor: pointer;
 }
 
 .card .img {
@@ -576,7 +586,7 @@ nav .fa-right-from-bracket {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  min-height: 500px;
+  min-height: 1200px;
 }
 
 .top-bidders li,
@@ -606,7 +616,7 @@ nav .fa-right-from-bracket {
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 400px;
+  height: 1000px;
 }
 
 .bidders-tag {
@@ -617,12 +627,17 @@ nav .fa-right-from-bracket {
   cursor: default;
 }
 
+.highest-bid-entry {
+  text-align: center;
+}
+
 .highest-bid-price {
   background-color: rgb(37, 64, 88);
   height: 100%;
   width: 300px;
   display: flex;
   justify-content: center;
+  margin-right: 40px;
   align-items: center;
   flex-direction: column;
   border-radius: 0 15px 15px 0;
@@ -633,10 +648,20 @@ nav .fa-right-from-bracket {
   height: 350px;
   background-color: rgb(37, 64, 88);
   margin: 30px;
+  display: flex;
+  margin-left: 50px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-desc {
   font-size: 20px;
+}
+
+.carousel .card h2 {
+  text-align: center;
+  width: 300px;
 }
 
 .price-container {
@@ -665,6 +690,13 @@ nav .fa-right-from-bracket {
   border-radius: 15px 15px 0 0;
 }
 
+.bid-image-unique {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  border-radius: 15px 15px 0 0;
+}
+
 .bid-img {
   background-color: black;
   height: 60%;
@@ -686,7 +718,8 @@ nav .fa-right-from-bracket {
 .top-bidders li:hover h2,
 .top-bidders li:hover span,
 .activities li:hover h2,
-.activities li:hover span {
+.activities li:hover span,
+.top-bidders li:hover h4 {
   color: rgb(24, 43, 60);
 }
 
@@ -695,7 +728,17 @@ nav .fa-right-from-bracket {
   border: 4px solid rgb(24, 43, 60);;
 }
 
-
+.product-desc-container {
+  background-color: rgb(68, 112, 150);
+  padding: 20px;
+  margin: 20px 10px;
+  border-radius: 10px;
+  height: 200px;
+  width: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /* 
 .sidebar.close ~ .home-side-info {
@@ -768,8 +811,6 @@ section .product-desc {
 .home section {
   background-color: green;
 } */
-
-
 
 
 
