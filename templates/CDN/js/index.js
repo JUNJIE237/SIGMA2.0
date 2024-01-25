@@ -104,7 +104,9 @@ function websdkready() {
           console.log(res);
           meetingConfig.signature = res;
           meetingConfig.sdkKey = CLIENT_ID;
-          var joinUrl = "/Users/USER/Downloads/meetingsdk-web-sample-master/CDN/meeting.html?" + testTool.serialize(meetingConfig);
+
+          //CHANGE THIS ACCORDING TO WHERE YOU STORE THE HTML
+          var joinUrl = "{{ url_for('/YYS/New Sigma Folder/SIGMA2.0-master/templates/CDN/meeting.html') }}?" + testTool.serialize(meetingConfig);
           console.log(joinUrl);
           window.open(joinUrl, "_blank");
         },
@@ -135,13 +137,14 @@ function websdkready() {
       sdkKey: CLIENT_ID,
       sdkSecret: CLIENT_SECRET,
       role: meetingConfig.role,
+      //CHANGE THIS ACCORDING TO WHERE YOU STORE THE HTML
       success: function (res) {
         console.log(res.result);
         meetingConfig.signature = res.result;
         meetingConfig.sdkKey = CLIENT_ID;
         var joinUrl =
           testTool.getCurrentDomain() +
-          "/Users/USER/Downloads/meetingsdk-web-sample-master/CDN/meeting.html?" +
+          "{{ url_for('/YYS/New Sigma Folder/SIGMA2.0-master/templates/CDN/meeting.html') }}?" +
           testTool.serialize(meetingConfig);
         document
           .getElementById("copy_link_value")
