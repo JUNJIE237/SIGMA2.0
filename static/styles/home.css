@@ -18,9 +18,7 @@ header .fa-house,  .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracke
 }
 
 
-
-
-nav .fa-right-from-bracket  {
+nav .fa-right-from-bracket {
   color: white;
   cursor: pointer;
 }
@@ -111,10 +109,6 @@ nav .fa-right-from-bracket  {
   align-items: center;
   justify-content: center;
 }
-
-
-
-
 .sidebar li .fa-right-from-bracket {
   font-size: 25px;
   min-width: 60px;
@@ -132,8 +126,6 @@ nav .fa-right-from-bracket  {
 .sidebar li .fa-house, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
 }
-
-
 .sidebar li a {
   text-decoration: none;
   height: 100%;
@@ -150,8 +142,7 @@ nav .fa-right-from-bracket  {
   border-radius: 10px;
 }
 
-.sidebar li a:hover .fa-house, 
-.sidebar li a:hover .fa-money-bill, 
+.sidebar li a:hover .fa-house,
 .sidebar li a:hover .text,
 .sidebar li a:hover .fa-right-from-bracket
 {
@@ -242,8 +233,11 @@ nav .fa-right-from-bracket  {
   align-items: center;
   height: 100vh;
   overflow: hidden;
+  text-align: center;
   margin: 0;
 }
+
+
 #first-page {
   position: relative;
   display: flex;
@@ -268,7 +262,7 @@ nav .fa-right-from-bracket  {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: center; /** X-axis align **/
+  justify-content: center; 
   object-fit: cover;
   z-index: -3;
   top: 50px;
@@ -351,54 +345,53 @@ nav .fa-right-from-bracket  {
 
 #break-1 {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #06203b;
-  min-height: 500px;
+  height: 500px;
   z-index: 1;
+  animation-name: slideIn;
+  animation-duration: 1s; 
 }
 
 #break-2 {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   background-color: #06203b;
-  min-height: 500px;
+  height: 500px;
   z-index: 1;
+  animation-name: slideIn;
+  animation-duration: 1s;
 }
 #break-3 {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  animation-name: slideIn;
+  animation-duration: 1s;
   background-color: #06203b;
-  min-height: 500px;
+  height: 500px;
   z-index: 1;
 }
 #break-4 {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  animation-name: slideIn;
+  animation-duration: 1s;
   background-color: #06203b;
-  min-height: 500px;
+  height: 500px;
   z-index: 1;
 }
 #break-5 {
   position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  animation-name: slideIn;
+  animation-duration: 1s;
   background-color: #06203b;
-  min-height: 500px;
+  height: 500px;
   z-index: 1;
 }
 p {
-  padding: 5%;
+  padding: 2%;
   color: #ffffff;
   font-size: 24px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  display: flex;
 }
 #two-selling-chads {
   position: fixed;
@@ -436,4 +429,20 @@ p {
   top: 100px;
   display:none;
 }
+
+
+
+
+.slide-in {
+  animation-name: slideIn;
+  animation-duration: 2s;
+  animation-fill-mode: both; 
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-400px); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+
 

@@ -126,3 +126,26 @@ document.getElementById("two-conference-chads").style.clipPath =
 var conferencePosition = -3100 + 0.5 * scrollPosition;
 document.getElementById("conference-title").style.top = conferencePosition + "px";
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  const observerOptions = {
+    threshold: 0.1 
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.animationPlayState = 'running'; 
+        observer.unobserve(entry.target); 
+      }
+    });
+  }, observerOptions);
+
+  const sectionsToAnimate = document.querySelectorAll('#break-1, #break-2, #break-3, #break-4, #break-5');
+  sectionsToAnimate.forEach(section => {
+    section.style.animationPlayState = 'paused'; 
+    observer.observe(section); 
+  });
+});

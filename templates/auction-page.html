@@ -30,7 +30,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
       type="text/css"
     />
-    <script src={{ url_for('static', filename='script.js') }}defer></script>
+    <!-- <script src={{ url_for('static', filename='script.js') }}defer></script> -->
   </head>
   <body>
     <nav class="sidebar close">
@@ -54,25 +54,25 @@
           <ul class="selection-links">
             <li class="link">
               <a href="buy.html">
-                <i class="fa-solid fa-briefcase"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Sell </span>
               </a>
             </li>
             <li class="link">
               <a href="busidea.html">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Buy </span>
               </a>
             </li>
             <li class="link">
               <a href="merge.html">
-                <i class="fa-solid fa-clone"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Merge </span>
               </a>
             </li>
             <li class="link">
               <a href="CDN/conference.html">
-                <i class="fa-solid fa-handshake"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Conference </span>
               </a>
             </li>
@@ -92,29 +92,23 @@
         </div>
 
         <div class="product-name">
-          <div class="name">Product Name</div>
+          <div class="name" id="main-product-name">Product Name</div>
           <!-- <h2 id="msg"></h2> -->
           <h2 id="greet"></h2>
         </div>
 
         <div class="home-wrapper-mid">
-          <div class="enter-bid">
-            <div class="bid-img"><img src="dallebing.png" alt="img" /></div>
+          <div class="enter-bid" id="enter-bid">
+            <img class="bid-image-unique" id="bid-img-unique" src="" alt="" />
 
             <div class="bid-container">
               <form action="" class="form" id="bidForm">
-                <!-- <div class="alert">Bid is placed successfully!</div> -->
                 <div class="input-group">
-                  <input type="text" class="input" id="user" />
-                  <label class="placeholder">Username</label>
+                  <input type="text" class="input" id="bid" placeholder="Enter bid here..."/>
+                  <!-- <label class="placeholder">Bid</label> -->
                 </div>
 
-                <div class="input-group">
-                  <input type="text" class="input" id="bid" />
-                  <label class="placeholder">Bid</label>
-                </div>
-
-                <button type="submit" class="place-bid" onclick="save()">
+                <button type="submit" class="place-bid" id="submitData">
                   Place bid
                 </button>
               </form>
@@ -122,16 +116,18 @@
           </div>
           <div class="highest-bid">
             <div class="product-info">
-              <h1>Product Information</h1>
-              <h2 class="product-desc">
-                This is a paragraph of product description.
-              </h2>
+              <h1 id="main-product">Product Information</h1>
+              <div class="product-desc-container">
+                <h2 class="product-desc" id="main-product-desc">
+                  This is a paragraph of product description.
+                </h2>
+              </div>
             </div>
             <div class="highest-bid-price">
               <div class="price-container">
                 <i class="fa-solid fa-circle-exclamation"></i>
                 <h2 id="highest-bid">Highest bid</h2>
-                <h3>$1000</h3>
+                <h3 id="highest-bid-entry"></h3>
               </div>
             </div>
           </div>
@@ -175,46 +171,37 @@
             <i id="left" class="fa-solid fa-arrow-left"></i>
 
             <ul class="carousel">
-              <li class="card">
+              <li class="card" id="card">
                 <div class="img">
-                  <img src="dallebing.png" alt="img" draggable="false" />
+                  <img class="bid-image" id="bid-img-1" src="" alt="" />
+
+                  <!-- <img src="dallebing.png" alt="img" draggable="false" /> -->
                 </div>
-                <h2>Product 1</h2>
+                <h2 id="product-1"></h2>
                 <span>2 hours ago</span>
               </li>
-              <li class="card">
+              <li class="card" id="card">
                 <div class="img">
-                  <img src="dallebing.png" alt="img" draggable="false" />
+                  <img class="bid-image" id="bid-img-2" src="" alt="" />
+                  <!-- <img src="dallebing.png" alt="img" draggable="false" /> -->
                 </div>
-                <h2>Product 1</h2>
+                <h2 id="product-2"></h2>
                 <span>2 hours ago</span>
               </li>
-              <li class="card">
+              <li class="card" id="card">
                 <div class="img">
-                  <img src="dallebing.png" alt="img" draggable="false" />
+                  <img class="bid-image" id="bid-img-3" src="" alt="" />
+                  <!-- <img src="dallebing.png" alt="img" draggable="false" /> -->
                 </div>
-                <h2>Product 1</h2>
+                <h2 id="product-3"></h2>
                 <span>2 hours ago</span>
               </li>
-              <li class="card">
+              <li class="card" id="card">
                 <div class="img">
-                  <img src="dallebing.png" alt="img" draggable="false" />
+                  <img class="bid-image" id="bid-img-4" src="" alt="" />
+                  <!-- <img src="dallebing.png" alt="img" draggable="false" /> -->
                 </div>
-                <h2>Product 1</h2>
-                <span>2 hours ago</span>
-              </li>
-              <li class="card">
-                <div class="img">
-                  <img src="dallebing.png" alt="img" draggable="false" />
-                </div>
-                <h2>Product 1</h2>
-                <span>2 hours ago</span>
-              </li>
-              <li class="card">
-                <div class="img">
-                  <img src="dallebing.png" alt="img" draggable="false" />
-                </div>
-                <h2>Product 1</h2>
+                <h2 id="product-4"></h2>
                 <span>2 hours ago</span>
               </li>
             </ul>
@@ -232,83 +219,92 @@
             <ul class="bidders-list">
               <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
                   <h2>New bid appeared</h2>
-                  <span
-                    >Brendan Chao has placed the highest bid on this post</span
-                  >
+                  <span><h4 id="person1"></h4> has placed the highest bid of $<h4 id="bid1"></h4> on this post</span>
                 </div>
               </li>
               <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
                   <h2>New bid appeared</h2>
-                  <span
-                    >Brendan Chao has placed the highest bid on this post</span
-                  >
+                  <span><h4 id="person2"></h4> has placed the second highest bid of $<h4 id="bid2"></h4> on this post</span>
                 </div>
               </li>
               <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
                   <h2>New bid appeared</h2>
-                  <span
-                    >Brendan Chao has placed the highest bid on this post</span
-                  >
+                  <span><h4 id="person3"></h4> has placed the bid of $<h4 id="bid3"></h4> on this post</span>
                 </div>
               </li>
               <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
                   <h2>New bid appeared</h2>
-                  <span
-                    >Brendan Chao has placed the highest bid on this post</span
-                  >
+                  <span><h4 id="person4"></h4> has placed the bid of $<h4 id="bid4"></h4> on this post</span>
                 </div>
               </li>
-            </ul>
-          </div>
-
-          <div class="activities">
-            <h1 class="activities-tag">Activities</h1>
-            <ul class="activities-container">
-              <li class="activities-info">
+              <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
                   <h2>New bid appeared</h2>
-                  <span
-                    >Brendan Chao has placed the highest bid on this post</span
-                  >
+                  <span><h4 id="person5"></h4> has placed the bid of $<h4 id="bid5"></h4> on this post</span>
                 </div>
               </li>
-
-              <li class="activities-info">
+              <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
-                  <h2>You won Product 1</h2>
-                  <span>You won Product 1 at $200</span>
+                  <h2>New bid appeared</h2>
+                  <span><h4 id="person6"></h4> has placed the bid of $<h4 id="bid6"></h4> on this post</span>
                 </div>
               </li>
-
-              <li class="activities-info">
+              <li class="bidder">
                 <div class="activities-img">
-                  <img src="dallebing.png" alt="img" />
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
                 </div>
                 <div class="activities-detailed-info">
-                  <h2>You won Product 3</h2>
-                  <span>You won Product 3 at $1000</span>
+                  <h2>New bid appeared</h2>
+                  <span><h4 id="person7"></h4> has placed the bid of $<h4 id="bid7"></h4> on this post</span>
+                </div>
+              </li>
+              <li class="bidder">
+                <div class="activities-img">
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
+                </div>
+                <div class="activities-detailed-info">
+                  <h2>New bid appeared</h2>
+                  <span><h4 id="person8"></h4> has placed the bid of $<h4 id="bid8"></h4> on this post</span>
+                </div>
+              </li>
+              <li class="bidder">
+                <div class="activities-img">
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
+                </div>
+                <div class="activities-detailed-info">
+                  <h2>New bid appeared</h2>
+                  <span><h4 id="person9"></h4> has placed the bid of $<h4 id="bid9"></h4> on this post</span>
+                </div>
+              </li>
+              <li class="bidder">
+                <div class="activities-img">
+                  <img src="/static/assets/profilePic.jpg" alt="img" />
+                </div>
+                <div class="activities-detailed-info">
+                  <h2>New bid appeared</h2>
+                  <span><h4 id="person10"></h4> has placed the bid of $<h4 id="bid10"></h4> on this post</span>
                 </div>
               </li>
             </ul>
@@ -319,7 +315,8 @@
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/7.14.1-0/firebase.js"></script> -->
 
-    <script src="auction.js"></script>
+    <script src={{ url_for('static', filename='auction.js') }}></script>
+
     <script type="module">
       import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
       import {
@@ -327,22 +324,28 @@
         onAuthStateChanged,
         createUserWithEmailAndPassword,
         signInWithEmailAndPassword,
-        signOut,
+        signOut
       } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
       import {
         getDatabase,
         set,
         ref,
         update,
+        onValue,
+        orderByChild,
+        equalTo,
+        get,
+        query
       } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
       const firebaseConfig = {
-        apiKey: "AIzaSyCPDfce163NPRLHuyDBHXt8k7_o2eEJ-PI",
-        authDomain: "authentication-88ac8.firebaseapp.com",
-        projectId: "authentication-88ac8",
-        storageBucket: "authentication-88ac8.appspot.com",
-        messagingSenderId: "624921183417",
-        appId: "1:624921183417:web:9950324fe2c6e9193e0768",
+            apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
+            authDomain: "sigma-50b08.firebaseapp.com",
+            databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
+            projectId: "sigma-50b08",
+            storageBucket: "sigma-50b08.appspot.com",
+            messagingSenderId: "881262508411",
+            appId: "1:881262508411:web:573e358cf20526dcfc25de"
       };
 
       let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
@@ -375,24 +378,6 @@
       const database = getDatabase(app);
       const dbref = ref(database);
 
-      // onAuthStateChanged(auth, (user)=>{
-      //   if (user) {
-      //       // var user = firebase.auth().currentUser;
-      //       if (user != null) {
-      //         console.log("User is signed in:", user);
-
-      //           // var email = user.email;
-      //           // var emailVerified = user.emailVerified;
-      //           // var uid = user.uid
-      //           // displayName.innerText = 'Welcome, ' + email
-      //           // window.location = 'home.html'
-      //       }
-      //   } else {
-      //     console.log("User is signed out");
-      //       // console.log('Not connected')
-      //   }
-      // })
-
       auth.onAuthStateChanged((user) => {
         if (user) {
           // User is signed in
@@ -408,6 +393,326 @@
 
       window.addEventListener("load", CheckCred);
       // SignoutBtn.addEventListener('click', Signout);
+
+      //Reference to ideas in firebase
+      const itemsRef = ref(database, 'ideas');
+      var innerTextArr = [];
+      var innerBidArr = [];
+      var innerDescArr = [];
+
+      // Attach an event listener to retrieve the items
+      const itemsArray = [];
+      onValue(itemsRef, (snapshot) => {
+        itemsArray.length = 0;
+        innerTextArr.length = 0;
+        innerBidArr.length = 0;
+        innerDescArr.length = 0;
+        snapshot.forEach((childSnapshot) => {
+          const itemKey = childSnapshot.key;
+          const itemData = childSnapshot.val();
+          itemsArray.push({ key: itemKey, data: itemData });
+          innerTextArr.push(itemData.ideaTitle);
+          innerBidArr.push(itemData.image);
+          innerDescArr.push(itemData.ideaDescription);
+        });
+
+        console.log(itemsArray);
+        console.log(innerTextArr);
+        console.log(innerBidArr);
+        console.log(innerDescArr);
+        console.log("HI");
+
+
+        let product1 = document.getElementById('product-1');
+        let product2 = document.getElementById('product-2');
+        let product3 = document.getElementById('product-3');
+        let product4 = document.getElementById('product-4');
+
+        console.log("Product-1" + product1);
+
+        product1.innerText = itemsArray[0].data.ideaTitle;
+        product2.innerText = itemsArray[1].data.ideaTitle;
+        product3.innerText = itemsArray[2].data.ideaTitle;
+        product4.innerText = itemsArray[3].data.ideaTitle;
+      });
+
+
+      function addNewItem(passedText) {
+
+        var currentProduct = document.querySelector('.product-info h1').innerText;
+        var cnt = 0;
+        var uniqueNumArr = generateUniqueNumbers(itemsArray.length, itemsArray.length-1);
+
+        console.log(innerTextArr.length);
+
+        for(let i=0; i < innerTextArr.length; i++)
+        {
+          var carousel = document.querySelector('.carousel');
+          var carouselItems = carousel.querySelectorAll('.card');
+
+          var homeWrapper = document.querySelector('.home-wrapper-mid');
+          var enterBid = document.querySelector('.enter-bid');
+
+          //create new item
+          var newItem = document.createElement('li');
+          newItem.className = 'card';
+          newItem.id = 'card';
+
+          var ideaName = innerTextArr[uniqueNumArr[i]];
+          var bidName = innerBidArr[uniqueNumArr[i]];
+
+          // Set the content for the new item (you can customize this part)
+          newItem.innerHTML = `
+            <div class="img">
+              <img class="card-image" src="data:image/png;base64,${bidName}" id="bid-img-${i+1}" draggable="false"/>
+            </div>
+            <h2>${ideaName}</h2>
+            <span>Just added</span>
+          `;
+
+          if(innerTextArr[uniqueNumArr[i]] === passedText)
+          {
+            console.log("Inner text: " + innerTextArr[uniqueNumArr[i]]);
+            console.log("Passed text: " + passedText);
+
+            var newBidItem = document.createElement('div');
+            newBidItem.className = 'enter-bid';
+            newBidItem.id = 'enter-bid';
+            newBidItem.innerHTML = `
+                <img class="bid-image-unique" src="data:image/png;base64,${bidName}" id="bid-img-unique"/>
+                <div class="bid-container">
+                  <form action="" class="form" id="bidForm">
+                    <div class="input-group">
+                      <input type="text" class="input" id="bid" placeholder="Enter bid here..."/>
+                      <!-- <label class="placeholder">Bid</label> -->
+                    </div>
+
+                    <button type="submit" class="place-bid" id="submitData">
+                      Place bid
+                    </button>
+                  </form>
+                </div>
+            `;
+            homeWrapper.removeChild(enterBid);
+            var firstChild = homeWrapper.firstChild;
+            homeWrapper.insertBefore(newBidItem, firstChild);
+          }
+
+          innerTextArr.forEach((card, index) => {
+
+            const itemName = innerTextArr[index];
+            if(itemName === passedText)
+            {
+              document.getElementById('main-product').innerText = itemName;
+              document.getElementById('main-product-desc').innerText = innerDescArr[index];
+              document.getElementById('main-product-name').innerText = itemName;
+              currentProduct = passedText;
+            }
+          });
+
+
+            if (carouselItems.length > 0) {
+
+              carousel.removeChild(carouselItems[0]);
+              carousel.appendChild(newItem);
+            }
+
+          if(cnt == 0)
+          {
+            var currentProduct = document.querySelector('.product-info h1').innerText;
+            cnt++;
+          }
+        }
+      }
+
+    
+      function isItemInCarousel(itemName, carouselItems) {
+
+        var item = carouselItems[0].querySelector('h2').innerText;
+        if (item === itemName) {
+          return true;
+        }
+
+        return false;
+      }
+
+      function generateUniqueNumbers(count, max) {
+          if (count <= max) {
+              throw new Error("Count must be greater than max.");
+          }
+
+          const uniqueNumbers = new Set();
+
+          while (uniqueNumbers.size < count) {
+              const randomNumber = Math.floor(Math.random() * count);
+              uniqueNumbers.add(randomNumber);
+          }
+          return Array.from(uniqueNumbers);
+      }
+
+      var cards = document.querySelectorAll('.carousel .card');
+
+      cards.forEach(card => {
+        card.addEventListener('click', function() {
+          // console.log("BRO");
+          var itemName = card.querySelector('h2').innerText;
+          addNewItem(itemName);
+        });
+      });
+
+      document.querySelector('.carousel').addEventListener('click', function(event) {
+          if (event.target.classList.contains('card')) {
+            
+            var itemName = event.target.querySelector('h2').innerText;
+            addNewItem(itemName);
+
+          const refItems = ref(database, 'ideas');
+
+          get(refItems)
+                  .then((snapshot) => {
+                      if (snapshot.val() !== null) {
+                          const ideasData = snapshot.val();
+                          var itemName = document.querySelector('.product-info h1').innerText;
+
+                          // Iterate through the ideasData to find a match
+                          let matchingRootName;
+                          let matchingIdeaTitle;
+
+                          for (const rootName in ideasData) {
+                              for (const ideaTitle in ideasData[rootName]) {
+                                  if (ideasData[rootName][ideaTitle] === itemName) {
+                                      matchingRootName = rootName;
+                                      matchingIdeaTitle = ideaTitle;
+                                      break;
+                                  }
+                              }
+                              if (matchingRootName && matchingIdeaTitle) {
+                                  break;
+                              }
+                          }
+
+                          if (matchingRootName && matchingIdeaTitle) {
+                            //Update according to bid value
+                            const refItems = ref(database, `ideas/${matchingRootName}/bid`);
+
+                            // Attach an event listener to retrieve the items
+                            const bidArray = [];
+                            onValue(refItems, (snapshot) => {
+                              bidArray.length = 0;
+                              snapshot.forEach((childSnapshot) => {
+                                const keyItem = childSnapshot.key;
+                                const dataItem = childSnapshot.val();
+                                bidArray.push({ key: keyItem, data: dataItem });
+                              });
+
+                              bidArray.sort((a, b) => b.data.bid - a.data.bid);
+
+                              updateUIWithBids(bidArray, bidArray.length);
+                            });
+
+                          } else {
+                              alert(`No match found for itemName ${itemName}`);
+                          }
+                      } else {
+                          alert("No data found in 'ideas'");
+                      }
+                  })
+                  .catch((error) => {
+                      console.log(error);
+                  });
+          }
+      });
+
+      function updateUIWithBids(bidArray, bidArrayLen) {
+        let persons = [];
+        let bids = [];
+        let highestBidEntry = document.getElementById("highest-bid-entry");
+        
+
+        for(let i=0; i < 10; i++)
+        {
+          console.log(bidArray[i]);
+          persons.push(document.getElementById(`person${i + 1}`));
+          bids.push(document.getElementById(`bid${i + 1}`));
+        }
+
+        for (let i = 0; i < 10; i++) {
+          if (bidArray[i]) {
+            // If bidArray has a value at the current index
+            persons[i].innerText = bidArray[i].data.name;
+            bids[i].innerText = bidArray[i].data.bid;
+            highestBidEntry.innerText = "$ " + bidArray[0].data.bid;
+        } else {
+            // If bidArray is null or undefined at the current index
+            persons[i].innerText = "Nobody";
+            bids[i].innerText = "0";
+        }
+        }
+      }
+     
+
+      document.body.addEventListener('click', (e) => {
+        if (e.target.id === 'submitData') {
+            e.preventDefault();
+            const bidValue = document.getElementById('bid').value;
+            const db = getDatabase();
+            var itemName = document.querySelector('.product-info h1').innerText;
+
+            // Reference to 'ideas'
+            const ideasRef = ref(db, 'ideas');
+            // Read all data under 'ideas'
+            get(ideasRef)
+                .then((snapshot) => {
+                    if (snapshot.val() !== null) {
+                        const ideasData = snapshot.val();
+                        // Iterate through the ideasData to find a match
+                        let matchingRootName;
+                        let matchingIdeaTitle;
+                        for (const rootName in ideasData) {
+                            for (const ideaTitle in ideasData[rootName]) {
+                                if (ideasData[rootName][ideaTitle] === itemName) {
+                                    matchingRootName = rootName;
+                                    matchingIdeaTitle = ideaTitle;
+                                    break;
+                                }
+                            }
+                            if (matchingRootName && matchingIdeaTitle) {
+                                break;
+                            }
+                        }
+                        if (matchingRootName && matchingIdeaTitle) {
+                            const timestamp = Date.now();
+
+                            // Use matchingRootName and matchingIdeaTitle to construct the path for writing data
+                            const itemDataRef = ref(db, `ideas/${matchingRootName}/bid/${timestamp}`);
+
+                            set(itemDataRef, {
+                                name: `${UserInfo.firstname} ${UserInfo.lastname}`,
+                                bid: bidValue
+                            })
+                                .then(() => {
+                                    alert("Data added successfully");
+                                })
+                                .catch((error) => {
+                                    alert("Unsuccessful");
+                                    console.log(error);
+                                });
+                        } else {
+                            alert(`No match found for itemName ${itemName}`);
+                        }
+                    } else {
+                        alert("No data found in 'ideas'");
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        }
+    });
+
+      
+
     </script>
   </body>
 </html>
+

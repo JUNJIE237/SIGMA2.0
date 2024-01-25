@@ -324,7 +324,7 @@ body::before {
   right: 0;
   bottom: 0;
   left: 0;
-  background-image: url('business-bg.png');
+  background-image: url('/static/assets/business-bg.png');
   background-size: cover;
   opacity: 0.1; /* Adjust the opacity as needed */
   z-index: -1;
