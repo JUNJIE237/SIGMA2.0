@@ -12,10 +12,11 @@ body {
   font-family: 'Comfortaa', Courier, monospace;
 }
 
-header .fa-house, .text {
+header .fa-house,  .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
   cursor: pointer;
 }
+
 
 .product-name .name {
   font-size: 35px;
@@ -110,7 +111,14 @@ header .fa-house, .text {
   box-sizing: border-box;
 }
 
-.sidebar li .fa-house,
+.sidebar li .fa-house, .sidebar li .fa-cart-shopping,.sidebar li  .fa-handshake, .sidebar li .fa-clone, .sidebar li .fa-briefcase 
+{
+  font-size: 25px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .sidebar li .fa-right-from-bracket {
   font-size: 25px;
   min-width: 60px;
@@ -130,7 +138,7 @@ nav .fa-right-from-bracket {
   opacity: 1;
 }
 
-.sidebar li .fa-house, .text {
+.sidebar li .fa-house, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
 }
 
@@ -158,7 +166,7 @@ nav .fa-right-from-bracket {
 }
 
 
-.sidebar li .fa-house,
+.sidebar li .fa-house, .fa-money-bill, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket,
 .sidebar li .text {
   transition-duration: 0.3s;
 }

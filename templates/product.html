@@ -27,7 +27,7 @@
       type="text/css"
     />
     <script src="buy.js" defer></script>
-    <script src="/SIGMA2.0-master/static/product.js"></script>
+    <script src="product.js"></script>
   </head>
   <body>
     <nav class="sidebar close">
@@ -51,25 +51,25 @@
           <ul class="selection-links">
             <li class="link">
               <a href="business-idea.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-briefcase"></i>
                 <span class="text"> Sell </span>
               </a>
             </li>
             <li class="link">
               <a href="buy.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
                 <span class="text"> Buy </span>
               </a>
             </li>
             <li class="link">
               <a href="merge.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-clone"></i>
                 <span class="text"> Merge </span>
               </a>
             </li>
             <li class="link">
               <a href="CDN/conference.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-handshake"></i>
                 <span class="text"> Conference </span>
               </a>
             </li>
@@ -83,44 +83,30 @@
         </div>
       </div>
     </nav>
+
+
+
     <section class="home">
-      <div class="title_bar">
-        <h1 id="heading">Smart Shipping System</h1>
-      </div>
-      <div id="profile-pic-holder">
+        <div id="profile-pic-holder">
           <a href="#" class="profile-link">
-            <img src="/SIGMA2.0-master/static/assets/profile_pic.jpg" alt="Profile Picture" class="profile-pic">
+            <img src="profile_pic.jpg" alt="Profile Picture" class="profile-pic">
           </a>
       </div>
-      <div class="content">
-          <h1 id="description">Description :</h1>
-          <h2 id="category">Category</h2>
-          <h2 id="target">Target User</h2>
-          <h2 id="expense">Expense</h2>
+
+      <div class="info">
+        <h1 id="heading">Business Idea Title</h1>
+        <p id="description">Description: </p>
+        <p id="category">Category: <span id="category-value">Value</span></p>
+        <p id="target">Target User: <span id="target-value">Value</span></p>
+        <p id="expense">Expense: <span id="expense-value">Value</span></p>
+      </div>
+          
 
           <div class="slide">
             <img src="/SIGMA2.0-master/static/assets/smart-shipping-system.png" alt="Image 1">
           </div>
         </div>
-        <div class="contain-carousel">
-          <div class="display-picture">
-            <div class="carousel" data-carousel>
-              <button class="carousel-button prev" data-carousel-button = 'prev'>&#8656</button>
-              <button class="carousel-button next" data-carousel-button = 'next'>&#8658</button>
-              <ul data-slides>
-                <li class="slide"data-active>
-                  <img src="/SIGMA2.0-master/static/assets/smart-shipping-system.png" alt="Image 1">
-                </li>
-                <li class="slide">
-                  <img src="/SIGMA2.0-master/static/assets/profile_pic.jpg" alt="Image 2">
-                </li>
-                <li class="slide">
-                  <img src="/SIGMA2.0-master/static/assets/whiteboard.png" alt="Image 3">
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
+ 
       </div>
       <div class="bid-button">
         <a class="bid" href="auction-page.html"> Bid </a>
@@ -148,6 +134,9 @@
           const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
   export const auth = getAuth(app);
+  
+  const params = new URLSearchParams(window.location.search);
+  const uid = params.get('uid');
 
 //asynchronize
 const getIdeaByUid = async (uid) => {
@@ -178,7 +167,7 @@ const displayIdeas = (ideas) => {
   const descriptionElement = document.getElementById('description');
   const categoryElement= document.getElementById('category');
   const targetElement= document.getElementById("target");
-  const expElement =document.getElementById("expense")
+  const expElement =document.getElementById("expense");
 
   // Check if the elements exist in the DOM.
   if (!headingElement || !descriptionElement || !categoryElement || !targetElement || !expElement) {
@@ -204,15 +193,20 @@ const displayIdeas = (ideas) => {
   categoryElement.textContent = `Category: ${idea.category || 'No Category'}`;
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
+
 };
 
 
-const uid = '2f16a2d2-3466-4cb1-9286-266669519bf4'; 
-getIdeaByUid(uid).then(idea => {
-  displayIdeas(idea);
-});
+
+
+if (uid) {
+  getIdeaByUid(uid).then(idea => {
+    displayIdeas(idea);
+  });
+} else {
+  console.log('UID parameter is missing in the URL');
+}
 
 </script>
   </body>
 </html>
-

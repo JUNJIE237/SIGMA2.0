@@ -5,10 +5,24 @@
   
 }
 
-header .fa-house, .text {
+header .fa-house,  .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
   cursor: pointer;
 }
+
+nav .fa-right-from-bracket  {
+  color: white;
+  cursor: pointer;
+}
+.sidebar li .fa-right-from-bracket {
+  font-size: 25px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
 
 .menu {
   height: 100%;
@@ -85,7 +99,8 @@ header .fa-house, .text {
   box-sizing: border-box;
 }
 
-.sidebar li .fa-house {
+.sidebar li .fa-house, .sidebar li .fa-cart-shopping,.sidebar li  .fa-handshake, .sidebar li .fa-clone, .sidebar li .fa-briefcase 
+{
   font-size: 25px;
   min-width: 60px;
   display: flex;
@@ -93,16 +108,16 @@ header .fa-house, .text {
   justify-content: center;
 }
 
+
 .sidebar li .text {
   font-size: 20px;
   transition: 0.2s;
   opacity: 1;
 }
 
-.sidebar li .fa-house, .text {
+.sidebar li .fa-house, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
 }
-
 .sidebar li a {
   text-decoration: none;
   height: 100%;
@@ -124,7 +139,7 @@ header .fa-house, .text {
   color: rgb(37, 64, 88);
 }
 
-.sidebar li .fa-house,
+.sidebar li .fa-house, .fa-money-bill, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket,
 .sidebar li .text {
   transition-duration: 0.3s;
 }
