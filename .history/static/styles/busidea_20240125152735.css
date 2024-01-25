@@ -499,7 +499,7 @@ select:focus {
 .form-group label {
   margin-bottom: 0;
   margin-top: 3px; 
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .upload-container {
@@ -571,7 +571,7 @@ button.next-btn:hover {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 .phone-number-group {
@@ -582,7 +582,7 @@ button.next-btn:hover {
 .phone-input-container label span {
   font-weight: 200;
   color: #b8b8be; 
-  font-size: 15px;
+  font-size: 13px;
 }
 
 
@@ -633,7 +633,7 @@ button.next-btn:hover {
   margin-right: 10px;
   color: #AAA; 
   display: block;
-  font-size: 15px;
+  font-size: 13px;
 }
 
 
@@ -645,7 +645,7 @@ button.next-btn:hover {
   width: 100%; 
   box-sizing: border-box;
   color: #f3f3f4;
-  font-size: 15px; 
+  font-size: 13px; 
   border-radius: 4px;
 }
 

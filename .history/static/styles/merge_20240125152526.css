@@ -758,8 +758,7 @@ white-space: nowrap; /* Prevent text wrapping */
 text-overflow: ellipsis;
 width: 50%;
 flex: 1;
-font-size: 14px;
-font-weight: 700;
+font-size: 18;
 
 }
 

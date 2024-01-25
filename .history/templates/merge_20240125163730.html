@@ -259,17 +259,27 @@
               });
               document.body.appendChild(divs);
             } else {
+              // Handle the case when data is empty or not in the expected format
               console.error('Error: Invalid data format');
             }
           })
           .catch(error => {
+            // Hide loading spinner in case of an error
             hideLoadingSpinner();
+
             console.error('Error:', error);
           });
+
         function convertToHTML(gptOutput) {
+          // Replace double line breaks with HTML line breaks
           let formattedHTML = gptOutput.content.replace(/\n\n/g, '<br>');
+
+          // Replace bold markers with strong tags
           formattedHTML = formattedHTML.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+          // Wrap the entire content in a div
           formattedHTML = `<div>${formattedHTML}</div>`;
+
           return formattedHTML;
         }
 
@@ -281,16 +291,25 @@
         onValue(dbref, (snapshot) => {
           const ideasData = snapshot.val();
           const similarities = ideasData["similarities"]["similarity"][ideas1];
+
+          // Convert the object into an array of objects
           const dataArray = Object.entries(similarities).map(([uuid, value]) => ({ uuid, value }));
+
+          // Sort the array based on the numeric values
           dataArray.sort((a, b) => b.value - a.value);
           console.log(dataArray);
+
+
           ideasTable.innerHTML = '';
           var dropdown1 = document.getElementById("business_type_selection");
           var selected1 = dropdown1.options[dropdown1.selectedIndex].text;
+
           var dropdown2 = document.getElementById("expected_expenses_selection");
           var selected2 = dropdown2.options[dropdown2.selectedIndex].text;
+
           var dropdown3 = document.getElementById("project_duration_selection");
           var selected3 = dropdown3.options[dropdown3.selectedIndex].text;
+
           // Assuming you have a reference to the parent element with class "tag-area"
           const tagArea = document.querySelector('.tag-area');
 
@@ -426,6 +445,7 @@
         }
       });
 
+      // If the row is not already highlighted, add the class
       if (!isHighlighted) {
         row.parentElement.classList.add('highlighted-row');
         if (!checkFiltered) {
@@ -441,6 +461,7 @@
           SearchDiv.textContent = 'Merge!';
         }
       } else {
+        // If the row is already highlighted, remove the class
         row.parentElement.classList.remove('highlighted-row');
         console.log(ideas1);
         console.log(ideas2);
@@ -653,6 +674,17 @@
           <button onclick="fetchData()" class="search-button">Search</button>
         </div>
 
+      </div>
+      <div id="upload">
+        <div class="file-upload">
+          <h1 id="file-upload-title">File Upload</h1>
+          <div class="upload-box">
+            <label for="custom-file-upload" class="filupp">
+              <span class="filupp-file-name js-value">Drag files here or Browse</span>
+              <input type="file" name="attachment-file" value="1" id="custom-file-upload" />
+            </label>
+          </div>
+        </div>
       </div>
       </div>
     </section>

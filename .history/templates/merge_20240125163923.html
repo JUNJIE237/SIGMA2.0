@@ -426,6 +426,7 @@
         }
       });
 
+      // If the row is not already highlighted, add the class
       if (!isHighlighted) {
         row.parentElement.classList.add('highlighted-row');
         if (!checkFiltered) {
@@ -653,6 +654,17 @@
           <button onclick="fetchData()" class="search-button">Search</button>
         </div>
 
+      </div>
+      <div id="upload">
+        <div class="file-upload">
+          <h1 id="file-upload-title">File Upload</h1>
+          <div class="upload-box">
+            <label for="custom-file-upload" class="filupp">
+              <span class="filupp-file-name js-value">Drag files here or Browse</span>
+              <input type="file" name="attachment-file" value="1" id="custom-file-upload" />
+            </label>
+          </div>
+        </div>
       </div>
       </div>
     </section>
