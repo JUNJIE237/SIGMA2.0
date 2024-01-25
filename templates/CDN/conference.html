@@ -124,17 +124,17 @@
                 </div>
             </div>
             <div class="image-wrapper">
-                <img src="/static/assets/Meeting.png" alt="">
+                <img src="Meeting.png" alt="">
             </div> 
         </div>
         
 
        
                
-        <!-- <div id="show-test-tool">
+        <div id="show-test-tool">
             <button type="submit" class="btn btn-primary" id="show-test-tool-btn"
                 title="show or hide top test tool">Show</button>
-        </div> -->
+        </div>
         <!--/.navbar-collapse -->
     </div>
 
@@ -161,9 +161,12 @@
     <script src="https://source.zoom.us/3.0.0/lib/vendor/redux-thunk.min.js"></script>
     <script src="https://source.zoom.us/3.0.0/lib/vendor/lodash.min.js"></script>
     <script src="https://source.zoom.us/zoom-meeting-3.0.0.min.js"></script>
-    <script src="js/tool.js"></script>
+    <!-- <script src="js/tool.js"></script>
     <script src="js/vconsole.min.js"></script>
-    <script src="js/index.js"></script>
+    <script src="js/index.js"></script> -->
+    <script src="{{ url_for('static', filename='js/tool.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vconsole.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 
 </html>
