@@ -12,9 +12,15 @@ body {
   font-family: 'Comfortaa', Courier, monospace;
 }
 
-header .fa-house, .text {
+header .fa-house,  .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
   cursor: pointer;
+}
+
+.home-title .fa-gavel
+{
+  color: rgb(46, 172, 104);
+  font-size: 160%;
 }
 
 .product-name .name {
@@ -30,6 +36,7 @@ header .fa-house, .text {
 #greet {
   /* background-color: green; */
   padding-left: 80px;
+  padding-bottom: 40px;
   color: white;
 }
 
@@ -111,7 +118,14 @@ header .fa-house, .text {
   box-sizing: border-box;
 }
 
-.sidebar li .fa-house,
+.sidebar li .fa-house, .sidebar li .fa-cart-shopping,.sidebar li  .fa-handshake, .sidebar li .fa-clone, .sidebar li .fa-briefcase 
+{
+  font-size: 25px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 .sidebar li .fa-right-from-bracket {
   font-size: 25px;
   min-width: 60px;
@@ -131,7 +145,7 @@ nav .fa-right-from-bracket {
   opacity: 1;
 }
 
-.sidebar li .fa-house, .text {
+.sidebar li .fa-house, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
 }
 
@@ -159,10 +173,11 @@ nav .fa-right-from-bracket {
 }
 
 
-.sidebar li .fa-house,
+.sidebar li .fa-house, .fa-money-bill, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket,
 .sidebar li .text {
   transition-duration: 0.3s;
 }
+
 
 .sidebar .selection-links {
   /* background-color: orange; */
@@ -209,6 +224,8 @@ nav .fa-right-from-bracket {
   width: calc(100% - 300px);
   transition: 0.2s;
   z-index: 0;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
 .home .text {

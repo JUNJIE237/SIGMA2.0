@@ -51,25 +51,25 @@
           <ul class="selection-links">
             <li class="link">
               <a href="business-idea.html">
-                <i class="fa-solid fa-briefcase"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Sell </span>
               </a>
             </li>
             <li class="link">
               <a href="buy.html">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Buy </span>
               </a>
             </li>
             <li class="link">
               <a href="merge.html">
-                <i class="fa-solid fa-clone"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Merge </span>
               </a>
             </li>
             <li class="link">
               <a href="CDN/conference.html">
-                <i class="fa-solid fa-handshake"></i>
+                <i class="fa-solid fa-house"></i>
                 <span class="text"> Conference </span>
               </a>
             </li>
@@ -85,33 +85,25 @@
     </nav>
 
 
-
-    <section class="home">
-        <div id="profile-pic-holder">
-          <a href="#" class="profile-link">
-            <img src="profile_pic.jpg" alt="Profile Picture" class="profile-pic">
-          </a>
-      </div>
-
-      <div class="info">
-        <h1 id="heading">Business Idea Title</h1>
-        <p id="description">Description: </p>
-        <p id="category">Category: <span id="category-value">Value</span></p>
-        <p id="target">Target User: <span id="target-value">Value</span></p>
-        <p id="expense">Expense: <span id="expense-value">Value</span></p>
-      </div>
+    <div id="header-container">
+      <div id="profile-picture"></div>
+      <h1 id="heading">Business Idea Title</h1>
           
+  </div>
 
-          <div class="slide">
-            <img src="/SIGMA2.0-master/static/assets/smart-shipping-system.png" alt="Image 1">
-          </div>
-        </div>
- 
+  <div class="details-container">
+      <div class="large-detail-box">
+          <p id="description">Description: </p>
+          <p id="category">Category: <span id="category-value">Value</span></p>
+          <p id="target">Target User: <span id="target-value">Value</span></p>
+          <p id="expense">Expense: <span id="expense-value">Value</span></p>
+          <p id="duration">Duration: <span id="duration-value">Value</span></p>
+
       </div>
-      <div class="bid-button">
-        <a class="bid" href="auction-page.html"> Bid </a>
-      </div>
-    </section>
+
+      <a href="auction-page.html" id="bid-button">Place Bid</a>
+  </div>
+
     <script src={{ url_for('static', filename='home.js') }}></script>
 
 <script type="module">
@@ -168,6 +160,7 @@ const displayIdeas = (ideas) => {
   const categoryElement= document.getElementById('category');
   const targetElement= document.getElementById("target");
   const expElement =document.getElementById("expense");
+  const durationElement=document.getElementById("duration");
 
   // Check if the elements exist in the DOM.
   if (!headingElement || !descriptionElement || !categoryElement || !targetElement || !expElement) {
@@ -181,6 +174,7 @@ const displayIdeas = (ideas) => {
     categoryElement.textContent='No Category';
     targetElement.textContent='No Target User';
     expElement.textContent='No Expense';
+    durationElement.textContent='No Duration';
     return;
   }
 
@@ -193,6 +187,7 @@ const displayIdeas = (ideas) => {
   categoryElement.textContent = `Category: ${idea.category || 'No Category'}`;
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
+  durationElement.textContent = `Duration: ${idea.duration || 'No Duration'}`;
 
 };
 
