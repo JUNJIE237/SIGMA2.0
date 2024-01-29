@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <title>Buying Page</title>
+    <title>Product Page</title>
     <link
       rel="stylesheet"
       href="https://fonts.googleapis.com/css?family=Comfortaa%3A400%2C600%2C700"
@@ -101,7 +101,10 @@
 
       </div>
 
-      <a href="auction-page.html" id="bid-button">Place Bid</a>
+      <a href="#" class="bid-button"  data-id="${key}">Place Bid</a>
+      <script>
+
+      </script>
   </div>
 
     <script src={{ url_for('static', filename='home.js') }}></script>
@@ -111,19 +114,18 @@
   import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
   import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
-
   
   const firebaseConfig = {
-     apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
-     authDomain: "sigma-50b08.firebaseapp.com",
-     databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
-     projectId: "sigma-50b08",
-    storageBucket: "sigma-50b08.appspot.com",
-     messagingSenderId: "881262508411",
-    appId: "1:881262508411:web:573e358cf20526dcfc25de"
-          };
+    apiKey: "AIzaSyCba_ADfkuAvr1ExhLcQjKtBSC1gwZrA10",
+    authDomain: "sigma-2-ec27d.firebaseapp.com",
+    projectId: "sigma-2-ec27d",
+    storageBucket: "sigma-2-ec27d.appspot.com",
+    messagingSenderId: "91755058764",
+    appId: "1:91755058764:web:36a4710fff0c9f103e46e9",
+    measurementId: "G-L2ZKPGLL3P"
+  };
   
-          const app = initializeApp(firebaseConfig);
+  const app = initializeApp(firebaseConfig);
   const database = getDatabase(app);
   export const auth = getAuth(app);
   
@@ -201,6 +203,18 @@ if (uid) {
 } else {
   console.log('UID parameter is missing in the URL');
 }
+
+const bidButtons = document.querySelectorAll('.bid-button');
+            bidButtons.forEach(button => {
+                button.addEventListener('click', redirectToDetailPage);
+            });
+
+  function redirectToDetailPage(event) {
+        const ideaId = event.target.dataset.id;
+        const detailPageUrl = `auction-page.html?uid=${ideaId}`;
+        window.location.href = detailPageUrl;
+        }
+
 
 </script>
   </body>

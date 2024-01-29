@@ -346,13 +346,13 @@
       } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
       const firebaseConfig = {
-            apiKey: "AIzaSyDjkrTL8wn8RSLjWoHbq6FVdpBBPJEjXZg",
-            authDomain: "sigma-50b08.firebaseapp.com",
-            databaseURL: "https://sigma-50b08-default-rtdb.firebaseio.com",
-            projectId: "sigma-50b08",
-            storageBucket: "sigma-50b08.appspot.com",
-            messagingSenderId: "881262508411",
-            appId: "1:881262508411:web:573e358cf20526dcfc25de"
+        apiKey: "AIzaSyCba_ADfkuAvr1ExhLcQjKtBSC1gwZrA10",
+        authDomain: "sigma-2-ec27d.firebaseapp.com",
+        projectId: "sigma-2-ec27d",
+        storageBucket: "sigma-2-ec27d.appspot.com",
+        messagingSenderId: "91755058764",
+        appId: "1:91755058764:web:36a4710fff0c9f103e46e9",
+        measurementId: "G-L2ZKPGLL3P"
       };
 
       let UserCreds = JSON.parse(sessionStorage.getItem("user-creds"));
@@ -361,6 +361,88 @@
       let MsgHead = document.getElementById("msg");
       let GreetHead = document.getElementById("greet");
       let SignoutBtn = document.getElementById("signoutbutton");
+
+
+    const params = new URLSearchParams(window.location.search);
+    const uid = params.get('uid');
+    const getIdeaByUid = async (uid) => {
+
+    //ref
+    const ideaRef = ref(database, `ideas/${uid}`);
+    try {
+
+    //fetch data
+    const snapshot = await get(ideaRef);
+
+    //wrap data
+   if (snapshot.exists()) {
+    return { [uid]: snapshot.val() }; 
+     } else {
+     console.log("No data available for this UID");
+    return null;
+        }
+    } catch (error) {
+    console.error(error);
+    return null;
+    }
+  };
+
+  const displayIdeas = (ideas) => {
+  // Get the heading and passage elements from the DOM.
+  const productname = document.getElementById('main-product-name');
+  const bidimage= document.getElementById('bid-img-unique');
+  const productparagraph= document.getElementById('main-product-desc');
+
+  // Check if the elements exist in the DOM.
+  if (!productname || !bidimage || !productparagraph ) {
+    console.error('The heading or passage element does not exist in the DOM');
+    return;
+  }
+
+  if (!ideas) {
+    productname.textContent = 'No Idea Title';
+    bidimage.src = ''; // Clear the image source
+    productparagraph.textContent='No Product';
+    return;
+  }
+
+  // Extract the first entry of the ideas object.
+  const [uid, idea] = Object.entries(ideas)[0];
+
+  // Update the heading and passage with the idea title and description.
+  productname.textContent = idea.ideaTitle || "No Idea Title";
+  productparagraph.textContent = `Category: ${idea.ideaDescription || 'No Category'}`;
+
+  if (idea.ideaTitle ) {
+    bidimage.src = `data:image/png;base64,${idea}`
+    bidimage.alt = 'Idea Image'; // Set alt text for accessibility
+  } else {
+    bidimage.src = ''; // Clear the image source if no URL is provided
+  }
+
+};
+if (uid) {
+  getIdeaByUid(uid).then(idea => {
+    displayIdeas(idea);
+  });
+} else {
+  console.log('UID parameter is missing in the URL');
+}
+
+const bidArray = [];
+ onValue(ideaRef, (snapshot) => {
+ bidArray.length = 0;
+snapshot.forEach((childSnapshot) => {
+const keyItem = childSnapshot.key;
+const dataItem = childSnapshot.val();
+bidArray.push({ key: keyItem, data: dataItem });
+ });
+
+bidArray.sort((a, b) => b.data.bid - a.data.bid);
+
+updateUIWithBids(bidArray, bidArray.length);
+});
+
 
       // MsgHead.innerText = `user with email "${UserCreds.email}" logged in`;
       GreetHead.innerText = `Welcome ${
