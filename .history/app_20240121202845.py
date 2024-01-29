@@ -21,7 +21,7 @@ def receive_data():
 # import firebase_admin
 # from firebase_admin import credentials,db
 # from firebase_admin import firestore
-# cred = credentials.Certificate("/content/sigma-50b08-firebase-adminsdk-xrxnc-f8669db2bd.json")
+# cred = credentials.Certificate("/content/sigma-2-ec27d-firebase-adminsdk-zv9by-ee48ca898f.json")
 # firebase_admin.initialize_app(cred, {
 #     'databaseURL': 'https://sigma-50b08-default-rtdb.firebaseio.com/'
 # })
