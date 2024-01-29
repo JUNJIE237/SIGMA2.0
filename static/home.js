@@ -112,7 +112,7 @@ if (scrollPosition > 100) {
 
 var revealconferenceAmount = Math.max(
   0,
-  Math.min(1, (scrollPosition - 4750) / break1Height * (730 / w))
+  Math.min(1, (scrollPosition - 4650) / break1Height * (730 / w))
 );
 var cropconferenceAmount = Math.max(
   0,
@@ -123,7 +123,7 @@ document.getElementById("two-conference-chads").style.clipPath =
   "inset(" + (100 - revealconferenceAmount * 100) + "% 0%"+ cropconferenceAmount * 100 +"% 0%)";
 
 // Move #feature-title vertically
-var conferencePosition = -3100 + 0.5 * scrollPosition;
+var conferencePosition = -2900 + 0.5 * scrollPosition;
 document.getElementById("conference-title").style.top = conferencePosition + "px";
 });
 

@@ -126,6 +126,7 @@ nav .fa-right-from-bracket {
 .sidebar li .fa-house, .fa-cart-shopping, .fa-handshake, .fa-clone, .fa-briefcase,.fa-arrow-from-bracket, .text {
   color: white;
 }
+
 .sidebar li a {
   text-decoration: none;
   height: 100%;
@@ -225,6 +226,19 @@ nav .fa-right-from-bracket {
   padding: 0;
 }
 
+#sigmatitle{
+  justify-content: center;
+  font-size: 40px;
+  align-items: center;
+  color:white;
+}
+
+#firstcontent{
+  justify-content: center;
+  font-size: 30px;
+  align-items: center;
+  color:white;
+}
 
 #main-page {
   position: relative;
@@ -343,14 +357,41 @@ nav .fa-right-from-bracket {
   top: 100px;
 }
 
+
 #break-1 {
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background-color: #06203b;
+  color: #fff;
+  padding: 50px;
   height: 500px;
   z-index: 1;
   animation-name: slideIn;
   animation-duration: 1s; 
+  position: relative;
+
 }
+
+#sigmatitle {
+  font-size: 4rem;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+#firstcontent {
+  font-size: 2rem;
+  font-weight: lighter;
+  margin-bottom: 20px;
+}
+
+#break-1 p {
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
 
 #break-2 {
   position: relative;
@@ -359,7 +400,49 @@ nav .fa-right-from-bracket {
   z-index: 1;
   animation-name: slideIn;
   animation-duration: 1s;
+  text-align: center; 
+  padding: 40px 0; 
+  color: white;
+
 }
+
+#break-2 h2 {
+  color: white; 
+  margin-bottom: 20px; 
+  font-size: 2.5rem; 
+}
+
+
+.ideas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly; 
+  align-items: flex-start;
+}
+
+.idea {
+  background-color: #0077aa; 
+  border-radius: 10px;
+  border: solid 2px  rgba(228, 191, 191, 0.822); 
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; 
+  margin-bottom: 30px;
+  box-shadow: 0 8px 16px 0 rgba(235, 229, 229, 0.2); 
+
+}
+
+.idea img {
+  width: 100px; 
+  height: auto;
+  margin-bottom: 15px;
+}
+
+.idea p {
+  font-size: 1.2rem;
+}
+
 #break-3 {
   position: relative;
   animation-name: slideIn;
@@ -367,23 +450,154 @@ nav .fa-right-from-bracket {
   background-color: #06203b;
   height: 500px;
   z-index: 1;
+  text-align: center;
+  padding: 40px 0; 
+
+
 }
+
+#break-3 h2 {
+  color: rgb(184, 180, 180); 
+  font-size: 1.5rem; 
+  margin-top: 20px;
+}
+
+#break-3 .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+#break-3 .step-box {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #0077aa;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 10px;
+  
+}
+
+#break-3 .icon-container {
+  margin-right: 20px;
+}
+
+#break-3 .step-content p {
+  text-align: left;
+}
+
+#break-3 .icon {
+  width: 100px; 
+  height: auto;
+}
+
+#break-3 .step-content {
+  flex: 1;
+}
+
+
+
+
 #break-4 {
   position: relative;
-  animation-name: slideIn;
-  animation-duration: 1s;
   background-color: #06203b;
-  height: 500px;
+  height: 500px; 
   z-index: 1;
+  display: flex;
+  flex-direction: column; 
+  align-items: center; 
+  justify-content: center; 
+  padding: 40px 0; 
 }
+
+#break-4 h2 {
+  color: white;
+  font-size: 2.5rem; 
+  margin: 0; 
+  padding-bottom: 20px; 
+}
+
+#break-4 .container_4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap; 
+}
+
+.card {
+  border: 2px solid #ffffff; 
+  background-color: #007bff; 
+  color: white;
+  margin: 10px;
+  padding: 40px; 
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); 
+}
+
+.card .card-content {
+  font-size: 1.5rem; 
+}
+
+.operator {
+  font-size: 3rem; 
+  color: white;
+  margin: 0 20px; 
+}
+
 #break-5 {
   position: relative;
   animation-name: slideIn;
   animation-duration: 1s;
   background-color: #06203b;
-  height: 500px;
+  height: 300px;
   z-index: 1;
 }
+
+#break-5 .container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#break-5 .icon-container {
+  margin: 0 10px;
+  text-align: center;
+}
+
+#break-5 .icon {
+  width: 200px; 
+  height: auto;
+}
+
+
+
+#break-5 .label {
+  display: block;
+  margin-top: 5px;
+  font-size: 20px;
+  color:white;
+}
+
+.arrow {
+  width: 50px; 
+  height: 50px; 
+  background-color: #ffffff; 
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%); 
+  margin: 20px auto;
+}
+
+#arrow-left {
+  transform: rotate(90deg); 
+}
+
+#arrow-right {
+  transform: rotate(-90deg); 
+}
+
+
+
 p {
   padding: 2%;
   color: #ffffff;
