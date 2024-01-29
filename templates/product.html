@@ -33,16 +33,16 @@
     <nav class="sidebar close">
       <header>
         <a href="home.html">
-        <div class="image-text">
-          <span class="image">
-            <i class="fa-solid fa-house"></i>
-          </span>
+          <div class="image-text">
+            <span class="image">
+              <i class="fa-solid fa-house"></i>
+            </span>
 
-          <div class="text header-text">
-            <span class="project-title">SIGMA</span>
+            <div class="text header-text">
+              <span class="project-title">SIGMA</span>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
         <i class="fa-solid fa-arrow-left-long"></i>
       </header>
 
@@ -50,43 +50,46 @@
         <div class="selection">
           <ul class="selection-links">
             <li class="link">
-              <a href="business-idea.html">
-                <i class="fa-solid fa-house"></i>
+              <a href="busidea.html">
+                <i class="fa-solid fa-briefcase"></i>
                 <span class="text"> Sell </span>
               </a>
             </li>
             <li class="link">
               <a href="buy.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-cart-shopping"></i>
                 <span class="text"> Buy </span>
               </a>
             </li>
             <li class="link">
               <a href="merge.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-clone"></i>
                 <span class="text"> Merge </span>
               </a>
             </li>
             <li class="link">
               <a href="CDN/conference.html">
-                <i class="fa-solid fa-house"></i>
+                <i class="fa-solid fa-handshake"></i>
                 <span class="text"> Conference </span>
               </a>
             </li>
+
             <li class="link" id='signoutbutton'>
-                <a href="">
-                  <i class="fa-solid fa-right-from-bracket"></i>
-                  <span class="text"> Sign Out </span>
-                </a>
+              <a href="">
+                <i class="fa-solid fa-right-from-bracket"></i>
+                <span class="text"> Sign Out </span>
+              </a>
             </li>
           </ul>
         </div>
       </div>
     </nav>
 
-
     <div id="header-container">
-      <div id="profile-picture"></div>
+      <img class="header-image" id="head-img" src="" alt="" />
+      <div id="profile-picture">
+        <img class="bid-image" id="bid-img" src="" alt="" />
+      </div>
       <h1 id="heading">Business Idea Title</h1>
           
   </div>
@@ -132,7 +135,7 @@
   
   const params = new URLSearchParams(window.location.search);
   const uid = params.get('uid');
-
+  //console.log(uid)
 //asynchronize
 const getIdeaByUid = async (uid) => {
 
@@ -164,6 +167,8 @@ const displayIdeas = (ideas) => {
   const targetElement= document.getElementById("target");
   const expElement =document.getElementById("expense");
   const durationElement=document.getElementById("duration");
+  const bidimage= document.getElementById('bid-img');
+  const headimage= document.getElementById('head-img');
 
   // Check if the elements exist in the DOM.
   if (!headingElement || !descriptionElement || !categoryElement || !targetElement || !expElement) {
@@ -191,11 +196,18 @@ const displayIdeas = (ideas) => {
   targetElement.textContent = `Target User: ${idea.targetUser || 'No Target User'}`;
   expElement.textContent = `Expense: ${idea.expenses || 'No Expense'}`;
   durationElement.textContent = `Duration: ${idea.duration || 'No Duration'}`;
+  if (idea.ideaTitle ) {
+    bidimage.src = `data:image/png;base64,${idea.image}`;
+    headimage.src = `data:image/png;base64,${idea.image}`;
+    bidimage.alt = 'Idea Image'; // Set alt text for accessibility
+  } else {
+    bidimage.src = ''; // Clear the image source if no URL is provided
+  }
 
 };
 
 
-
+console.log('uid in product')
 
 if (uid) {
   getIdeaByUid(uid).then(idea => {
@@ -211,11 +223,12 @@ const bidButtons = document.querySelectorAll('.bid-button');
             });
 
   function redirectToDetailPage(event) {
-        const ideaId = event.target.dataset.id;
+        const ideaId = uid;
+        console.log(ideaId)
         const detailPageUrl = `auction-page.html?uid=${ideaId}`;
         window.location.href = detailPageUrl;
         }
-
+console.log('Uid in passing')
 
 </script>
   </body>

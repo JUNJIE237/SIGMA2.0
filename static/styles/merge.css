@@ -787,17 +787,18 @@ border-top-right-radius: 20px;
 }
 
 tr:nth-child(even){
-background-color: #2f7060;
+background-color: #f4e2c5;
 }
 
 
 tr:nth-child(odd){
-background-color: #0f7f82;
+background-color: 	#8fa88f;
+color: #ececec;
 }
 
 tr:hover {
-background-color:#18174d;
-color: #2980b9;
+background-color:#9DC6D8;
+color: #556342;
 }
 
 .round-image {

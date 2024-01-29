@@ -364,87 +364,6 @@
       let SignoutBtn = document.getElementById("signoutbutton");
 
 
-    const params = new URLSearchParams(window.location.search);
-    const uid = params.get('uid');
-    const getIdeaByUid = async (uid) => {
-
-    //ref
-    const ideaRef = ref(database, `ideas/${uid}`);
-    try {
-
-    //fetch data
-    const snapshot = await get(ideaRef);
-
-    //wrap data
-   if (snapshot.exists()) {
-    return { [uid]: snapshot.val() }; 
-     } else {
-     console.log("No data available for this UID");
-    return null;
-        }
-    } catch (error) {
-    console.error(error);
-    return null;
-    }
-  };
-
-  const displayIdeas = (ideas) => {
-  // Get the heading and passage elements from the DOM.
-  const productname = document.getElementById('main-product-name');
-  const bidimage= document.getElementById('bid-img-unique');
-  const productparagraph= document.getElementById('main-product-desc');
-
-  // Check if the elements exist in the DOM.
-  if (!productname || !bidimage || !productparagraph ) {
-    console.error('The heading or passage element does not exist in the DOM');
-    return;
-  }
-
-  if (!ideas) {
-    productname.textContent = 'No Idea Title';
-    bidimage.src = ''; // Clear the image source
-    productparagraph.textContent='No Product';
-    return;
-  }
-
-  // Extract the first entry of the ideas object.
-  const [uid, idea] = Object.entries(ideas)[0];
-
-  // Update the heading and passage with the idea title and description.
-  productname.textContent = idea.ideaTitle || "No Idea Title";
-  productparagraph.textContent = `Category: ${idea.ideaDescription || 'No Category'}`;
-
-  if (idea.ideaTitle ) {
-    bidimage.src = `data:image/png;base64,${idea}`
-    bidimage.alt = 'Idea Image'; // Set alt text for accessibility
-  } else {
-    bidimage.src = ''; // Clear the image source if no URL is provided
-  }
-
-};
-if (uid) {
-  getIdeaByUid(uid).then(idea => {
-    displayIdeas(idea);
-  });
-} else {
-  console.log('UID parameter is missing in the URL');
-}
-
-const bidArray = [];
- onValue(ideaRef, (snapshot) => {
- bidArray.length = 0;
-snapshot.forEach((childSnapshot) => {
-const keyItem = childSnapshot.key;
-const dataItem = childSnapshot.val();
-bidArray.push({ key: keyItem, data: dataItem });
- });
-
-bidArray.sort((a, b) => b.data.bid - a.data.bid);
-
-updateUIWithBids(bidArray, bidArray.length);
-});
-
-
       // MsgHead.innerText = `user with email "${UserCreds.email}" logged in`;
       GreetHead.innerText = `Welcome ${
         UserInfo.firstname + " " + UserInfo.lastname
@@ -483,7 +402,101 @@ updateUIWithBids(bidArray, bidArray.length);
 
       window.addEventListener("load", CheckCred);
       // SignoutBtn.addEventListener('click', Signout);
+      //////////////////////////////////////////////////////////////////////////
+    const params = new URLSearchParams(window.location.search);
+    const uid = params.get('uid');
+    const getIdeaByUid = async (uid) => {
 
+    //ref
+    const ideaRef = ref(database, `ideas/${uid}`);
+    try {
+
+    //fetch data
+    const snapshot = await get(ideaRef);
+
+    //wrap data
+   if (snapshot.exists()) {
+    return { [uid]: snapshot.val() }; 
+     } else {
+     console.log("No data available for this UID");
+    return null;
+        }
+    } catch (error) {
+    console.error(error);
+    return null;
+    }
+  };
+
+  const displayIdeas = (ideas) => {
+  // Get the heading and passage elements from the DOM.
+  const productname = document.getElementById('main-product-name');
+  const bidimage= document.getElementById('bid-img-unique');
+  const productparagraph= document.getElementById('main-product-desc');
+  const productinfo= document.getElementById('main-product');
+  
+
+  // Check if the elements exist in the DOM.
+  if (!productname || !bidimage || !productparagraph || !productinfo ) {
+    console.error('The heading or passage element does not exist in the DOM');
+    return;
+  }
+
+  if (!ideas) {
+    productname.textContent = 'No Idea Title';
+    bidimage.src = ''; // Clear the image source
+    productparagraph.textContent='No Product';
+    return;
+  }
+
+  // Extract the first entry of the ideas object.
+  const [uid, idea] = Object.entries(ideas)[0];
+
+  // Update the heading and passage with the idea title and description.
+  productname.textContent = idea.ideaTitle || "No Idea Title";
+  productparagraph.textContent = `Category: ${idea.ideaDescription || 'No Category'}`;
+  productinfo.textContent = idea.ideaTitle || "No Idea Title"
+
+  if (idea.ideaTitle ) {
+    bidimage.src = `data:image/png;base64,${idea.image}`
+    bidimage.alt = 'Idea Image'; // Set alt text for accessibility
+  } else {
+    bidimage.src = ''; // Clear the image source if no URL is provided
+  }
+
+  
+
+
+};
+if (uid) {
+  getIdeaByUid(uid).then(idea => {
+    displayIdeas(idea);
+  });
+} else {
+  console.log('UID parameter is missing in the URL');
+}
+
+const arrayRef = ref(database, `ideas/${uid}/bid`);
+console.log(uid)
+console.log(arrayRef)
+const bidArray = [];
+onValue(arrayRef, (snapshot) => {
+bidArray.length = 0;
+snapshot.forEach((childSnapshot) => {
+const keyItem = childSnapshot.key;
+const dataItem = childSnapshot.val();
+bidArray.push({ key: keyItem, data: dataItem });
+ });
+console.log(bidArray)
+bidArray.sort((a, b) => b.data.bid - a.data.bid);
+
+updateUIWithBids(bidArray, bidArray.length);
+});
+
+
+
+
+
+      ///////////////////////////////////////////////////////////////////////
       //Reference to ideas in firebase
       const itemsRef = ref(database, 'ideas');
       var innerTextArr = [];
@@ -506,11 +519,11 @@ updateUIWithBids(bidArray, bidArray.length);
           innerDescArr.push(itemData.ideaDescription);
         });
 
-        console.log(itemsArray);
-        console.log(innerTextArr);
-        console.log(innerBidArr);
-        console.log(innerDescArr);
-        console.log("HI");
+        //console.log(itemsArray);
+        //console.log(innerTextArr);
+        //console.log(innerBidArr);
+        //console.log(innerDescArr);
+        //console.log("HI");
 
 
         let product1 = document.getElementById('product-1');
@@ -518,12 +531,22 @@ updateUIWithBids(bidArray, bidArray.length);
         let product3 = document.getElementById('product-3');
         let product4 = document.getElementById('product-4');
 
-        console.log("Product-1" + product1);
+        //console.log("Product-1" + product1);
 
         product1.innerText = itemsArray[0].data.ideaTitle;
         product2.innerText = itemsArray[1].data.ideaTitle;
         product3.innerText = itemsArray[2].data.ideaTitle;
         product4.innerText = itemsArray[3].data.ideaTitle;
+
+        let bidimg1 = document.getElementById('bid-img-1');
+        let bidimg2 = document.getElementById('bid-img-2');
+        let bidimg3 = document.getElementById('bid-img-3');
+        let bidimg4 = document.getElementById('bid-img-4');
+
+        bidimg1.src = `data:image/png;base64,${itemsArray[0].data.image}`;
+        bidimg2.src = `data:image/png;base64,${itemsArray[1].data.image}`;
+        bidimg3.src = `data:image/png;base64,${itemsArray[2].data.image}`;
+        bidimg4.src = `data:image/png;base64,${itemsArray[3].data.image}`;
       });
 
 
@@ -533,7 +556,7 @@ updateUIWithBids(bidArray, bidArray.length);
         var cnt = 0;
         var uniqueNumArr = generateUniqueNumbers(itemsArray.length, itemsArray.length-1);
 
-        console.log(innerTextArr.length);
+        //console.log(innerTextArr.length);
 
         for(let i=0; i < innerTextArr.length; i++)
         {
@@ -562,8 +585,8 @@ updateUIWithBids(bidArray, bidArray.length);
 
           if(innerTextArr[uniqueNumArr[i]] === passedText)
           {
-            console.log("Inner text: " + innerTextArr[uniqueNumArr[i]]);
-            console.log("Passed text: " + passedText);
+            //console.log("Inner text: " + innerTextArr[uniqueNumArr[i]]);
+            //console.log("Passed text: " + passedText);
 
             var newBidItem = document.createElement('div');
             newBidItem.className = 'enter-bid';
@@ -708,7 +731,7 @@ updateUIWithBids(bidArray, bidArray.length);
                       }
                   })
                   .catch((error) => {
-                      console.log(error);
+                      //console.log(error);
                   });
           }
       });
@@ -721,7 +744,7 @@ updateUIWithBids(bidArray, bidArray.length);
 
         for(let i=0; i < 10; i++)
         {
-          console.log(bidArray[i]);
+          //console.log(bidArray[i]);
           persons.push(document.getElementById(`person${i + 1}`));
           bids.push(document.getElementById(`bid${i + 1}`));
         }
@@ -785,7 +808,7 @@ updateUIWithBids(bidArray, bidArray.length);
                                 })
                                 .catch((error) => {
                                     alert("Unsuccessful");
-                                    console.log(error);
+                                    //console.log(error);
                                 });
                         } else {
                             alert(`No match found for itemName ${itemName}`);
@@ -795,7 +818,7 @@ updateUIWithBids(bidArray, bidArray.length);
                     }
                 })
                 .catch((error) => {
-                    console.log(error);
+                    //console.log(error);
                 });
         }
     });

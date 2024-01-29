@@ -17,10 +17,12 @@
     <script src="https://source.zoom.us/3.0.0/lib/vendor/redux-thunk.min.js"></script>
     <script src="https://source.zoom.us/3.0.0/lib/vendor/lodash.min.js"></script>
     <script src="https://source.zoom.us/zoom-meeting-3.0.0.min.js"></script>
-    <script src="js/tool.js"></script>
+    <!-- <script src="js/tool.js"></script>
     <script src="js/vconsole.min.js"></script>
-    <script src="js/meeting.js"></script>
-
+    <script src="js/meeting.js"></script> -->
+    <script src="{{ url_for('static', filename='js/tool.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/vconsole.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
     <script>
 
     </script>
