@@ -31,7 +31,7 @@ from dotenv import load_dotenv
 import pandas as pd
 cred = credentials.Certificate("sigma-cd3c3-firebase-adminsdk-68h7t-4eefda3a29.json")
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://sigma-cd3c3-default-rtdb.firebaseio.com/'
+    'databaseURL': 'https://sigma-cd3c3-default-rtdb.firebaseio.com'
 })
 import uuid
 from dotenv import load_dotenv
