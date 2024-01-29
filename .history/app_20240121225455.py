@@ -23,7 +23,7 @@ import IPython.display as display
 import en_core_web_sm
 import base64
 from keytotext import pipeline
-cred = credentials.Certificate("sigma-50b08-firebase-adminsdk-xrxnc-f8669db2bd.json")
+cred = credentials.Certificate("sigma-2-ec27d-firebase-adminsdk-zv9by-ee48ca898f.json")
 firebase_admin.initialize_app(cred, {
     'databaseURL': 'https://sigma-50b08-default-rtdb.firebaseio.com/'
 })
