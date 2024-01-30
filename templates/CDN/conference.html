@@ -124,17 +124,17 @@
                 </div>
             </div>
             <div class="image-wrapper">
-                <img src="Meeting.png" alt="">
+                <img src="/static/assets/Meeting.png" alt="">
             </div> 
         </div>
         
 
        
                
-        <div id="show-test-tool">
+        <!-- <div id="show-test-tool">
             <button type="submit" class="btn btn-primary" id="show-test-tool-btn"
                 title="show or hide top test tool">Show</button>
-        </div>
+        </div> -->
         <!--/.navbar-collapse -->
     </div>
 
@@ -142,7 +142,7 @@
 
 
     
-    <script>
+    <!-- <script>
         document.getElementById('show-test-tool-btn').addEventListener("click", function (e) {
             var textContent = e.target.textContent;
             if (textContent === 'Show') {
@@ -153,7 +153,7 @@
                 document.getElementById('show-test-tool-btn').textContent = 'Show';
             }
         })
-    </script>
+    </script> -->
 
     <script src="https://source.zoom.us/3.0.0/lib/vendor/react.min.js"></script>
     <script src="https://source.zoom.us/3.0.0/lib/vendor/react-dom.min.js"></script>
@@ -161,12 +161,15 @@
     <script src="https://source.zoom.us/3.0.0/lib/vendor/redux-thunk.min.js"></script>
     <script src="https://source.zoom.us/3.0.0/lib/vendor/lodash.min.js"></script>
     <script src="https://source.zoom.us/zoom-meeting-3.0.0.min.js"></script>
-    <!-- <script src="js/tool.js"></script>
-    <script src="js/vconsole.min.js"></script>
-    <script src="js/index.js"></script> -->
-    <script src="{{ url_for('static', filename='js/tool.js') }}"></script>
+    <!-- <script src="http://127.0.0.1:5000/static/js/tool.js"></script>
+    <script src="http://127.0.0.1:5000/static/js/tool.js"></script>
+    <script src="http://127.0.0.1:5000/static/js/tool.js"></script> -->
+    <!-- <script src="{{ url_for('static', filename='js/tool.js') }}"></script>
     <script src="{{ url_for('static', filename='js/vconsole.min.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script> -->
+    <script src="/static/js/index.js"></script>
+    <script src="/static/js/tool.js"></script>
+    <script src="/static/js/vconsole.min.js"></script>
 </body>
 
 </html>

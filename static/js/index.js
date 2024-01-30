@@ -23,7 +23,7 @@ function websdkready() {
    * You can find an example in here: https://developers.zoom.us/docs/meeting-sdk/auth/#signature
    */
   var CLIENT_SECRET = "jmmwZAcGR11x8pIrzAZX3qT1Ao70Ucmq";
-
+  console.log(display_name)
   // some help code, remember mn, pwd, lang to cookie, and autofill.
   document.getElementById("display_name").value =
     "CDN" +
@@ -104,9 +104,7 @@ function websdkready() {
           console.log(res);
           meetingConfig.signature = res;
           meetingConfig.sdkKey = CLIENT_ID;
-
-          //CHANGE THIS ACCORDING TO WHERE YOU STORE THE HTML
-          var joinUrl = "{{ url_for('/Users/User/Desktop/Temp 2/templates/CDN/meeting.html') }}?" + testTool.serialize(meetingConfig);
+          var joinUrl = "http://127.0.0.1:5000/CDN/meeting.html?" + testTool.serialize(meetingConfig);
           console.log(joinUrl);
           window.open(joinUrl, "_blank");
         },
@@ -137,14 +135,13 @@ function websdkready() {
       sdkKey: CLIENT_ID,
       sdkSecret: CLIENT_SECRET,
       role: meetingConfig.role,
-      //CHANGE THIS ACCORDING TO WHERE YOU STORE THE HTML
       success: function (res) {
         console.log(res.result);
         meetingConfig.signature = res.result;
         meetingConfig.sdkKey = CLIENT_ID;
         var joinUrl =
           testTool.getCurrentDomain() +
-          "{{ url_for('/Users/User/Desktop/Temp 2/templates/CDN/meeting.html') }}?" +
+          "http://127.0.0.1:5000/CDN/meeting.html?" +
           testTool.serialize(meetingConfig);
         document
           .getElementById("copy_link_value")
@@ -159,6 +156,6 @@ const body = document.querySelector("body"),
       sidebar = body.querySelector(".sidebar"),
       arrow = body.querySelector(".fa-arrow-left-long")
 
-arrow.addEventListener("click", ()=>{
-  sidebar.classList.toggle("close");
-})
+// arrow.addEventListener("click", ()=>{
+//   sidebar.classList.toggle("close");
+// })

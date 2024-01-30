@@ -71,7 +71,7 @@
               </a>
             </li>
             <li class="link">
-              <a href="CDN/conference.html">
+              <a href="https://junjie237.github.io/zoomconferenceAPI/">
                 <i class="fa-solid fa-handshake"></i>
                 <span class="text"> Conference </span>
               </a>
@@ -825,11 +825,12 @@
 
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getDatabase, set, ref, push } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+import {onAuthStateChanged,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 import { get,update, child } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
- 
-
 const firebaseConfig = {
   apiKey: "AIzaSyCHM89ye4am5OJ8_vqmB06jGe94nudRwfw",
   authDomain: "sigma-cd3c3.firebaseapp.com",
@@ -844,6 +845,37 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 export const auth = getAuth(app);
+
+let SignoutBtn = document.getElementById("signoutbutton");
+      
+      let Signout = () => {
+        sessionStorage.removeItem("user-creds");
+        sessionStorage.removeItem("user-info");
+        signOut(auth);
+        window.location.href = "login.html";
+      };
+
+      let CheckCred = () => {
+        if (!sessionStorage.getItem("user-creds"))
+          window.location.href = "login.html";
+      };
+
+      auth.onAuthStateChanged((user) => {
+      if (user) {
+        // User is signed in
+        const uid = user.uid;
+        console.log("User is signed in:", uid);
+        // Update UI or perform actions for signed-in user
+      } else {
+        // User is signed out
+        console.log("User is signed out");
+        // Update UI or perform actions for signed-out user
+      }
+    });
+
+    window.addEventListener('load', CheckCred);
+    SignoutBtn.addEventListener('click', Signout); 
+
 
 
 function handleFormSubmission() {
