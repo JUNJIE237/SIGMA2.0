@@ -32,6 +32,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
 
+
+
   <body>
     <nav class="sidebar close">
       <header>
@@ -71,7 +73,7 @@
               </a>
             </li>
             <li class="link">
-              <a href="https://junjie237.github.io/zoomAPI2/">
+              <a href="https://junjie237.github.io/zoomconferenceAPI/">
                 <i class="fa-solid fa-handshake"></i>
                 <span class="text"> Conference </span>
               </a>
@@ -706,7 +708,7 @@
 
         <label for="ideadescription">
           <span>Idea Description</span>
-          <textarea id="ideadescription" name="ideadescription" rows="8" required></textarea>
+          <textarea id="ideadescription" name="ideadescription" rows="8" required>EcoTrace is an innovative technology solution that aims to address the growing concern of environmental sustainability by creating a transparent and traceable supply chain for consumer goods. </textarea>
           <span class="error-message" style="display:none;color:red;">Idea description is required.</span>
         </label>        
 
@@ -741,25 +743,47 @@
 
           <label for="problemstatement">
             <span>Problem Statement</span>
-            <textarea id="problemstatement" name="problemstatement" rows="6" required></textarea>
+            <textarea id="problemstatement" name="problemstatement" rows="6" required>Consumers are increasingly conscious of the environmental impact of the products they purchase, but there's a lack of transparency in the supply chain. It's challenging for consumers to verify the authenticity of eco-friendly claims made by companies, leading to greenwashing. Moreover, businesses struggle to maintain a comprehensive and accurate record of their supply chain practices, making it difficult to optimize processes for sustainability.</textarea>
             <span class="error-message" style="display:none;color:red;">Problem Statement is required.</span>
           </label>    
 
           <label for="solution">
             <span>Solution </span>
-            <textarea id="solution" name="solution" rows="8" required></textarea>
+            <textarea id="solution" name="solution" rows="8" required>Blockchain Traceability: Implement a blockchain-based system to record and verify every step of the supply chain, ensuring transparency and preventing tampering of information.
+
+              IoT Integration: Utilize IoT devices to collect real-time data on factors like energy consumption, emissions, and transportation methods throughout the supply chain.
+              
+              Machine Learning Analytics: Employ machine learning algorithms to analyze the collected data, providing insights into areas where companies can make improvements for increased sustainability.
+              
+              Consumer-Facing App: Develop a user-friendly mobile app that allows consumers to scan product QR codes and access a detailed history of the product's journey, including its environmental footprint.</textarea>
             <span class="error-message" style="display:none;color:red;">Solution is required.</span>
           </label>  
           
           <label for="model">
             <span>Business Model </span>
-            <textarea id="model" name="model" rows="8" required></textarea>
+            <textarea id="model" name="model" rows="8" required>EcoTrace operates on a subscription-based model for businesses to integrate the platform into their supply chain. Additionally, a freemium model can be employed for the consumer-facing app, offering basic information for free and premium features for a subscription fee. Revenue can also be generated through consulting services for companies looking to enhance their sustainability practices.</textarea>
             <span class="error-message" style="display:none;color:red;">Business Model is required.</span>
           </label>  
           
           <label for="swot">
             <span>Strength, Weakness, Opportunity, Threat (SWOT) </span>
-            <textarea id="swot" name="swot" rows="8" required></textarea>
+            <textarea id="swot" name="swot" rows="8" required>Strengths:
+
+              Technologically advanced solution with blockchain and IoT integration.
+              Meets the increasing consumer demand for transparent and eco-friendly products.
+              Potential for partnerships with eco-certification organizations.
+              Weaknesses:
+              
+              Initial implementation costs for businesses.
+              Resistance from companies hesitant to disclose detailed supply chain information.
+              Opportunities:
+              
+              Growing global emphasis on sustainability provides a vast market.
+              Potential for collaboration with regulatory bodies to establish industry standards.
+              Threats:
+              
+              Competition from existing supply chain solutions.
+              Technological challenges and security concerns with blockchain implementation.</textarea>
             <span class="error-message" style="display:none;color:red;">SWOT is required.</span>
           </label>  
 
@@ -779,30 +803,27 @@
         
         <div class="report-section">
           <h2>Your Profile</h2>
-          <p><strong>Name:</strong> <span id="profile-name">[Name]</span></p>
-          <p><strong>Email:</strong> <span id="profile-email">[Email]</span></p>
-          <p><strong>MyKad/Passport Number:</strong> <span id="profile-pass">[Passport]</span></p>
-          <p><strong>Phone Number:</strong> <span id="profile-fphonenumber">[Phone Number]</span></p>
-          <p><strong>Nationality:</strong> <span id="profile-nationality">[Nationality]</span></p>
+          <p><strong>Name:</strong> <span id="report-name">[Name]</span></p>
+          <p><strong>Email:</strong> <span id="report-email">[Email]</span></p>
+          <p><strong>MyKad/Passport Number:</strong> <span id="report-kad">[Passport]</span></p>
+          <p><strong>Phone Number:</strong> <span id="report-phone">[Phone Number]</span></p>
+          <p><strong>Nationality:</strong> <span id="report-nationality">[Nationality]</span></p>
         </div>
         <div class="report-section">
           <h2>Idea Information</h2>
-          <p><strong>Idea Title:</strong> <span id="idea-title-summary">[Idea Title]</span></p>
-          <p><strong>Idea Description:</strong> <span id="idea-description-summary">[Idea Description]</span></p>
-          <p><strong>Category:</strong> <span id="idea-category-summary">[Category]</span></p>
-          <p><strong>Target User:</strong> <span id="target-user-summary">[Target User]</span></p>
-          <p><strong>Price Range:</strong> <span id="price-range-summary">[Price Range]</span></p>
-          <p><strong>Project Duration:</strong> <span id="idea-duration-summary">[Project Duration]</span></p>
-          <p><strong>Problem Statement:</strong> <span id="problem-statement-summary">[Problem Statement]</span></p>
-          <p><strong>Business Model:</strong> <span id="model-summary">[Problem Statement]</span></p>
-          <p><strong>Solution:</strong> <span id="solution-summary">[Solution]</span></p>
-          <p><strong>Strength, Weakness, Opportunity, Threat (SWOT):</strong> <span id="swot-summary">[swot]</span></p>
+          <p><strong>Idea Title:</strong> <span id="report-ideatitle">[Idea Title]</span></p>
+          <p><strong>Idea Description:</strong> <span id="report-ideaDesc">[Idea Description]</span></p>
+          <p><strong>Category:</strong> <span id="report-cat">[Category]</span></p>
+          <p><strong>Target User:</strong> <span id="report-targetUser">[Target User]</span></p>
+          <p><strong>Price Range:</strong> <span id="report-priceRange">[Price Range]</span></p>
+          <p><strong>Project Duration:</strong> <span id="report-duration">[Project Duration]</span></p>
+          <p><strong>Idea Content:</strong> <span id="report-ideaContent">[Idea Content]</span></p>
 
 
         </div>
 
 <div class="report-footer">
-  <button type="button" class="download-btn" onclick="downloadReport()">Download Report</button>
+  <button type="button" class="download-btn">Download Report</button>
   <button type="button" class="home-btn" onclick="goHome()">Home</button>
 </div>
 
@@ -841,7 +862,6 @@ const firebaseConfig = {
   appId: "1:408292470548:web:a485bd0b2775552c7bdc01",
   measurementId: "G-DKWKJNTY66"
 };
-
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 export const auth = getAuth(app);
@@ -876,9 +896,11 @@ let SignoutBtn = document.getElementById("signoutbutton");
     window.addEventListener('load', CheckCred);
     SignoutBtn.addEventListener('click', Signout); 
 
-
+    let globalFormData = {};
+ 
 
 function handleFormSubmission() {
+
     const formData = {
         name: document.getElementById('fname').value+document.getElementById('lastname').value,
         email: document.getElementById('email').value,
@@ -892,12 +914,19 @@ function handleFormSubmission() {
         targetUser: document.getElementById('targetuser').value,
         priceRange: document.getElementById('price-min').value +" - "+ document.getElementById('price-min').value,
         duration: document.getElementById('ideaduration').value,
-        ideaContent: document.getElementById('problemstatement').value + document.getElementById('model').value + document.getElementById('solution').value + document.getElementById('swot').value,
+        ideaContent: document.getElementById('problemstatement').value + document.getElementById('model').value + document.getElementById('solution').value + document.getElementById('swot').value
 
+      
     };
+
+    globalFormData = formData;
+    
+    displayReport();
+
     //push to db
    const ideasRef = ref(database, 'ideas');
 
+   
     // const newIdeaRef = push(ideasRef);
 
 // Use the Fetch API to send a POST request to your Flask server
@@ -924,6 +953,123 @@ fetch('/submit_idea', {
     //     console.error('Error writing data to Firebase', error);
     // });
 }
+
+function displayReport() {
+    document.getElementById('report-name').textContent = globalFormData.name;
+    document.getElementById('report-email').textContent = globalFormData.email;
+    document.getElementById('report-kad').textContent = globalFormData.myKadPassport;
+    document.getElementById('report-phone').textContent = globalFormData.phoneCountryCode + " " + globalFormData.phoneNumber;
+    document.getElementById('report-nationality').textContent = globalFormData.nationality;
+    document.getElementById('report-ideatitle').textContent = globalFormData.ideaTitle;
+    document.getElementById('report-ideaDesc').textContent = globalFormData.ideaDescription;
+    document.getElementById('report-cat').textContent = globalFormData.category;
+    document.getElementById('report-targetUser').textContent = globalFormData.targetUser;
+    document.getElementById('report-priceRange').textContent = globalFormData.priceRange;
+    document.getElementById('report-duration').textContent = globalFormData.duration;
+    document.getElementById('report-ideaContent').textContent = globalFormData.ideaContent;
+}
+
+function downloadReport() {
+  const reportRef = ref(database, 'ideas');
+
+  get(reportRef).then((snapshot) => {
+    if (snapshot.exists()) {
+      const data = snapshot.val();
+
+      const reportData = {
+        name: document.getElementById('fname').value + " " + document.getElementById('lastname').value,
+        email: document.getElementById('email').value,
+        myKadPassport: document.getElementById('pass').value,
+        phoneNumber: document.getElementById('phone-number').value,
+        phoneCountryCode: document.getElementById('phone').value,
+        nationality: document.getElementById('nationality').value,
+        ideaTitle: document.getElementById('ideatitle').value,
+        ideaDescription: document.getElementById('ideadescription').value,
+        category: document.getElementById('ideacat').value,
+        targetUser: document.getElementById('targetuser').value,
+        priceRange: document.getElementById('price-min').value + " - " + document.getElementById('price-max').value, // Fixed to use 'price-max'
+        duration: document.getElementById('ideaduration').value,
+        ideaContent: document.getElementById('problemstatement').value + "\n" + document.getElementById('model').value + "\n" + document.getElementById('solution').value + "\n" + document.getElementById('swot').value
+      };
+
+      const { jsPDF } = window.jspdf;
+      const doc = new jsPDF();
+
+      let y = 20; 
+      const pageWidth = doc.internal.pageSize.width; 
+      const margin = 20; 
+      const maxWidth = pageWidth - margin * 2; 
+
+      function addTitle(title) {
+        doc.setFont('Comfortaa', 'bold'); 
+        doc.setFontSize(23);
+        doc.text(title, pageWidth / 2, y, { align: 'center' });
+        y += 10; 
+        doc.setFont('Comfortaa', 'normal'); 
+      }
+
+  
+      function addBoldText(text) {
+        doc.setFont('Comfortaa', 'bold'); 
+        addText(text); 
+        doc.setFont('Comfortaa', 'normal'); 
+     }
+
+      function addText(text, fontSize = 12, lineHeightFactor = 2.55) {
+         doc.setFontSize(fontSize);
+         const textLines = doc.splitTextToSize(text, maxWidth);
+
+          let lineHeight = (fontSize * lineHeightFactor) / doc.internal.scaleFactor;
+
+           textLines.forEach((line) => {
+              if (y + lineHeight > doc.internal.pageSize.height - 20) {
+                 doc.addPage();
+                  y = 20; 
+              }
+            doc.text(line, margin, y);
+            y += lineHeight; 
+        });
+      }
+
+
+      addTitle('Business Idea Report');
+
+      addText(`Name: ${reportData.name}`);
+      addText(`Email: ${reportData.email}`);
+      addText(`myKad/Passport: ${reportData.myKadPassport}`);
+      addText(`Phone Number: ${reportData.phoneCountryCode} ${reportData.phoneNumber}`);
+      addText(`Nationality: ${reportData.nationality}`);
+      addText(`Idea Title: ${reportData.ideaTitle}`);
+
+      addText(`Idea Description: ${reportData.ideaDescription}`);
+      addText(`Category: ${reportData.category}`);
+      addText(`Target User: ${reportData.targetUser}`);
+      addText(`Price Range: ${reportData.priceRange}`);
+      addText(`Project Duration: ${reportData.duration}`);
+      addText(`Idea Content: ${reportData.ideaContent}`);
+
+      doc.save('report.pdf');
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+    console.error(error);
+  });
+}
+
+
+
+window.addEventListener('DOMContentLoaded', (event) => {
+    // Now add the event listener to the button
+    const downloadBtn = document.querySelector('.download-btn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', downloadReport);
+    } else {
+        console.error('Download button not found');
+    }
+});
+  
+
 
     document.querySelector('.submit-btn').addEventListener('click', function(event) {
         event.preventDefault();
